@@ -1,7 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-//
+#include "add_reduce_dialog.h"
 #include "selectseatdialog.h"
+#include "check_outdialog.h"
+#include "staffregister_dialog.h"
+#include "stockqquery_dialog.h"
+#include "dayincomequery_dialog.h"
+#include "monthincomequery_dialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -47,4 +52,59 @@ void MainWindow::on_action_Start_triggered()
     selectseat->exec();
     delete selectseat;
 
+}
+
+
+void MainWindow::on_action_AddorReduce_triggered()
+{
+    Add_Reduce_Dialog *add_Reduce=new Add_Reduce_Dialog;
+    add_Reduce->show();
+    add_Reduce->exec();
+    delete add_Reduce;
+}
+
+void MainWindow::on_actionGukejiezhang_triggered()
+{
+    Check_OutDialog *check_Out=new Check_OutDialog;
+    check_Out->show();
+    check_Out->exec();
+    delete check_Out;
+}
+
+void MainWindow::on_actionBenrijiesuan_triggered()
+{
+    //本日结算
+    QMessageBox::information(this,"本日结算","本日营业额为: XX 元");
+}
+
+void MainWindow::on_actionZhuceyuangong_triggered()
+{
+    staffRegister_Dialog *staff=new staffRegister_Dialog;
+    staff->show();
+    staff->exec();
+    delete staff;
+}
+
+void MainWindow::on_action_5_triggered()
+{
+    StockqQuery_Dialog *stackeQuery=new StockqQuery_Dialog;
+    stackeQuery->show();
+    stackeQuery->exec();
+    delete stackeQuery;
+}
+
+void MainWindow::on_action_6_triggered()
+{
+    DayIncomeQuery_Dialog *dayincomeQuery=new DayIncomeQuery_Dialog;
+    dayincomeQuery->show();
+    dayincomeQuery->exec();
+    delete dayincomeQuery;
+}
+
+void MainWindow::on_action_7_triggered()
+{
+    MonthIncomeQuery_Dialog *monthIncomeQuery=new MonthIncomeQuery_Dialog;
+    monthIncomeQuery->show();
+    monthIncomeQuery->exec();
+    delete monthIncomeQuery;
 }

@@ -2,12 +2,14 @@
 #include "ui_orderdishesdialog.h"
 #include "dishescountdialog.h"
 #include "dishescountdialog.h"
+#include <QStandardItemModel>
 
 OrderDishesDialog::OrderDishesDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::OrderDishesDialog)
 {
     ui->setupUi(this);
+    count=0;
 
     //foodtable
     ui->food_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -80,51 +82,38 @@ void OrderDishesDialog::on_pushButton_clicked()
 
 void OrderDishesDialog::on_OkButton_clicked()
 {
-    DishesCountDialog *dishesCount =new DishesCountDialog;
-    dishesCount->show();
-    dishesCount->exec();
-    delete dishesCount;
+    //此处实现将数据存入数据库
+
+
+    this->close();
 }
 
 void OrderDishesDialog::on_cancelButton_clicked()
 {
-    this->close();
+    this->close();//关闭窗口
 }
-
-//void OrderDishesDialog::on_addButton_3_clicked()
-//{
-
-
-//    //    int row= ui->tableWidget->currentIndex().row();
-//    //    QAbstractItemModel *model = ui->tableWidget->model();
-//    //    QModelIndex indextemp=model->index(row,0);
-//    //    QModelIndex indexflag=model->index(row,1);
-//    //    idData= model->data(indextemp).toString();
-//    //    flagId=model->data(indexflag).toString();
-//    //    ui->lineEdit->setText(idData);
-
-//}
-
 void OrderDishesDialog::on_deleteButton_clicked()
 {
+     QAbstractItemModel *model=ui->isSelcteFood_tableWidget->model();
+    int curRow =ui->isSelcteFood_tableWidget->currentIndex().row();
+    model->removeRow(curRow);
+    count--;
 
 }
 
 void OrderDishesDialog::on_addButton_clicked()
 {
+    //此功能为添加菜品
     DishesCountDialog *disheCount=new DishesCountDialog;
     disheCount->show();
     disheCount->exec();
     QString numberfood=disheCount->returnCount();
     delete disheCount;
-
     int row=ui->food_tableWidget->currentIndex().row();
     QAbstractItemModel *model=ui->food_tableWidget->model();
     QModelIndex indexfood=model->index(row,0);
-//    QModelIndex indexprice=model->index(row,1);
     QString tempfood=model->data(indexfood).toString();
-//    QString tempprice=model->data(indexprice).toString();
-    ui->isSelcteFood_tableWidget->setItem(0,0,new QTableWidgetItem(tempfood));
-    ui->isSelcteFood_tableWidget->setItem(0,1,new QTableWidgetItem(numberfood));
-
+    ui->isSelcteFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
+    ui->isSelcteFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
+    count++;
 }

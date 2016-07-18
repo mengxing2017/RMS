@@ -26,7 +26,7 @@ void DishesCountDialog::on_pushButton_clicked()
     countS=ui->lineEdit->text();
     this->close();
 //    QMessageBox::information(this,"温馨提示","已订"+countS+"份");
-    qDebug()<<countS;
+//    qDebug()<<countS;
 }
 
 void DishesCountDialog::on_pushButton_2_clicked()

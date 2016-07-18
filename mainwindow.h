@@ -24,6 +24,22 @@ private slots:
 
     void on_action_Start_triggered();
 
+
+
+    void on_action_AddorReduce_triggered();
+
+    void on_actionGukejiezhang_triggered();
+
+    void on_actionBenrijiesuan_triggered();
+
+    void on_actionZhuceyuangong_triggered();
+
+    void on_action_5_triggered();
+
+    void on_action_6_triggered();
+
+    void on_action_7_triggered();
+
 private:
     Ui::MainWindow *ui;
     LoginDialog *login;

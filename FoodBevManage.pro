@@ -19,7 +19,12 @@ SOURCES += main.cpp\
     selectseatdialog.cpp \
     check_outdialog.cpp \
     varietymenudialog.cpp \
-    logindialog.cpp
+    logindialog.cpp \
+    add_reduce_dialog.cpp \
+    staffregister_dialog.cpp \
+    stockqquery_dialog.cpp \
+    dayincomequery_dialog.cpp \
+    monthincomequery_dialog.cpp
 
 HEADERS  += mainwindow.h \
     orderdishesdialog.h \
@@ -27,7 +32,12 @@ HEADERS  += mainwindow.h \
     selectseatdialog.h \
     check_outdialog.h \
     varietymenudialog.h \
-    logindialog.h
+    logindialog.h \
+    add_reduce_dialog.h \
+    staffregister_dialog.h \
+    stockqquery_dialog.h \
+    dayincomequery_dialog.h \
+    monthincomequery_dialog.h
 
 FORMS    += mainwindow.ui \
     orderdishesdialog.ui \
@@ -35,7 +45,12 @@ FORMS    += mainwindow.ui \
     selectseatdialog.ui \
     check_outdialog.ui \
     varietymenudialog.ui \
-    logindialog.ui
+    logindialog.ui \
+    add_reduce_dialog.ui \
+    staffregister_dialog.ui \
+    stockquery_dialog.ui \
+    dayincomequery_dialog.ui \
+    monthincomequery_dialog.ui
 
 RESOURCES += \
     res.qrc

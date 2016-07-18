@@ -21,14 +21,13 @@ private slots:
     void on_pushButton_clicked();
     void on_OkButton_clicked();
     void on_cancelButton_clicked();
-//    void on_addButton_3_clicked();
     void on_deleteButton_clicked();
-
     void on_addButton_clicked();
 
 private:
     Ui::OrderDishesDialog *ui;
     QString idData;
+    int count;
 };
 
 #endif // ORDERDISHESDIALOG_H

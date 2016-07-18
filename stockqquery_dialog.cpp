@@ -1,22 +1,23 @@
-#include "check_outdialog.h"
-#include "ui_check_outdialog.h"
-#include <QMessageBox>
+#include "stockqquery_dialog.h"
+#include "ui_stockquery_dialog.h"
 
-Check_OutDialog::Check_OutDialog(QWidget *parent) :
+StockqQuery_Dialog::StockqQuery_Dialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Check_OutDialog)
+    ui(new Ui::StockqQuery_Dialog)
 {
     ui->setupUi(this);
-    //消费明细表
-    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->tableWidget->setAlternatingRowColors(true);
+
+
+    //初始化表格
+    ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);//选中整行
+    ui->tableWidget->setAlternatingRowColors(true);//设置没行变一色
     ui->tableWidget->setColumnCount(3);
     QStringList list;
-    list<<"菜名"<<"数量"<<"消费金额(元)";
+    list<<"商品名"<<"数量(斤)"<<"价格(元)";
     ui->tableWidget->setHorizontalHeaderLabels(list);
-    ui->tableWidget->setColumnWidth(0,110);
-    ui->tableWidget->setColumnWidth(1,110);
-    ui->tableWidget->setColumnWidth(0,110);
+    ui->tableWidget->setColumnWidth(0,200);
+    ui->tableWidget->setColumnWidth(1,180);
+    ui->tableWidget->setColumnWidth(2,180);
     //设置列名为加粗
     QFont font=ui->tableWidget->horizontalHeader()->font();
     font.setBold(true);
@@ -30,30 +31,23 @@ Check_OutDialog::Check_OutDialog(QWidget *parent) :
     ui->tableWidget->setRowCount(2);
     ui->tableWidget->setItem(0,0,new QTableWidgetItem("studentid"));
     ui->tableWidget->setItem(0,1,new QTableWidgetItem("有人"));
-    ui->tableWidget->setItem(0,2,new QTableWidgetItem("有人"));
+    ui->tableWidget->setItem(0,2,new QTableWidgetItem("15"));
     ui->tableWidget->setItem(1,0,new QTableWidgetItem("studentid1"));
     ui->tableWidget->setItem(1,1,new QTableWidgetItem("空闲"));
-    ui->tableWidget->setItem(1,2,new QTableWidgetItem("有人"));
+    ui->tableWidget->setItem(1,2,new QTableWidgetItem("15"));
 }
 
-Check_OutDialog::~Check_OutDialog()
+StockqQuery_Dialog::~StockqQuery_Dialog()
 {
     delete ui;
 }
 
-void Check_OutDialog::on_pushButton_clicked()
+void StockqQuery_Dialog::on_queryButton_clicked()
 {
 
-    QMessageBox::information(this,"温馨提示","已成功收款!再见!");
-    this->close();
 }
 
-void Check_OutDialog::on_pushButton_2_clicked()
+void StockqQuery_Dialog::on_quit_Button_clicked()
 {
     this->close();
-}
-
-void Check_OutDialog::on_comboBox_activated(const QString &arg1)
-{
-    //更改数据
 }
