@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>757</width>
+    <height>464</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>757</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>用户登录</string>
+    </property>
+    <addaction name="action_Login"/>
+    <addaction name="action_Quit"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>管理操作</string>
+    </property>
+    <widget class="QMenu" name="menu_6">
+     <property name="title">
+      <string>前台管理</string>
+     </property>
+     <addaction name="action_Start"/>
+     <addaction name="action_AddorReduce  "/>
+     <addaction name="actionGukejiezhang"/>
+     <addaction name="actionBenrijiesuan"/>
+    </widget>
+    <widget class="QMenu" name="menu_7">
+     <property name="title">
+      <string>后台管理</string>
+     </property>
+     <addaction name="actionCaipinxinxi"/>
+     <addaction name="actionZhuceyuangong"/>
+    </widget>
+    <addaction name="menu_6"/>
+    <addaction name="menu_7"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>财务统计</string>
+    </property>
+    <addaction name="action_5"/>
+    <addaction name="action_6"/>
+    <addaction name="action_7"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>系统管理</string>
+    </property>
+    <widget class="QMenu" name="menu_8">
+     <property name="title">
+      <string>系统维护</string>
+     </property>
+     <addaction name="actionShujukubeifen"/>
+    </widget>
+    <addaction name="menu_8"/>
+    <addaction name="action_2"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_5"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_Login"/>
+   <addaction name="action_Start"/>
+   <addaction name="action_AddorReduce  "/>
+   <addaction name="actionGukejiezhang"/>
+   <addaction name="actionBenrijiesuan"/>
+   <addaction name="actionZhuceyuangong"/>
+   <addaction name="action_Quit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="action_2">
+   <property name="text">
+    <string>用户权限管理</string>
+   </property>
+  </action>
+  <action name="action_Start">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/icon/images/Start.png</normaloff>:/icon/images/Start.png</iconset>
+   </property>
+   <property name="text">
+    <string>开始点菜</string>
+   </property>
+  </action>
+  <action name="action_AddorReduce  ">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/icon/images/Add.png</normaloff>:/icon/images/Add.png</iconset>
+   </property>
+   <property name="text">
+    <string>加菜减菜</string>
+   </property>
+  </action>
+  <action name="actionGukejiezhang">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/icon/images/Reckoning.png</normaloff>:/icon/images/Reckoning.png</iconset>
+   </property>
+   <property name="text">
+    <string>顾客结账</string>
+   </property>
+  </action>
+  <action name="actionBenrijiesuan">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/icon/images/Stat.png</normaloff>:/icon/images/Stat.png</iconset>
+   </property>
+   <property name="text">
+    <string>本日结算</string>
+   </property>
+  </action>
+  <action name="action_Login">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/icon/images/Login.png</normaloff>:/icon/images/Login.png</iconset>
+   </property>
+   <property name="text">
+    <string>系统登录</string>
+   </property>
+  </action>
+  <action name="actionCaipinxinxi">
+   <property name="text">
+    <string>菜品信息</string>
+   </property>
+  </action>
+  <action name="actionZhuceyuangong">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/icon/images/addUser.png</normaloff>:/icon/images/addUser.png</iconset>
+   </property>
+   <property name="text">
+    <string>员工注册</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>进货查询</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>日收入查询</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>月收入查询</string>
+   </property>
+  </action>
+  <action name="actionShujukubeifen">
+   <property name="text">
+    <string>数据库备份</string>
+   </property>
+  </action>
+  <action name="action_Quit">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/icon/images/Quit.png</normaloff>:/icon/images/Quit.png</iconset>
+   </property>
+   <property name="text">
+    <string>退出系统</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
