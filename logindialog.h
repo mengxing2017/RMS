@@ -4,6 +4,9 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QDebug>
+#include <QSqlDatabase>
+#include <QSql>
+#include <QSqlQuery>
 namespace Ui {
 class LoginDialog;
 }
@@ -26,6 +29,8 @@ private slots:
 private:
     Ui::LoginDialog *ui;
     bool pass;
+    QSqlDatabase m_db;
+//    QSqlQuery query;
 };
 
 #endif // LOGINDIALOG_H

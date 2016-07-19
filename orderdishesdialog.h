@@ -2,6 +2,10 @@
 #define ORDERDISHESDIALOG_H
 
 #include <QDialog>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QDebug>
+#include <QSqlTableModel>
 
 namespace Ui {
 class OrderDishesDialog;
@@ -18,7 +22,6 @@ public:
     void receiverIdData(QString data);
 
 private slots:
-    void on_pushButton_clicked();
     void on_OkButton_clicked();
     void on_cancelButton_clicked();
     void on_deleteButton_clicked();
@@ -28,6 +31,9 @@ private:
     Ui::OrderDishesDialog *ui;
     QString idData;
     int count;
+    QSqlDatabase m_db;
+
+    void initFoodTable();//初始化菜单表
 };
 
 #endif // ORDERDISHESDIALOG_H

@@ -9,12 +9,27 @@ OrderDishesDialog::OrderDishesDialog(QWidget *parent) :
     ui(new Ui::OrderDishesDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("点菜");
     count=0;
+
+    //数据库初始化并连接
+    m_db= QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setDatabaseName("data.db");
+    if (!m_db.open())
+    {
+        qDebug() << "Error: connection with database fail";
+    }
+    else
+    {
+        qDebug() << "Database: connection ok";
+    }
 
     //foodtable
     ui->food_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->food_tableWidget->setAlternatingRowColors(true);
     ui->food_tableWidget->setColumnCount(2);
+    ui->food_tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    //setEditTriggers(QAbstractItemView::NoEditTriggers);
     QStringList list;
     list<<"菜名"<<"菜价";
     ui->food_tableWidget->setHorizontalHeaderLabels(list);
@@ -30,18 +45,16 @@ OrderDishesDialog::OrderDishesDialog(QWidget *parent) :
     //设置选中背景色
     ui->food_tableWidget->setStyleSheet("selection-background-color:lightblue;");
     ui->food_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
-    ui->food_tableWidget->setRowCount(2);
-    ui->food_tableWidget->setItem(0,0,new QTableWidgetItem("studentid"));
-    ui->food_tableWidget->setItem(0,1,new QTableWidgetItem("有人"));
-    ui->food_tableWidget->setItem(1,0,new QTableWidgetItem("studentid1"));
-    ui->food_tableWidget->setItem(1,1,new QTableWidgetItem("空闲"));
 
+    //初始化菜单
+    initFoodTable();
 
     //isfood_table
 
     ui->isSelcteFood_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->isSelcteFood_tableWidget->setAlternatingRowColors(true);
     ui->isSelcteFood_tableWidget->setColumnCount(2);
+    ui->isSelcteFood_tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     QStringList listfood;
     listfood<<"菜名"<<"数量";
     ui->isSelcteFood_tableWidget->setHorizontalHeaderLabels(listfood);
@@ -58,10 +71,9 @@ OrderDishesDialog::OrderDishesDialog(QWidget *parent) :
     ui->isSelcteFood_tableWidget->setStyleSheet("selection-background-color:lightblue;");
     ui->isSelcteFood_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
     ui->isSelcteFood_tableWidget->setRowCount(50);
-//    ui->isSelcteFood_tableWidget->setItem(0,0,new QTableWidgetItem("studentid"));
-//    ui->isSelcteFood_tableWidget->setItem(0,1,new QTableWidgetItem("有人"));
-//    ui->isSelcteFood_tableWidget->setItem(1,0,new QTableWidgetItem("studentid1"));
-//    ui->isSelcteFood_tableWidget->setItem(1,1,new QTableWidgetItem("空闲"));
+
+
+
 }
 
 OrderDishesDialog::~OrderDishesDialog()
@@ -75,15 +87,54 @@ void OrderDishesDialog::receiverIdData(QString data)
     ui->lineEdit->setText(idData);
 }
 
-void OrderDishesDialog::on_pushButton_clicked()
-{
 
-}
 
 void OrderDishesDialog::on_OkButton_clicked()
 {
     //此处实现将数据存入数据库
+    int row=0;
+    while(50>row)
+    {
+        QSqlQuery query(m_db);
+        query.prepare("INSERT INTO BillInfo (TableID,FoodName,amount,expense)"
+                      "VALUES (:deskid, :foodname, :foodcount,:price)");
+        QAbstractItemModel *model=ui->isSelcteFood_tableWidget->model();
+        QModelIndex indexfoodName=model->index(row,0);
+        QModelIndex indexfoodPrice=model->index(row,1);
+        QString tempfoodname=model->data(indexfoodName).toString();
+        if(tempfoodname=="") break;
+        QString tempfoodNumber=model->data(indexfoodPrice).toString();
+        QString tempfoodPrice="";
+        int i=0;
+        while(1)
+        {
+            qDebug()<<"test";
 
+            QAbstractItemModel *leftmodel=ui->food_tableWidget->model();
+            QModelIndex leftfoodName=leftmodel->index(i,0);
+           if(leftmodel->data(leftfoodName).toString()==tempfoodname)
+           {
+              QModelIndex leftfoodprice=leftmodel->index(i,1);
+              tempfoodPrice=leftmodel->data(leftfoodprice).toString();
+              break;
+           }
+           i++;
+        }
+        query.bindValue(":deskid", idData);
+        query.bindValue(":foodname", tempfoodname);
+        query.bindValue(":foodcount",tempfoodNumber);
+        query.bindValue(":price",tempfoodPrice);
+        row++;
+        qDebug()<<"test2"<<row;
+        if(query.exec())
+        {
+            qDebug()<<"存储成功";
+        }
+        else
+        {
+            qDebug()<<"存储失败";
+        }
+    }
 
     this->close();
 }
@@ -116,4 +167,26 @@ void OrderDishesDialog::on_addButton_clicked()
     ui->isSelcteFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
     ui->isSelcteFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
     count++;
+}
+
+void OrderDishesDialog::initFoodTable()
+{
+    QSqlQuery query(m_db);
+    query.exec("select *from FoodInfo");
+    query.last();
+    int row=query.value(0).toInt();
+    qDebug()<<row;
+    ui->food_tableWidget->setRowCount(row);
+    query.first();
+    query.previous();
+    int i=0;
+    while(query.next())
+    {
+        QString foodName=query.value(1).toString();
+        qDebug()<<query.value(2).toDouble();
+        QString foodPrice=query.value(2).toString();
+        ui->food_tableWidget->setItem(i,0,new QTableWidgetItem(foodName));
+        ui->food_tableWidget->setItem(i,1,new QTableWidgetItem(foodPrice));
+        i++;
+    }
 }

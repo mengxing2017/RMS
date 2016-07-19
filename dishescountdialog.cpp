@@ -8,6 +8,7 @@ DishesCountDialog::DishesCountDialog(QWidget *parent) :
     ui(new Ui::DishesCountDialog)
 {
     ui->setupUi(this);
+    ui->lineEdit->setText("1");
 }
 
 DishesCountDialog::~DishesCountDialog()
@@ -22,11 +23,13 @@ QString DishesCountDialog::returnCount()
 
 void DishesCountDialog::on_pushButton_clicked()
 {
-//    count=ui->lineEdit->text().toInt();
     countS=ui->lineEdit->text();
+    if(""==countS)
+    {
+        QMessageBox::information(this,"温馨提示","请输入点菜份数");
+        return;
+    }
     this->close();
-//    QMessageBox::information(this,"温馨提示","已订"+countS+"份");
-//    qDebug()<<countS;
 }
 
 void DishesCountDialog::on_pushButton_2_clicked()

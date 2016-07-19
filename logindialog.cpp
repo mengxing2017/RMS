@@ -8,6 +8,17 @@ LoginDialog::LoginDialog(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("登录窗口");
     pass=false;
+    qDebug()<<"test";
+    m_db= QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setDatabaseName("data.db");
+    if (!m_db.open())
+    {
+        qDebug() << "Error: connection with database fail";
+    }
+    else
+    {
+        qDebug() << "Database: connection ok";
+    }
 }
 
 LoginDialog::~LoginDialog()
@@ -22,8 +33,24 @@ bool LoginDialog::VerifyPass()
 
 void LoginDialog::on_LoginButton_clicked()
 {
+    bool flag=false;
     QString username=ui->UserLineEdit->text();
     QString userpassword=ui->passLineEdit->text();
+
+    //提取sql中的数据
+    QSqlQuery query(m_db);
+    query.exec("select *from LoginInfo");
+    while(query.next())
+    {
+        QString user=query.value(1).toString();
+        QString pass=query.value(2).toString();
+        if(username==user&&userpassword==pass)
+        {
+            flag=true;
+            qDebug()<<"flag=true";
+        }
+    }
+
     if(NULL==username)
     {
         QMessageBox::information(this,"登录提示","请输入登录名");
@@ -32,7 +59,7 @@ void LoginDialog::on_LoginButton_clicked()
     {
         QMessageBox::information(this,"登录提示","请输入登录密码");
     }
-    else if(username=="123"&&userpassword=="123")
+    else if(flag)
     {
         pass=true;
         qDebug()<<"登录测试1"<<pass;

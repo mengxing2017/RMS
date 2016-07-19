@@ -42,7 +42,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    LoginDialog *login;
 
     bool pass=false;
 };

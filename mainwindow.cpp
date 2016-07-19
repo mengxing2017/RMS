@@ -19,13 +19,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete login;
     delete ui;
 }
 
 void MainWindow::on_action_Login_triggered()
 {
-    login=new LoginDialog;
+    LoginDialog *login=new LoginDialog;
     login->show();
 
     login->exec();
@@ -51,7 +50,6 @@ void MainWindow::on_action_Start_triggered()
     selectseat->show();
     selectseat->exec();
     delete selectseat;
-
 }
 
 
@@ -79,6 +77,7 @@ void MainWindow::on_actionBenrijiesuan_triggered()
 
 void MainWindow::on_actionZhuceyuangong_triggered()
 {
+    //
     staffRegister_Dialog *staff=new staffRegister_Dialog;
     staff->show();
     staff->exec();
@@ -87,6 +86,7 @@ void MainWindow::on_actionZhuceyuangong_triggered()
 
 void MainWindow::on_action_5_triggered()
 {
+    //
     StockqQuery_Dialog *stackeQuery=new StockqQuery_Dialog;
     stackeQuery->show();
     stackeQuery->exec();
@@ -95,6 +95,7 @@ void MainWindow::on_action_5_triggered()
 
 void MainWindow::on_action_6_triggered()
 {
+    //
     DayIncomeQuery_Dialog *dayincomeQuery=new DayIncomeQuery_Dialog;
     dayincomeQuery->show();
     dayincomeQuery->exec();
@@ -103,6 +104,7 @@ void MainWindow::on_action_6_triggered()
 
 void MainWindow::on_action_7_triggered()
 {
+    //
     MonthIncomeQuery_Dialog *monthIncomeQuery=new MonthIncomeQuery_Dialog;
     monthIncomeQuery->show();
     monthIncomeQuery->exec();
