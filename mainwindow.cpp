@@ -7,6 +7,7 @@
 #include "stockqquery_dialog.h"
 #include "dayincomequery_dialog.h"
 #include "monthincomequery_dialog.h"
+#include "foodinfo_dialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -109,4 +110,12 @@ void MainWindow::on_action_7_triggered()
     monthIncomeQuery->show();
     monthIncomeQuery->exec();
     delete monthIncomeQuery;
+}
+
+void MainWindow::on_actionCaipinxinxi_triggered()
+{
+    FoodInfo_Dialog *foodInfo=new FoodInfo_Dialog;
+    foodInfo->show();
+    foodInfo->exec();
+    delete foodInfo;
 }

@@ -155,18 +155,28 @@ void OrderDishesDialog::on_deleteButton_clicked()
 void OrderDishesDialog::on_addButton_clicked()
 {
     //此功能为添加菜品
-    DishesCountDialog *disheCount=new DishesCountDialog;
-    disheCount->show();
-    disheCount->exec();
-    QString numberfood=disheCount->returnCount();
-    delete disheCount;
     int row=ui->food_tableWidget->currentIndex().row();
     QAbstractItemModel *model=ui->food_tableWidget->model();
     QModelIndex indexfood=model->index(row,0);
     QString tempfood=model->data(indexfood).toString();
-    ui->isSelcteFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
-    ui->isSelcteFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
-    count++;
+    if(""!=tempfood)
+    {
+        DishesCountDialog *disheCount=new DishesCountDialog;
+        disheCount->show();
+        disheCount->exec();
+        QString numberfood=disheCount->returnCount();
+        delete disheCount;
+
+
+        ui->isSelcteFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
+        ui->isSelcteFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
+        count++;
+    }
+    else
+    {
+        QMessageBox::information(this,"温馨提示","请选择菜品");
+    }
+    return;
 }
 
 void OrderDishesDialog::initFoodTable()

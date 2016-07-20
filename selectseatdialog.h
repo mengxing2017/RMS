@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include <QTreeWidgetItem>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+
 
 namespace Ui {
 class SelectSeatDialog;
@@ -26,6 +29,9 @@ private:
     Ui::SelectSeatDialog *ui;
     QString idData;
     QString flagId;
+    QSqlDatabase m_db;
+
+    void deskInit();
 };
 
 #endif // SELECTSEATDIALOG_H

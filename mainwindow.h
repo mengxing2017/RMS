@@ -40,6 +40,8 @@ private slots:
 
     void on_action_7_triggered();
 
+    void on_actionCaipinxinxi_triggered();
+
 private:
     Ui::MainWindow *ui;
 

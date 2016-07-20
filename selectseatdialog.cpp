@@ -11,8 +11,19 @@ SelectSeatDialog::SelectSeatDialog(QWidget *parent) :
     ui(new Ui::SelectSeatDialog)
 {
     ui->setupUi(this);
-
+    this->setWindowTitle("请选择座位");
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     idData="";//初始化数据
+    m_db= QSqlDatabase::addDatabase("QSQLITE");
+    m_db.setDatabaseName("data.db");
+    if (!m_db.open())
+    {
+        qDebug() << "Error: connection with database fail";
+    }
+    else
+    {
+        qDebug() << "Database: connection ok";
+    }
 
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);//选中整行
     //ui->tableWidget->item(0,0)->setTextAlignment(Qt::AlignHCenter);//选择对齐方式
@@ -33,12 +44,7 @@ SelectSeatDialog::SelectSeatDialog(QWidget *parent) :
     //设置选中背景色
     ui->tableWidget->setStyleSheet("selection-background-color:lightblue;");
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
-//    ui->tableWidget->setItem(i,0,check); //插入复选框
-    ui->tableWidget->setRowCount(2);
-    ui->tableWidget->setItem(0,0,new QTableWidgetItem("studentid"));
-    ui->tableWidget->setItem(0,1,new QTableWidgetItem("有人"));
-    ui->tableWidget->setItem(1,0,new QTableWidgetItem("studentid1"));
-    ui->tableWidget->setItem(1,1,new QTableWidgetItem("空闲"));
+    deskInit();
 }
 
 SelectSeatDialog::~SelectSeatDialog()
@@ -84,4 +90,26 @@ void SelectSeatDialog::on_tableWidget_clicked(const QModelIndex &index)
     idData= model->data(indextemp).toString();
     flagId=model->data(indexflag).toString();
     ui->lineEdit->setText(idData);
+}
+
+void SelectSeatDialog::deskInit()
+{
+    QSqlQuery query(m_db);
+    query.exec("select *from TableInfo");
+    query.last();
+    int row=query.value(0).toInt();
+    qDebug()<<row;
+    ui->tableWidget->setRowCount(row);
+    query.first();
+    query.previous();
+    int i=0;
+    while(query.next())
+    {
+        QString deskId=query.value(1).toString();
+        qDebug()<<query.value(2).toDouble();
+        QString flag=query.value(2).toString();
+        ui->tableWidget->setItem(i,0,new QTableWidgetItem(deskId));
+        ui->tableWidget->setItem(i,1,new QTableWidgetItem(flag));
+        i++;
+    }
 }

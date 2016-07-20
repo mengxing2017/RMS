@@ -6,7 +6,7 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <QSqlTableModel>
-
+#include <QMessageBox>
 namespace Ui {
 class OrderDishesDialog;
 }
