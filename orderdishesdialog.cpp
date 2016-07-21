@@ -166,8 +166,6 @@ void OrderDishesDialog::on_addButton_clicked()
         disheCount->exec();
         QString numberfood=disheCount->returnCount();
         delete disheCount;
-
-
         ui->isSelcteFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
         ui->isSelcteFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
         count++;

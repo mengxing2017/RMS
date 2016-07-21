@@ -72,13 +72,21 @@ Add_Reduce_Dialog::Add_Reduce_Dialog(QWidget *parent) :
 Add_Reduce_Dialog::~Add_Reduce_Dialog()
 {
     delete ui;
+    m_db.close();
 }
 
 void Add_Reduce_Dialog::on_okButton_clicked()
 {
     //此处将数据存入数据库
     QSqlQuery query(m_db);
-    query.exec("delete *from BillInfo where TableID ="+ui->comboBox->currentText()+"");
+    QString tableid=ui->comboBox->currentText();
+    qDebug()<<tableid;
+    query.prepare("delete from BillInfo where TableID ='"+tableid+"'");
+    if(query.exec())
+    {
+        qDebug()<<"test query";
+    }
+
     int row=0;
     while(50>row)
     {
@@ -132,25 +140,32 @@ void Add_Reduce_Dialog::on_cancelButton_clicked()
 
 void Add_Reduce_Dialog::on_addButton_clicked()
 {
-    int row=ui->food_tableWidget->currentIndex().row();
-    QAbstractItemModel *model=ui->food_tableWidget->model();
-    QModelIndex indexfood=model->index(row,0);
-    QString tempfood=model->data(indexfood).toString();
-    if(""!=tempfood)
+    if(""!=ui->comboBox->currentText())
     {
-        DishesCountDialog *disheCount=new DishesCountDialog;
-        disheCount->show();
-        disheCount->exec();
-        QString numberfood=disheCount->returnCount();
-        delete disheCount;
+        int row=ui->food_tableWidget->currentIndex().row();
+        QAbstractItemModel *model=ui->food_tableWidget->model();
+        QModelIndex indexfood=model->index(row,0);
+        QString tempfood=model->data(indexfood).toString();
+        if(""!=tempfood)
+        {
+            DishesCountDialog *disheCount=new DishesCountDialog;
+            disheCount->show();
+            disheCount->exec();
+            QString numberfood=disheCount->returnCount();
+            delete disheCount;
 
-        ui->isAddFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
-        ui->isAddFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
-        count++;
+            ui->isAddFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
+            ui->isAddFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
+            count++;
+        }
+        else
+        {
+            QMessageBox::information(this,"温馨提示","请选择菜品");
+        }
     }
     else
     {
-        QMessageBox::information(this,"温馨提示","请选择菜品");
+        QMessageBox::information(this,"温馨提示","请选择桌号");
     }
     return;
 }
@@ -190,6 +205,7 @@ void Add_Reduce_Dialog::initCombox()
     QSqlQuery query(m_db);
     QStringList item;
     query.exec("select *from TableInfo ");
+    item.append("");
     while(query.next())
     {
         if(query.value(2).toString()=="有人")
@@ -210,7 +226,7 @@ void Add_Reduce_Dialog::on_comboBox_currentIndexChanged(const QString &arg1)
     qDebug()<<"test combobox";
     ui->isAddFood_tableWidget->clear();
     QSqlQuery query(m_db);
-    query.exec("select *from BillInfo where TableID ="+arg1+"");
+    query.exec("select *from BillInfo where TableID ='"+arg1+"'");
     int i=0;
     while(query.next())
     {
@@ -219,7 +235,9 @@ void Add_Reduce_Dialog::on_comboBox_currentIndexChanged(const QString &arg1)
         QString foodPrice=query.value(3).toString();
         ui->isAddFood_tableWidget->setItem(i,0,new QTableWidgetItem(foodName));
         ui->isAddFood_tableWidget->setItem(i,1,new QTableWidgetItem(foodPrice));
-        i++;
+        count=++i;
     }
+    if(query.exec())
+        qDebug()<<"test combobox";
 
 }

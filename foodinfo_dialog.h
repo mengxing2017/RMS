@@ -6,6 +6,8 @@
 #include <QSqlQuery>
 #include <QDebug>
 
+#include <string>
+
 namespace Ui {
 class FoodInfo_Dialog;
 }
