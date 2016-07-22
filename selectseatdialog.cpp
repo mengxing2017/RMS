@@ -1,6 +1,6 @@
 #include "selectseatdialog.h"
 #include "ui_selectseatdialog.h"
-#include "orderdishesdialog.h"
+
 #include <QStandardItemModel>
 #include <QTreeWidgetItem>
 #include <QTreeWidget>
@@ -12,6 +12,7 @@ SelectSeatDialog::SelectSeatDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("请选择座位");
+    orderDishes =new OrderDishesDialog;
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     idData="";//初始化数据
     m_db= QSqlDatabase::addDatabase("QSQLITE");
@@ -24,7 +25,27 @@ SelectSeatDialog::SelectSeatDialog(QWidget *parent) :
     {
         qDebug() << "Database: connection ok";
     }
+    initWindow();
+    deskInit();
+}
 
+SelectSeatDialog::~SelectSeatDialog()
+{
+    delete orderDishes;
+    delete ui;
+}
+
+void SelectSeatDialog::initWindow()
+{
+    //设置桌号显示
+    QBrush myBrush;
+    QPalette palette;
+    myBrush = QBrush(Qt::red,Qt::DiagCrossPattern);
+    palette.setBrush(QPalette::Text,  myBrush);
+    ui->lineEdit->setEnabled(false);
+    ui->lineEdit->setPalette(palette);
+
+    //设置表格显示
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);//选中整行
     //ui->tableWidget->item(0,0)->setTextAlignment(Qt::AlignHCenter);//选择对齐方式
     ui->tableWidget->setAlternatingRowColors(true);//设置没行变一色
@@ -44,12 +65,6 @@ SelectSeatDialog::SelectSeatDialog(QWidget *parent) :
     //设置选中背景色
     ui->tableWidget->setStyleSheet("selection-background-color:lightblue;");
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
-    deskInit();
-}
-
-SelectSeatDialog::~SelectSeatDialog()
-{
-    delete ui;
 }
 
 void SelectSeatDialog::on_okButton_clicked()
@@ -61,12 +76,27 @@ void SelectSeatDialog::on_okButton_clicked()
     }
     if(NULL!=idData)
     {
-        OrderDishesDialog *orderDishes =new OrderDishesDialog;
+        orderDishes->getDatabase(m_db);
+        orderDishes->setModal(true);
+        orderDishes->initFoodTable();
         orderDishes->receiverIdData(idData);
-        this->close();
         orderDishes->show();
         orderDishes->exec();
-        delete orderDishes;
+        bool isLeisure=orderDishes->returnIsOrder();
+        qDebug()<<isLeisure;
+        //将数据插入数据库
+        if(isLeisure)
+        {
+            qDebug()<<idData;
+            QString idTable=ui->lineEdit->text();
+            QSqlQuery query(m_db);
+            qDebug()<<idData;
+            //数据更新操作
+            if(query.exec("update TableInfo set isUse = '有人'   where TableID ='"+idTable+"'"))
+                  qDebug()<<"打开成功";
+            deskInit();
+
+        }
         return ;
     }
     QMessageBox::information(this,"温馨提示","请选择座位");
@@ -94,6 +124,8 @@ void SelectSeatDialog::on_tableWidget_clicked(const QModelIndex &index)
 
 void SelectSeatDialog::deskInit()
 {
+
+
     QSqlQuery query(m_db);
     query.exec("select *from TableInfo");
     query.last();
@@ -106,7 +138,7 @@ void SelectSeatDialog::deskInit()
     while(query.next())
     {
         QString deskId=query.value(1).toString();
-        qDebug()<<query.value(2).toDouble();
+        qDebug()<<query.value(2).toString();
         QString flag=query.value(2).toString();
         ui->tableWidget->setItem(i,0,new QTableWidgetItem(deskId));
         ui->tableWidget->setItem(i,1,new QTableWidgetItem(flag));

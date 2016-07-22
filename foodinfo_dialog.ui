@@ -36,7 +36,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>2</x>
@@ -65,7 +65,7 @@
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>价格:</string>
+         <string>单价:</string>
         </property>
        </widget>
       </item>

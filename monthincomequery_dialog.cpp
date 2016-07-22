@@ -6,6 +6,7 @@ MonthIncomeQuery_Dialog::MonthIncomeQuery_Dialog(QWidget *parent) :
     ui(new Ui::MonthIncomeQuery_Dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("月收入查询");
 }
 
 MonthIncomeQuery_Dialog::~MonthIncomeQuery_Dialog()

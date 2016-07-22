@@ -8,6 +8,7 @@ Add_Reduce_Dialog::Add_Reduce_Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
     count=0;
+    this->setWindowTitle("加减菜");
 
     //数据库初始化并连接
     m_db= QSqlDatabase::addDatabase("QSQLITE");
@@ -21,52 +22,17 @@ Add_Reduce_Dialog::Add_Reduce_Dialog(QWidget *parent) :
         qDebug() << "Database: connection ok";
     }
     //foodtable
-    ui->food_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->food_tableWidget->setAlternatingRowColors(true);
-    ui->food_tableWidget->setColumnCount(2);
-    QStringList list;
-    list<<"菜名"<<"菜价";
-    ui->food_tableWidget->setHorizontalHeaderLabels(list);
-    ui->food_tableWidget->setColumnWidth(0,160);
-    ui->food_tableWidget->setColumnWidth(1,110);
-    //设置列名为加粗
-    QFont font=ui->food_tableWidget->horizontalHeader()->font();
-    font.setBold(true);
-    ui->food_tableWidget->horizontalHeader()->setFont(font);
-    //去掉第一列标号
-    QHeaderView *header=ui->food_tableWidget->verticalHeader();
-    header->setHidden(true);
-    //设置选中背景色
-    ui->food_tableWidget->setStyleSheet("selection-background-color:lightblue;");
-    ui->food_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
+   initWindowFoodTable();
 
     //初始化数据
     initCombox();
     initFoodTable();
 
     //isfood_table
-
+    initWindowIsAddTable();
 //    ui->isAddFood_tableWidget
 
-    ui->isAddFood_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->isAddFood_tableWidget->setAlternatingRowColors(true);
-    ui->isAddFood_tableWidget->setColumnCount(2);
-    QStringList listfood;
-    listfood<<"菜名"<<"数量";
-    ui->isAddFood_tableWidget->setHorizontalHeaderLabels(listfood);
-    ui->isAddFood_tableWidget->setColumnWidth(0,160);
-    ui->isAddFood_tableWidget->setColumnWidth(1,110);
-    //设置列名为加粗
-    QFont fontfood=ui->isAddFood_tableWidget->horizontalHeader()->font();
-    fontfood.setBold(true);
-    ui->isAddFood_tableWidget->horizontalHeader()->setFont(fontfood);
-    //去掉第一列标号
-    QHeaderView *headerfood=ui->isAddFood_tableWidget->verticalHeader();
-    headerfood->setHidden(true);
-    //设置选中背景色
-    ui->isAddFood_tableWidget->setStyleSheet("selection-background-color:lightblue;");
-    ui->isAddFood_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
-    ui->isAddFood_tableWidget->setRowCount(50);
+
 }
 
 Add_Reduce_Dialog::~Add_Reduce_Dialog()
@@ -219,9 +185,77 @@ void Add_Reduce_Dialog::initCombox()
     ui->comboBox->addItems(item);
 }
 
+void Add_Reduce_Dialog::initWindowFoodTable()
+{
+    //初始化菜品表
+    ui->food_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->food_tableWidget->setAlternatingRowColors(true);
+    ui->food_tableWidget->setColumnCount(2);
+    QStringList list;
+    list<<"菜名"<<"菜价";
+    ui->food_tableWidget->setHorizontalHeaderLabels(list);
+    ui->food_tableWidget->setColumnWidth(0,160);
+    ui->food_tableWidget->setColumnWidth(1,110);
+    //设置列名为加粗
+    QFont font=ui->food_tableWidget->horizontalHeader()->font();
+    font.setBold(true);
+    ui->food_tableWidget->horizontalHeader()->setFont(font);
+    //去掉第一列标号
+    QHeaderView *header=ui->food_tableWidget->verticalHeader();
+    header->setHidden(true);
+    //设置选中背景色
+    ui->food_tableWidget->setStyleSheet("selection-background-color:lightblue;");
+    ui->food_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
+}
+
+void Add_Reduce_Dialog::initWindowIsAddTable()
+{
+    //初始化已点的菜
+    ui->isAddFood_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->isAddFood_tableWidget->setAlternatingRowColors(true);
+    ui->isAddFood_tableWidget->setColumnCount(2);
+    QStringList listfood;
+    listfood<<"菜名"<<"数量";
+    ui->isAddFood_tableWidget->setHorizontalHeaderLabels(listfood);
+    ui->isAddFood_tableWidget->setColumnWidth(0,160);
+    ui->isAddFood_tableWidget->setColumnWidth(1,110);
+    //设置列名为加粗
+    QFont fontfood=ui->isAddFood_tableWidget->horizontalHeader()->font();
+    fontfood.setBold(true);
+    ui->isAddFood_tableWidget->horizontalHeader()->setFont(fontfood);
+    //去掉第一列标号
+    QHeaderView *headerfood=ui->isAddFood_tableWidget->verticalHeader();
+    headerfood->setHidden(true);
+    //设置选中背景色
+    ui->isAddFood_tableWidget->setStyleSheet("selection-background-color:lightblue;");
+    ui->isAddFood_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
+    ui->isAddFood_tableWidget->setRowCount(50);
+}
 
 
-void Add_Reduce_Dialog::on_comboBox_currentIndexChanged(const QString &arg1)
+
+//void Add_Reduce_Dialog::on_comboBox_currentIndexChanged(const QString &arg1)
+//{
+//    qDebug()<<"test combobox";
+//    ui->isAddFood_tableWidget->clear();
+//    QSqlQuery query(m_db);
+//    query.exec("select *from BillInfo where TableID ='"+arg1+"'");
+//    int i=0;
+//    while(query.next())
+//    {
+//        QString foodName=query.value(2).toString();
+//        qDebug()<<query.value(2).toDouble();
+//        QString foodPrice=query.value(3).toString();
+//        ui->isAddFood_tableWidget->setItem(i,0,new QTableWidgetItem(foodName));
+//        ui->isAddFood_tableWidget->setItem(i,1,new QTableWidgetItem(foodPrice));
+//        count=++i;
+//    }
+//    if(query.exec())
+//        qDebug()<<"test combobox";
+
+//}
+
+void Add_Reduce_Dialog::on_comboBox_activated(const QString &arg1)
 {
     qDebug()<<"test combobox";
     ui->isAddFood_tableWidget->clear();
@@ -239,5 +273,4 @@ void Add_Reduce_Dialog::on_comboBox_currentIndexChanged(const QString &arg1)
     }
     if(query.exec())
         qDebug()<<"test combobox";
-
 }

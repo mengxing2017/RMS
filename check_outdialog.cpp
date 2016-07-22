@@ -7,6 +7,7 @@ Check_OutDialog::Check_OutDialog(QWidget *parent) :
     ui(new Ui::Check_OutDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("结帐");
     //消费明细表
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setAlternatingRowColors(true);

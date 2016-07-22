@@ -6,6 +6,7 @@ FoodInfo_Dialog::FoodInfo_Dialog(QWidget *parent) :
     ui(new Ui::FoodInfo_Dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("菜品性能系管理");
     //数据库初始化并连接
     m_db=QSqlDatabase::addDatabase("QSQLITE");
     m_db.setDatabaseName("data.db");

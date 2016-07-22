@@ -8,6 +8,7 @@ DishesCountDialog::DishesCountDialog(QWidget *parent) :
     ui(new Ui::DishesCountDialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("点菜份数");
     ui->lineEdit->setText("1");
 }
 

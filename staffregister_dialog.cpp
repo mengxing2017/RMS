@@ -6,6 +6,7 @@ staffRegister_Dialog::staffRegister_Dialog(QWidget *parent) :
     ui(new Ui::staffRegister_Dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("员工注册");
 }
 
 staffRegister_Dialog::~staffRegister_Dialog()

@@ -6,6 +6,7 @@ StockqQuery_Dialog::StockqQuery_Dialog(QWidget *parent) :
     ui(new Ui::StockqQuery_Dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("进货查询");
 
 
     //初始化表格

@@ -15,6 +15,15 @@ public:
     explicit VarietyMenuDialog(QWidget *parent = 0);
     ~VarietyMenuDialog();
 
+private slots:
+    void on_addFoodNameButton_clicked();
+
+    void on_modification_Button_clicked();
+
+    void on_delete_Button_clicked();
+
+    void on_quit_Button_clicked();
+
 private:
     Ui::VarietyMenuDialog *ui;
 };

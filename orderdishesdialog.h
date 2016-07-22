@@ -7,6 +7,9 @@
 #include <QDebug>
 #include <QSqlTableModel>
 #include <QMessageBox>
+#include <QDateTime>
+#include <QBrush>
+#include <QPalette>
 namespace Ui {
 class OrderDishesDialog;
 }
@@ -20,6 +23,9 @@ public:
     ~OrderDishesDialog();
 
     void receiverIdData(QString data);
+    bool returnIsOrder();
+    void getDatabase(QSqlDatabase &db);
+    void initFoodTable();
 
 private slots:
     void on_OkButton_clicked();
@@ -32,8 +38,12 @@ private:
     QString idData;
     int count;
     QSqlDatabase m_db;
+    QDateTime time;
+   //初始化菜单表
+    bool isOrder;
 
-    void initFoodTable();//初始化菜单表
+    //窗口初始化
+    void initWindow();
 };
 
 #endif // ORDERDISHESDIALOG_H

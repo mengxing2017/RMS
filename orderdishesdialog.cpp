@@ -11,7 +11,10 @@ OrderDishesDialog::OrderDishesDialog(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("点菜");
     count=0;
+    isOrder=false;
 
+
+/*
     //数据库初始化并连接
     m_db= QSqlDatabase::addDatabase("QSQLITE");
     m_db.setDatabaseName("data.db");
@@ -24,54 +27,10 @@ OrderDishesDialog::OrderDishesDialog(QWidget *parent) :
         qDebug() << "Database: connection ok";
     }
 
+    */
+
     //foodtable
-    ui->food_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->food_tableWidget->setAlternatingRowColors(true);
-    ui->food_tableWidget->setColumnCount(2);
-    ui->food_tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    //setEditTriggers(QAbstractItemView::NoEditTriggers);
-    QStringList list;
-    list<<"菜名"<<"菜价";
-    ui->food_tableWidget->setHorizontalHeaderLabels(list);
-    ui->food_tableWidget->setColumnWidth(0,160);
-    ui->food_tableWidget->setColumnWidth(1,130);
-    //设置列名为加粗
-    QFont font=ui->food_tableWidget->horizontalHeader()->font();
-    font.setBold(true);
-    ui->food_tableWidget->horizontalHeader()->setFont(font);
-    //去掉第一列标号
-    QHeaderView *header=ui->food_tableWidget->verticalHeader();
-    header->setHidden(true);
-    //设置选中背景色
-    ui->food_tableWidget->setStyleSheet("selection-background-color:lightblue;");
-    ui->food_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
-
-    //初始化菜单
-    initFoodTable();
-
-    //isfood_table
-
-    ui->isSelcteFood_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->isSelcteFood_tableWidget->setAlternatingRowColors(true);
-    ui->isSelcteFood_tableWidget->setColumnCount(2);
-    ui->isSelcteFood_tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    QStringList listfood;
-    listfood<<"菜名"<<"数量";
-    ui->isSelcteFood_tableWidget->setHorizontalHeaderLabels(listfood);
-    ui->isSelcteFood_tableWidget->setColumnWidth(0,160);
-    ui->isSelcteFood_tableWidget->setColumnWidth(1,130);
-    //设置列名为加粗
-    QFont fontfood=ui->isSelcteFood_tableWidget->horizontalHeader()->font();
-    fontfood.setBold(true);
-    ui->isSelcteFood_tableWidget->horizontalHeader()->setFont(fontfood);
-    //去掉第一列标号
-    QHeaderView *headerfood=ui->isSelcteFood_tableWidget->verticalHeader();
-    headerfood->setHidden(true);
-    //设置选中背景色
-    ui->isSelcteFood_tableWidget->setStyleSheet("selection-background-color:lightblue;");
-    ui->isSelcteFood_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
-    ui->isSelcteFood_tableWidget->setRowCount(50);
-
+    initWindow();
 
 
 }
@@ -79,12 +38,23 @@ OrderDishesDialog::OrderDishesDialog(QWidget *parent) :
 OrderDishesDialog::~OrderDishesDialog()
 {
     delete ui;
+    m_db.close();
 }
 
 void OrderDishesDialog::receiverIdData(QString data)
 {
     idData=data;
     ui->lineEdit->setText(idData);
+}
+
+bool OrderDishesDialog::returnIsOrder()
+{
+    return isOrder;
+}
+
+void OrderDishesDialog::getDatabase(QSqlDatabase &db)
+{
+    m_db=db;
 }
 
 
@@ -96,8 +66,8 @@ void OrderDishesDialog::on_OkButton_clicked()
     while(50>row)
     {
         QSqlQuery query(m_db);
-        query.prepare("INSERT INTO BillInfo (TableID,FoodName,amount,expense)"
-                      "VALUES (:deskid, :foodname, :foodcount,:price)");
+        query.prepare("INSERT INTO BillInfo (TableID,FoodName,amount,expense,DateTime)"
+                      "VALUES (:deskid, :foodname, :foodcount,:price,:datetime)");
         QAbstractItemModel *model=ui->isSelcteFood_tableWidget->model();
         QModelIndex indexfoodName=model->index(row,0);
         QModelIndex indexfoodPrice=model->index(row,1);
@@ -124,6 +94,7 @@ void OrderDishesDialog::on_OkButton_clicked()
         query.bindValue(":foodname", tempfoodname);
         query.bindValue(":foodcount",tempfoodNumber);
         query.bindValue(":price",tempfoodPrice);
+        query.bindValue(":datetime",time);
         row++;
         qDebug()<<"test2"<<row;
         if(query.exec())
@@ -134,6 +105,15 @@ void OrderDishesDialog::on_OkButton_clicked()
         {
             qDebug()<<"存储失败";
         }
+        isOrder=true;
+    }
+    if(isOrder)
+    {
+        QMessageBox::information(this,"温馨提示","点菜成功");
+    }
+    else
+    {
+        QMessageBox::information(this,"温馨提示","点菜失败,请重新点菜");
     }
 
     this->close();
@@ -162,6 +142,7 @@ void OrderDishesDialog::on_addButton_clicked()
     if(""!=tempfood)
     {
         DishesCountDialog *disheCount=new DishesCountDialog;
+        disheCount->setModal(true);
         disheCount->show();
         disheCount->exec();
         QString numberfood=disheCount->returnCount();
@@ -175,6 +156,73 @@ void OrderDishesDialog::on_addButton_clicked()
         QMessageBox::information(this,"温馨提示","请选择菜品");
     }
     return;
+}
+
+void OrderDishesDialog::initWindow()
+{
+    //设置日期显示
+    time=QDateTime::currentDateTime();
+    QString dateStr=time.toString("yyyy-MM-dd hh:mm");
+    QBrush myBrush;
+    QPalette palette;
+    myBrush = QBrush(Qt::red,Qt::DiagCrossPattern);
+    palette.setBrush(QPalette::Text,  myBrush);
+    ui->date_lineEdit->setText(dateStr);
+    ui->date_lineEdit->setEnabled(false);
+    ui->date_lineEdit->setPalette(palette);
+
+    //设置桌号显示
+    ui->lineEdit->setEnabled(false);
+    ui->lineEdit->setPalette(palette);
+
+
+    ui->food_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->food_tableWidget->setAlternatingRowColors(true);
+    ui->food_tableWidget->setColumnCount(2);
+    ui->food_tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    //setEditTriggers(QAbstractItemView::NoEditTriggers);
+    QStringList list;
+    list<<"菜名"<<"菜价";
+    ui->food_tableWidget->setHorizontalHeaderLabels(list);
+    ui->food_tableWidget->setColumnWidth(0,160);
+    ui->food_tableWidget->setColumnWidth(1,130);
+    //设置列名为加粗
+    QFont font=ui->food_tableWidget->horizontalHeader()->font();
+    font.setBold(true);
+    ui->food_tableWidget->horizontalHeader()->setFont(font);
+    //去掉第一列标号
+    QHeaderView *header=ui->food_tableWidget->verticalHeader();
+    header->setHidden(true);
+    //设置选中背景色
+    ui->food_tableWidget->setStyleSheet("selection-background-color:lightblue;");
+    ui->food_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
+
+    //初始化菜单
+//    initFoodTable();
+
+    //isfood_table
+
+    ui->isSelcteFood_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->isSelcteFood_tableWidget->setAlternatingRowColors(true);
+    ui->isSelcteFood_tableWidget->setColumnCount(2);
+    ui->isSelcteFood_tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    QStringList listfood;
+    listfood<<"菜名"<<"数量";
+    ui->isSelcteFood_tableWidget->setHorizontalHeaderLabels(listfood);
+    ui->isSelcteFood_tableWidget->setColumnWidth(0,160);
+    ui->isSelcteFood_tableWidget->setColumnWidth(1,130);
+    //设置列名为加粗
+    QFont fontfood=ui->isSelcteFood_tableWidget->horizontalHeader()->font();
+    fontfood.setBold(true);
+    ui->isSelcteFood_tableWidget->horizontalHeader()->setFont(fontfood);
+    //去掉第一列标号
+    QHeaderView *headerfood=ui->isSelcteFood_tableWidget->verticalHeader();
+    headerfood->setHidden(true);
+    //设置选中背景色
+    ui->isSelcteFood_tableWidget->setStyleSheet("selection-background-color:lightblue;");
+    ui->isSelcteFood_tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
+    ui->isSelcteFood_tableWidget->setRowCount(50);
+
 }
 
 void OrderDishesDialog::initFoodTable()
@@ -198,3 +246,5 @@ void OrderDishesDialog::initFoodTable()
         i++;
     }
 }
+
+

@@ -6,6 +6,7 @@ DayIncomeQuery_Dialog::DayIncomeQuery_Dialog(QWidget *parent) :
     ui(new Ui::DayIncomeQuery_Dialog)
 {
     ui->setupUi(this);
+    this->setWindowTitle("日收入查询");
 }
 
 DayIncomeQuery_Dialog::~DayIncomeQuery_Dialog()

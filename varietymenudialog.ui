@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>335</width>
-    <height>358</height>
+    <width>360</width>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>270</y>
-     <width>301</width>
+     <width>342</width>
      <height>56</height>
     </rect>
    </property>
@@ -33,7 +33,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLineEdit" name="foodName_lineEdit"/>
       </item>
       <item>
        <widget class="QLabel" name="label_2">
@@ -43,7 +43,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QLineEdit" name="price_lineEdit"/>
       </item>
       <item>
        <widget class="QLabel" name="label_3">
@@ -57,28 +57,28 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="addFoodNameButton">
         <property name="text">
          <string>添加</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="modification_Button">
         <property name="text">
          <string>修改</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="delete_Button">
         <property name="text">
          <string>删除</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="quit_Button">
         <property name="text">
          <string>退出</string>
         </property>
@@ -87,6 +87,16 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>341</width>
+     <height>251</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <resources/>

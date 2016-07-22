@@ -5,6 +5,9 @@
 #include <QTreeWidgetItem>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include "orderdishesdialog.h"
+#include <QBrush>
+#include <QPalette>
 
 
 namespace Ui {
@@ -18,7 +21,9 @@ class SelectSeatDialog : public QDialog
 public:
     explicit SelectSeatDialog(QWidget *parent = 0);
     ~SelectSeatDialog();
-
+    //窗口初始化
+    void initWindow();
+    void deskInit();
 
 private slots:
     void on_okButton_clicked();
@@ -30,8 +35,9 @@ private:
     QString idData;
     QString flagId;
     QSqlDatabase m_db;
+    OrderDishesDialog *orderDishes;
 
-    void deskInit();
+
 };
 
 #endif // SELECTSEATDIALOG_H

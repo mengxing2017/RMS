@@ -29,7 +29,9 @@ private slots:
 
     void on_deleteButton_clicked();
 
-    void on_comboBox_currentIndexChanged(const QString &arg1);
+//    void on_comboBox_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_activated(const QString &arg1);
 
 private:
     Ui::Add_Reduce_Dialog *ui;
@@ -37,6 +39,10 @@ private:
     QSqlDatabase m_db;
     void initFoodTable();
     void initCombox();
+
+    void initWindowFoodTable();
+    void initWindowIsAddTable();
+
 };
 
 #endif // ADD_REDUCE_DIALOG_H
