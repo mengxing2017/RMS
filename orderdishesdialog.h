@@ -23,9 +23,11 @@ public:
     ~OrderDishesDialog();
 
     void receiverIdData(QString data);
+    QString returnTime();
     bool returnIsOrder();
     void getDatabase(QSqlDatabase &db);
     void initFoodTable();
+
 
 private slots:
     void on_OkButton_clicked();
@@ -38,7 +40,7 @@ private:
     QString idData;
     int count;
     QSqlDatabase m_db;
-    QDateTime time;
+    QString dateStr;
    //初始化菜单表
     bool isOrder;
 

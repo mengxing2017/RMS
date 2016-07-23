@@ -94,7 +94,7 @@ void OrderDishesDialog::on_OkButton_clicked()
         query.bindValue(":foodname", tempfoodname);
         query.bindValue(":foodcount",tempfoodNumber);
         query.bindValue(":price",tempfoodPrice);
-        query.bindValue(":datetime",time);
+        query.bindValue(":datetime",dateStr);
         row++;
         qDebug()<<"test2"<<row;
         if(query.exec())
@@ -145,11 +145,15 @@ void OrderDishesDialog::on_addButton_clicked()
         disheCount->setModal(true);
         disheCount->show();
         disheCount->exec();
-        QString numberfood=disheCount->returnCount();
-        delete disheCount;
-        ui->isSelcteFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
-        ui->isSelcteFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
-        count++;
+        if(disheCount->returnflag())
+        {
+            QString numberfood=disheCount->returnCount();
+
+            ui->isSelcteFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
+            ui->isSelcteFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
+            count++;
+        }
+         delete disheCount;
     }
     else
     {
@@ -161,8 +165,8 @@ void OrderDishesDialog::on_addButton_clicked()
 void OrderDishesDialog::initWindow()
 {
     //设置日期显示
-    time=QDateTime::currentDateTime();
-    QString dateStr=time.toString("yyyy-MM-dd hh:mm");
+   QDateTime time=QDateTime::currentDateTime();
+    dateStr=time.toString("yyyy-MM-dd hh:mm");
     QBrush myBrush;
     QPalette palette;
     myBrush = QBrush(Qt::red,Qt::DiagCrossPattern);
@@ -245,6 +249,11 @@ void OrderDishesDialog::initFoodTable()
         ui->food_tableWidget->setItem(i,1,new QTableWidgetItem(foodPrice));
         i++;
     }
+}
+
+QString OrderDishesDialog::returnTime()
+{
+    return dateStr;
 }
 
 

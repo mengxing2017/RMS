@@ -57,8 +57,8 @@ void Add_Reduce_Dialog::on_okButton_clicked()
     while(50>row)
     {
         QSqlQuery query(m_db);
-        query.prepare("INSERT INTO BillInfo (TableID,FoodName,amount,expense)"
-                      "VALUES (:deskid, :foodname, :foodcount,:price)");
+        query.prepare("INSERT INTO BillInfo (TableID,FoodName,amount,expense,datetime)"
+                      "VALUES (:deskid, :foodname, :foodcount,:price,:time)");
         QAbstractItemModel *model=ui->isAddFood_tableWidget->model();
         QModelIndex indexfoodName=model->index(row,0);
         QModelIndex indexfoodPrice=model->index(row,1);
@@ -85,6 +85,7 @@ void Add_Reduce_Dialog::on_okButton_clicked()
         query.bindValue(":foodname", tempfoodname);
         query.bindValue(":foodcount",tempfoodNumber);
         query.bindValue(":price",tempfoodPrice);
+        query.bindValue(":time",time);
         row++;
         qDebug()<<"test2"<<row;
         if(query.exec())
@@ -114,15 +115,20 @@ void Add_Reduce_Dialog::on_addButton_clicked()
         QString tempfood=model->data(indexfood).toString();
         if(""!=tempfood)
         {
+//            DishesCountDialog disheCount;
             DishesCountDialog *disheCount=new DishesCountDialog;
+//            if(disheCount)
+            disheCount->setModal(true);
             disheCount->show();
             disheCount->exec();
-            QString numberfood=disheCount->returnCount();
+            if(disheCount->returnflag())
+            {
+                QString numberfood=disheCount->returnCount();
+                ui->isAddFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
+                ui->isAddFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
+                count++;
+            }
             delete disheCount;
-
-            ui->isAddFood_tableWidget->setItem(count,0,new QTableWidgetItem(tempfood));
-            ui->isAddFood_tableWidget->setItem(count,1,new QTableWidgetItem(numberfood));
-            count++;
         }
         else
         {
@@ -170,6 +176,7 @@ void Add_Reduce_Dialog::initCombox()
 {
     QSqlQuery query(m_db);
     QStringList item;
+
     query.exec("select *from TableInfo ");
     item.append("");
     while(query.next())
@@ -260,7 +267,10 @@ void Add_Reduce_Dialog::on_comboBox_activated(const QString &arg1)
     qDebug()<<"test combobox";
     ui->isAddFood_tableWidget->clear();
     QSqlQuery query(m_db);
-    query.exec("select *from BillInfo where TableID ='"+arg1+"'");
+    query.exec("select *from tableinfo where TableID ='"+arg1+"'");
+    query.first();
+    time=query.value(3).toString();
+    query.exec("select *from BillInfo where TableID ='"+arg1+"'and datetime='"+time+"'");
     int i=0;
     while(query.next())
     {

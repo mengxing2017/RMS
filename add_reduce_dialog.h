@@ -37,6 +37,7 @@ private:
     Ui::Add_Reduce_Dialog *ui;
     int count;
     QSqlDatabase m_db;
+    QString time;
     void initFoodTable();
     void initCombox();
 

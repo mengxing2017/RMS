@@ -8,6 +8,7 @@ DishesCountDialog::DishesCountDialog(QWidget *parent) :
     ui(new Ui::DishesCountDialog)
 {
     ui->setupUi(this);
+    flag=false;
     this->setWindowTitle("点菜份数");
     ui->lineEdit->setText("1");
 }
@@ -22,6 +23,11 @@ QString DishesCountDialog::returnCount()
     return  countS;
 }
 
+bool DishesCountDialog::returnflag()
+{
+    return flag;
+}
+
 void DishesCountDialog::on_pushButton_clicked()
 {
     countS=ui->lineEdit->text();
@@ -30,6 +36,7 @@ void DishesCountDialog::on_pushButton_clicked()
         QMessageBox::information(this,"温馨提示","请输入点菜份数");
         return;
     }
+    flag=true;
     this->close();
 }
 

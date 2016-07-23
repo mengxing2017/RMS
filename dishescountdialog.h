@@ -16,6 +16,7 @@ public:
     ~DishesCountDialog();
 
     QString returnCount();
+    bool returnflag();
 
 private slots:
     void on_pushButton_clicked();
@@ -25,6 +26,7 @@ private slots:
 private:
     Ui::DishesCountDialog *ui;
     QString countS;
+    bool flag;
 };
 
 #endif // DISHESCOUNTDIALOG_H

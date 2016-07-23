@@ -88,11 +88,14 @@ void SelectSeatDialog::on_okButton_clicked()
         if(isLeisure)
         {
             qDebug()<<idData;
+
+           QString time=orderDishes->returnTime();
+
             QString idTable=ui->lineEdit->text();
             QSqlQuery query(m_db);
             qDebug()<<idData;
             //数据更新操作
-            if(query.exec("update TableInfo set isUse = '有人'   where TableID ='"+idTable+"'"))
+            if(query.exec("update TableInfo set isUse = '有人',time='"+time+"'   where TableID ='"+idTable+"'"))
                   qDebug()<<"打开成功";
             deskInit();
 
