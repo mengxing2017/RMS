@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     stockqquery_dialog.cpp \
     dayincomequery_dialog.cpp \
     monthincomequery_dialog.cpp \
-    foodinfo_dialog.cpp
+    foodinfo_dialog.cpp \
+    daystatistics.cpp
 
 HEADERS  += mainwindow.h \
     orderdishesdialog.h \
@@ -40,7 +41,8 @@ HEADERS  += mainwindow.h \
     stockqquery_dialog.h \
     dayincomequery_dialog.h \
     monthincomequery_dialog.h \
-    foodinfo_dialog.h
+    foodinfo_dialog.h \
+    daystatistics.h
 
 FORMS    += mainwindow.ui \
     orderdishesdialog.ui \

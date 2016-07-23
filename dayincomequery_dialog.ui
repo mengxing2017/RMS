@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>330</width>
-    <height>112</height>
+    <width>465</width>
+    <height>165</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,22 +42,49 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>30</x>
      <y>20</y>
-     <width>178</width>
-     <height>25</height>
+     <width>359</width>
+     <height>24</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>请选择年月日:</string>
+       <string>选择日期</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QDateEdit" name="dateEdit"/>
+     <widget class="QComboBox" name="year_comboBox"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>年</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="month_comboBox"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>月</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="day_comboBox"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>日</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

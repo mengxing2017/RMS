@@ -8,6 +8,7 @@
 #include "dayincomequery_dialog.h"
 #include "monthincomequery_dialog.h"
 #include "foodinfo_dialog.h"
+#include "daystatistics.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -77,7 +78,11 @@ void MainWindow::on_actionGukejiezhang_triggered()
 void MainWindow::on_actionBenrijiesuan_triggered()
 {
     //本日结算
-    QMessageBox::information(this,"本日结算","本日营业额为: XX 元");
+    DayStatistics *Statistics=new DayStatistics;
+    Statistics->statistics();
+    QString money=Statistics->returnMoney();
+    QMessageBox::information(this,"本日结算","本日营业额为: "+money+" 元");
+    delete Statistics;
 }
 
 void MainWindow::on_actionZhuceyuangong_triggered()

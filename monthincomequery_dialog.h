@@ -3,6 +3,10 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QDate>
+#include <QDebug>
 
 namespace Ui {
 class MonthIncomeQuery_Dialog;
@@ -16,6 +20,8 @@ public:
     explicit MonthIncomeQuery_Dialog(QWidget *parent = 0);
     ~MonthIncomeQuery_Dialog();
 
+    void initCombox();
+
 private slots:
     void on_queryButton_clicked();
 
@@ -23,6 +29,7 @@ private slots:
 
 private:
     Ui::MonthIncomeQuery_Dialog *ui;
+    QSqlDatabase m_db;
 };
 
 #endif // MONTHINCOMEQUERY_DIALOG_H
