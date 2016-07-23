@@ -57,8 +57,9 @@ void MainWindow::on_action_Login_triggered()
     {
         setEnabledMenu(true);
         ui->statusBar->showMessage("已登录");
+        ui->action_Login->setEnabled(false);
     }
-    ui->action_Login->setEnabled(false);
+
     return ;
 }
 
