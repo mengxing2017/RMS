@@ -3,6 +3,10 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include <QDebug>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QStringList>
 
 namespace Ui {
 class staffRegister_Dialog;
@@ -21,8 +25,12 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_cancel_pushButton_clicked();
+
 private:
     Ui::staffRegister_Dialog *ui;
+    QSqlDatabase m_db;
+
 };
 
 #endif // STAFFREGISTER_DIALOG_H

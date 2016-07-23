@@ -13,7 +13,7 @@ SelectSeatDialog::SelectSeatDialog(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("请选择座位");
     orderDishes =new OrderDishesDialog;
-    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
     idData="";//初始化数据
     m_db= QSqlDatabase::addDatabase("QSQLITE");
     m_db.setDatabaseName("data.db");
@@ -46,9 +46,10 @@ void SelectSeatDialog::initWindow()
     ui->lineEdit->setPalette(palette);
 
     //设置表格显示
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);//选中整行
     //ui->tableWidget->item(0,0)->setTextAlignment(Qt::AlignHCenter);//选择对齐方式
-    ui->tableWidget->setAlternatingRowColors(true);//设置没行变一色
+    ui->tableWidget->setAlternatingRowColors(true);//设置每行变一色
     ui->tableWidget->setColumnCount(2);
     QStringList list;
     list<<"桌号"<<"空闲状态";
@@ -100,6 +101,7 @@ void SelectSeatDialog::on_okButton_clicked()
             deskInit();
 
         }
+        ui->lineEdit->clear();
         return ;
     }
     QMessageBox::information(this,"温馨提示","请选择座位");

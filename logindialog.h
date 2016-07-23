@@ -20,6 +20,7 @@ public:
     ~LoginDialog();
 
     bool VerifyPass();
+    bool returnAdmin();
 
 private slots:
     void on_LoginButton_clicked();
@@ -29,6 +30,7 @@ private slots:
 private:
     Ui::LoginDialog *ui;
     bool pass;
+    bool admin;
     QSqlDatabase m_db;
 //    QSqlQuery query;
 };

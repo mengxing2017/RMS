@@ -8,6 +8,8 @@ LoginDialog::LoginDialog(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("登录窗口");
     pass=false;
+    admin=false;
+    ui->passLineEdit->setEchoMode(QLineEdit::Password);
     qDebug()<<"test";
     m_db= QSqlDatabase::addDatabase("QSQLITE");
     m_db.setDatabaseName("data.db");
@@ -31,6 +33,11 @@ bool LoginDialog::VerifyPass()
     return pass;
 }
 
+bool LoginDialog::returnAdmin()
+{
+    return admin;
+}
+
 void LoginDialog::on_LoginButton_clicked()
 {
     bool flag=false;
@@ -47,6 +54,11 @@ void LoginDialog::on_LoginButton_clicked()
         if(username==user&&userpassword==pass)
         {
             flag=true;
+            if(query.value(3).toString()=="管理员")
+            {
+                admin=true;
+            }
+            qDebug()<<admin;
             qDebug()<<"flag=true";
         }
     }

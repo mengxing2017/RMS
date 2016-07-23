@@ -17,11 +17,30 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("餐饮管理系统");
     ui->statusBar->showMessage("未登录");
+    pass=false;
+    admin=false;
+    setEnabledMenu(false);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::setEnabledMenu(bool e)
+{
+    ui->actionBenrijiesuan->setEnabled(e);
+    ui->actionCaipinxinxi->setEnabled(e);
+    ui->actionGukejiezhang->setEnabled(e);
+    ui->actionShujukubeifen->setEnabled(e);
+    ui->actionZhuceyuangong->setEnabled(e);
+    ui->action_2->setEnabled(e);
+    ui->action_5->setEnabled(e);
+    ui->action_6->setEnabled(e);
+    ui->action_7->setEnabled(e);
+    ui->action_AddorReduce->setEnabled(e);
+    ui->action_Start->setEnabled(e);
+
 }
 
 void MainWindow::on_action_Login_triggered()
@@ -31,9 +50,15 @@ void MainWindow::on_action_Login_triggered()
     login->show();
     login->exec();
     pass=login->VerifyPass();
+    admin=login->returnAdmin();
     qDebug()<<"主窗口登录测试"<<pass;
     delete login;
-    ui->statusBar->showMessage("已登录");
+    if(pass)
+    {
+        setEnabledMenu(true);
+        ui->statusBar->showMessage("已登录");
+    }
+    ui->action_Login->setEnabled(false);
     return ;
 }
 
@@ -43,6 +68,9 @@ void MainWindow::on_action_Quit_triggered()
     if(true==pass)
     QMessageBox::information(this,"提示","已退出登录");
     pass=false;
+    admin=false;
+    setEnabledMenu(false);
+    ui->action_Login->setEnabled(true);
     ui->statusBar->showMessage("未登录");
 }
 
@@ -134,3 +162,4 @@ void MainWindow::on_actionCaipinxinxi_triggered()
     foodInfo->exec();
     delete foodInfo;
 }
+

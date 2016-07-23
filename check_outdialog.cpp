@@ -47,7 +47,7 @@ void Check_OutDialog::initWindow()
 
 //    ui->receipts_lineEdit->setInputMask("9");
     ui->receipts_lineEdit->setValidator(new QDoubleValidator(this));
-
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setAlternatingRowColors(true);
     ui->tableWidget->setColumnCount(3);
@@ -65,6 +65,7 @@ void Check_OutDialog::initWindow()
     QHeaderView *header=ui->tableWidget->verticalHeader();
     header->setHidden(true);
     //设置选中背景色
+//    ui->tableWidget->setEnabled(false);
     ui->tableWidget->setStyleSheet("selection-background-color:lightblue;");
     ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);//设置为可以选中单个
     ui->tableWidget->setRowCount(50);

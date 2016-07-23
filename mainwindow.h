@@ -17,6 +17,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void setEnabledMenu(bool e);
+
 private slots:
     void on_action_Login_triggered();
 
@@ -45,7 +47,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    bool pass=false;
+    bool admin;
+    bool pass;
 };
 
 #endif // MAINWINDOW_H

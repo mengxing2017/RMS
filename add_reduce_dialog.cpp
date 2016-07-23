@@ -195,6 +195,7 @@ void Add_Reduce_Dialog::initCombox()
 void Add_Reduce_Dialog::initWindowFoodTable()
 {
     //初始化菜品表
+    ui->food_tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->food_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->food_tableWidget->setAlternatingRowColors(true);
     ui->food_tableWidget->setColumnCount(2);
@@ -218,6 +219,7 @@ void Add_Reduce_Dialog::initWindowFoodTable()
 void Add_Reduce_Dialog::initWindowIsAddTable()
 {
     //初始化已点的菜
+    ui->isAddFood_tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->isAddFood_tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->isAddFood_tableWidget->setAlternatingRowColors(true);
     ui->isAddFood_tableWidget->setColumnCount(2);
