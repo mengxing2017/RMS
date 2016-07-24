@@ -1,4 +1,4 @@
 # FoodBevManage
 这个是餐饮管理系统
 
-还有权限尚未加上
+本程序跨平台,支持linux和win完美运行
