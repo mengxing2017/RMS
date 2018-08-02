@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QSqlDatabase>
-#include <QSql>
+//#include <QSql>
 #include <QSqlQuery>
 namespace Ui {
 class LoginDialog;
