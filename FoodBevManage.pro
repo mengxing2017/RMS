@@ -13,50 +13,53 @@ TARGET = FoodBevManage
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    orderdishesdialog.cpp \
-    dishescountdialog.cpp \
-    selectseatdialog.cpp \
-    check_outdialog.cpp \
-    varietymenudialog.cpp \
-    logindialog.cpp \
-    add_reduce_dialog.cpp \
-    staffregister_dialog.cpp \
-    stockqquery_dialog.cpp \
-    dayincomequery_dialog.cpp \
-    monthincomequery_dialog.cpp \
-    foodinfo_dialog.cpp \
-    daystatistics.cpp
+SOURCES += \
+    src/source/add_reduce_dialog.cpp \
+    src/source/check_outdialog.cpp \
+    src/source/dayincomequery_dialog.cpp \
+    src/source/daystatistics.cpp \
+    src/source/dishescountdialog.cpp \
+    src/source/foodinfo_dialog.cpp \
+    src/source/logindialog.cpp \
+    src/source/main.cpp \
+    src/source/mainwindow.cpp \
+    src/source/monthincomequery_dialog.cpp \
+    src/source/orderdishesdialog.cpp \
+    src/source/selectseatdialog.cpp \
+    src/source/staffregister_dialog.cpp \
+    src/source/stockqquery_dialog.cpp \
+    src/source/varietymenudialog.cpp
 
-HEADERS  += mainwindow.h \
-    orderdishesdialog.h \
-    dishescountdialog.h \
-    selectseatdialog.h \
-    check_outdialog.h \
-    varietymenudialog.h \
-    logindialog.h \
-    add_reduce_dialog.h \
-    staffregister_dialog.h \
-    stockqquery_dialog.h \
-    dayincomequery_dialog.h \
-    monthincomequery_dialog.h \
-    foodinfo_dialog.h \
-    daystatistics.h
+HEADERS  += \
+    src/include/add_reduce_dialog.h \
+    src/include/check_outdialog.h \
+    src/include/dayincomequery_dialog.h \
+    src/include/daystatistics.h \
+    src/include/dishescountdialog.h \
+    src/include/foodinfo_dialog.h \
+    src/include/logindialog.h \
+    src/include/mainwindow.h \
+    src/include/monthincomequery_dialog.h \
+    src/include/orderdishesdialog.h \
+    src/include/selectseatdialog.h \
+    src/include/staffregister_dialog.h \
+    src/include/stockqquery_dialog.h \
+    src/include/varietymenudialog.h
 
-FORMS    += mainwindow.ui \
-    orderdishesdialog.ui \
-    dishescountdialog.ui \
-    selectseatdialog.ui \
-    check_outdialog.ui \
-    varietymenudialog.ui \
-    logindialog.ui \
-    add_reduce_dialog.ui \
-    staffregister_dialog.ui \
-    stockquery_dialog.ui \
-    dayincomequery_dialog.ui \
-    monthincomequery_dialog.ui \
-    foodinfo_dialog.ui
+FORMS    += \
+    res/ui/add_reduce_dialog.ui \
+    res/ui/check_outdialog.ui \
+    res/ui/dayincomequery_dialog.ui \
+    res/ui/dishescountdialog.ui \
+    res/ui/foodinfo_dialog.ui \
+    res/ui/logindialog.ui \
+    res/ui/mainwindow.ui \
+    res/ui/monthincomequery_dialog.ui \
+    res/ui/orderdishesdialog.ui \
+    res/ui/selectseatdialog.ui \
+    res/ui/staffregister_dialog.ui \
+    res/ui/stockquery_dialog.ui \
+    res/ui/varietymenudialog.ui
 
 RESOURCES += \
     res.qrc

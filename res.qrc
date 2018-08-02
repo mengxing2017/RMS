@@ -1,11 +1,11 @@
 <RCC>
     <qresource prefix="/icon">
-        <file>images/addUser.png</file>
-        <file>images/Login.png</file>
-        <file>images/Quit.png</file>
-        <file>images/Reckoning.png</file>
-        <file>images/Stat.png</file>
-        <file>images/Add.png</file>
-        <file>images/Start.png</file>
+        <file>res/images/Add.png</file>
+        <file>res/images/addUser.png</file>
+        <file>res/images/Login.png</file>
+        <file>res/images/Quit.png</file>
+        <file>res/images/Reckoning.png</file>
+        <file>res/images/Start.png</file>
+        <file>res/images/Stat.png</file>
     </qresource>
 </RCC>

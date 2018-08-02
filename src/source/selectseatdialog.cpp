@@ -1,4 +1,4 @@
-#include "selectseatdialog.h"
+#include "src/include/selectseatdialog.h"
 #include "ui_selectseatdialog.h"
 
 #include <QStandardItemModel>
