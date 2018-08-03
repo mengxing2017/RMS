@@ -1,0 +1,4 @@
+
+PROJECT_ROOT = $$PWD
+BUILD_DIST = $$PROJECT_ROOT/dist
+APP_TARGET = FoodBevManage
