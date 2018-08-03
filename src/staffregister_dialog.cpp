@@ -1,4 +1,4 @@
-#include "src/include/staffregister_dialog.h"
+#include "staffregister_dialog.h"
 #include "ui_staffregister_dialog.h"
 
 staffRegister_Dialog::staffRegister_Dialog(QWidget *parent) :

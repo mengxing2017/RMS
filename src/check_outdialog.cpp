@@ -1,4 +1,4 @@
-#include "src/include/check_outdialog.h"
+#include "check_outdialog.h"
 #include "ui_check_outdialog.h"
 #include <QMessageBox>
 

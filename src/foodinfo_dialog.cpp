@@ -1,4 +1,4 @@
-#include "src/include/foodinfo_dialog.h"
+#include "foodinfo_dialog.h"
 #include "ui_foodinfo_dialog.h"
 
 FoodInfo_Dialog::FoodInfo_Dialog(QWidget *parent) :

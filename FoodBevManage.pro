@@ -3,6 +3,7 @@
 # Project created by QtCreator 2016-07-14T07:09:29
 #
 #-------------------------------------------------
+include(config.pri)
 
 QT       += core gui
 QT += sql
@@ -14,37 +15,37 @@ TEMPLATE = app
 
 
 SOURCES += \
-    src/source/add_reduce_dialog.cpp \
-    src/source/check_outdialog.cpp \
-    src/source/dayincomequery_dialog.cpp \
-    src/source/daystatistics.cpp \
-    src/source/dishescountdialog.cpp \
-    src/source/foodinfo_dialog.cpp \
-    src/source/logindialog.cpp \
-    src/source/main.cpp \
-    src/source/mainwindow.cpp \
-    src/source/monthincomequery_dialog.cpp \
-    src/source/orderdishesdialog.cpp \
-    src/source/selectseatdialog.cpp \
-    src/source/staffregister_dialog.cpp \
-    src/source/stockqquery_dialog.cpp \
-    src/source/varietymenudialog.cpp
+    src/add_reduce_dialog.cpp \
+    src/check_outdialog.cpp \
+    src/dayincomequery_dialog.cpp \
+    src/daystatistics.cpp \
+    src/dishescountdialog.cpp \
+    src/foodinfo_dialog.cpp \
+    src/logindialog.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp \
+    src/monthincomequery_dialog.cpp \
+    src/orderdishesdialog.cpp \
+    src/selectseatdialog.cpp \
+    src/staffregister_dialog.cpp \
+    src/stockqquery_dialog.cpp \
+    src/varietymenudialog.cpp
 
 HEADERS  += \
-    src/include/add_reduce_dialog.h \
-    src/include/check_outdialog.h \
-    src/include/dayincomequery_dialog.h \
-    src/include/daystatistics.h \
-    src/include/dishescountdialog.h \
-    src/include/foodinfo_dialog.h \
-    src/include/logindialog.h \
-    src/include/mainwindow.h \
-    src/include/monthincomequery_dialog.h \
-    src/include/orderdishesdialog.h \
-    src/include/selectseatdialog.h \
-    src/include/staffregister_dialog.h \
-    src/include/stockqquery_dialog.h \
-    src/include/varietymenudialog.h
+    src/add_reduce_dialog.h \
+    src/check_outdialog.h \
+    src/dayincomequery_dialog.h \
+    src/daystatistics.h \
+    src/dishescountdialog.h \
+    src/foodinfo_dialog.h \
+    src/logindialog.h \
+    src/mainwindow.h \
+    src/monthincomequery_dialog.h \
+    src/orderdishesdialog.h \
+    src/selectseatdialog.h \
+    src/staffregister_dialog.h \
+    src/stockqquery_dialog.h \
+    src/varietymenudialog.h
 
 FORMS    += \
     res/ui/add_reduce_dialog.ui \
@@ -63,3 +64,4 @@ FORMS    += \
 
 RESOURCES += \
     res.qrc
+
