@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "main/ui_mainwindow.h"
 #include "add_reduce_dialog.h"
 #include "selectseatdialog.h"
 #include "check_outdialog.h"
