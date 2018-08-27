@@ -25,28 +25,26 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_LoginDialog
-{
+class Ui_LoginDialog {
 public:
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
-    QGridLayout *gridLayout;
-    QLabel *label;
-    QLineEdit *UserLineEdit;
-    QLabel *label_2;
-    QLineEdit *passLineEdit;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *LoginButton;
-    QPushButton *QuitButton;
+  QWidget *layoutWidget;
+  QVBoxLayout *verticalLayout;
+  QGridLayout *gridLayout;
+  QLabel *label;
+  QLineEdit *UserLineEdit;
+  QLabel *label_2;
+  QLineEdit *passLineEdit;
+  QHBoxLayout *horizontalLayout;
+  QPushButton *LoginButton;
+  QPushButton *QuitButton;
 
-    void setupUi(QDialog *LoginDialog); // setupUi
+  void setupUi(QDialog *LoginDialog); // setupUi
 
-    void retranslateUi(QDialog *LoginDialog); // retranslateUi
-
+  void retranslateUi(QDialog *LoginDialog); // retranslateUi
 };
 
 namespace Ui {
-    class LoginDialog: public Ui_LoginDialog {};
+class LoginDialog : public Ui_LoginDialog {};
 } // namespace Ui
 
 QT_END_NAMESPACE

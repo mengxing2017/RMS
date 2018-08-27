@@ -57,14 +57,14 @@ FORMS    += \
     res/ui/dayincomequery_dialog.ui \
     res/ui/dishescountdialog.ui \
     res/ui/foodinfo_dialog.ui \
-    #res/ui/logindialog.ui \
+    res/ui/logindialog.ui \
     res/ui/monthincomequery_dialog.ui \
     res/ui/orderdishesdialog.ui \
     res/ui/selectseatdialog.ui \
     res/ui/staffregister_dialog.ui \
     res/ui/stockquery_dialog.ui \
     res/ui/varietymenudialog.ui\
-    #res/ui/mainwindow.ui\
+    res/ui/mainwindow.ui\
 
 RESOURCES += \
     res.qrc

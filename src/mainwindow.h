@@ -1,54 +1,51 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
 #include "logindialog.h"
 #include <QDebug>
+#include <QMainWindow>
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
+class MainWindow : public QMainWindow {
+  Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+  explicit MainWindow(QWidget *parent = 0);
+  ~MainWindow();
 
-    void setEnabledMenu(bool e);
+  void setEnabledMenu(bool e); //启用菜单
 
 private slots:
-    void on_action_Login_triggered();
+  void on_action_Login_triggered(); //系统登录触发器
 
-    void on_action_Quit_triggered();
+  void on_action_Quit_triggered(); //系统退出触发器
 
-    void on_action_Start_triggered();
+  void on_action_Start_triggered(); //开始点菜触发器
 
+  void on_action_AddorReduce_triggered(); //加菜减菜触发器
 
+  void on_action_CustomerSettlement_triggered(); //顾客结账触发器
 
-    void on_action_AddorReduce_triggered();
+  void on_action_DaySettlement_triggered(); //当日结算触发器
 
-    void on_actionGukejiezhang_triggered();
+  void on_action_UserRegistered_triggered(); //员工注册触发器
 
-    void on_actionBenrijiesuan_triggered();
+  void on_action_DayIncomeQuery_triggered(); //日收入查询触发器
 
-    void on_actionZhuceyuangong_triggered();
+  void on_action_MonthIncomeQuery_triggered(); //月收入查询触发器
 
-    void on_action_5_triggered();
+  void on_action_PurchaseQuery_triggered(); //进货查询触发器
 
-    void on_action_6_triggered();
-
-    void on_action_7_triggered();
-
-    void on_actionCaipinxinxi_triggered();
+  void on_action_MenuInfo_triggered(); //菜单信息触发器
 
 private:
-    Ui::MainWindow *ui;
+  Ui::MainWindow *ui;
 
-    bool admin;
-    bool pass;
+  bool admin; //用户名
+  bool pass;  //密码
 };
 
 #endif // MAINWINDOW_H
