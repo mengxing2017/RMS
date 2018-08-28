@@ -30,13 +30,14 @@ public:
   QWidget *layoutWidget;
   QVBoxLayout *verticalLayout;
   QGridLayout *gridLayout;
-  QLabel *label;
-  QLineEdit *UserLineEdit;
-  QLabel *label_2;
-  QLineEdit *passLineEdit;
   QHBoxLayout *horizontalLayout;
-  QPushButton *LoginButton;
-  QPushButton *QuitButton;
+
+  QLabel *label_UserName;       //用户名标签
+  QLineEdit *lineEdit_UserName; //用户名输入框
+  QLabel *label_Password;       //密码标签
+  QLineEdit *lineEdit_Password; //密码输入框
+  QPushButton *button_Login;    //登录按钮
+  QPushButton *button_Quit;     //退出按钮
 
   void setupUi(QDialog *LoginDialog); // setupUi
 
