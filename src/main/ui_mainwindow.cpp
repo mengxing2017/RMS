@@ -1,9 +1,18 @@
 #include "ui_mainwindow.h"
+#include <QGraphicsOpacityEffect>
 
 void Ui_MainWindow::setupUi(QMainWindow *MainWindow) {
+  //窗体
   if (MainWindow->objectName().isEmpty())
     MainWindow->setObjectName(QStringLiteral("MainWindow"));
   MainWindow->resize(1200, 750);
+  QPalette mainwindowPal(MainWindow->palette());
+  mainwindowPal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/main_background.jpeg")));
+  MainWindow->setAutoFillBackground(true);
+  MainWindow->setPalette(mainwindowPal);
+  //  MainWindow->setWindowFlag(Qt::FramelessWindowHint);
 
   action_AuthorityManagement = new QAction(MainWindow);
   action_AuthorityManagement->setObjectName(
@@ -73,9 +82,11 @@ void Ui_MainWindow::setupUi(QMainWindow *MainWindow) {
   centralWidget = new QWidget(MainWindow);
   centralWidget->setObjectName(QStringLiteral("centralWidget"));
   MainWindow->setCentralWidget(centralWidget);
+
   menuBar = new QMenuBar(MainWindow);
   menuBar->setObjectName(QStringLiteral("menuBar"));
   menuBar->setGeometry(QRect(0, 0, 757, 24));
+
   menu_UserLogin = new QMenu(menuBar);
   menu_UserLogin->setObjectName(QStringLiteral("menu_UserLogin"));
   menu_ManagerOperation = new QMenu(menuBar);
@@ -129,6 +140,10 @@ void Ui_MainWindow::setupUi(QMainWindow *MainWindow) {
   mainToolBar->addAction(action_DaySettlement);
   mainToolBar->addAction(action_UserRegistered);
   mainToolBar->addAction(action_Quit);
+  QPalette mainToolBarPal(mainToolBar->palette());
+  mainToolBarPal.setColor(QPalette::Background, QColor(0, 0, 0, 0));
+  mainToolBarPal.setColor(QPalette::Foreground, QColor(255, 255, 255, 255));
+  mainToolBar->setPalette(mainToolBarPal);
 
   retranslateUi(MainWindow);
 
