@@ -37,9 +37,7 @@ void MainWindow::setEnabledMenu(bool e) {
 }
 
 void MainWindow::on_action_Login_triggered() {
-  LoginDialog *login = new LoginDialog;
-  login->setModal(true);
-  login->show();
+  LoginDialog *login = new LoginDialog(this);
   login->exec();
   pass = login->VerifyPass();
   admin = login->returnAdmin();
