@@ -26,6 +26,8 @@ private slots:
 
   void on_button_Quit_clicked();
 
+  void on_button_Close_clicked();
+
 private:
   Ui::LoginDialog *ui;
   bool pass;

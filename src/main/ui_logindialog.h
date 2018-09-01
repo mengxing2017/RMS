@@ -27,7 +27,8 @@ QT_BEGIN_NAMESPACE
 
 class Ui_LoginDialog {
 public:
-  QWidget *layoutWidget;
+  QWidget *layoutWidget_top;
+  QWidget *layoutWidget_bottom;
   QVBoxLayout *verticalLayout;
   QGridLayout *gridLayout;
   QHBoxLayout *horizontalLayout;
@@ -38,6 +39,7 @@ public:
   QLineEdit *lineEdit_Password; //密码输入框
   QPushButton *button_Login;    //登录按钮
   QPushButton *button_Quit;     //退出按钮
+  QPushButton *button_Close;
 
   void setupUi(QDialog *LoginDialog); // setupUi
 

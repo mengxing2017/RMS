@@ -7,5 +7,7 @@
         <file>res/images/Reckoning.png</file>
         <file>res/images/Start.png</file>
         <file>res/images/Stat.png</file>
+        <file>res/images/login_background.jpeg</file>
+        <file>res/images/close.jpeg</file>
     </qresource>
 </RCC>

@@ -61,3 +61,4 @@ void LoginDialog::on_button_Login_clicked() {
 }
 
 void LoginDialog::on_button_Quit_clicked() { this->close(); }
+void LoginDialog::on_button_Close_clicked() { this->close(); }
