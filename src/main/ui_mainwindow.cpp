@@ -5,14 +5,14 @@ void Ui_MainWindow::setupUi(QMainWindow *MainWindow) {
   //窗体
   if (MainWindow->objectName().isEmpty())
     MainWindow->setObjectName(QStringLiteral("MainWindow"));
-  MainWindow->resize(1200, 750);
+  MainWindow->setMinimumSize(1200, 750);
+  MainWindow->setMaximumSize(1200, 750);
   QPalette mainwindowPal(MainWindow->palette());
   mainwindowPal.setBrush(
       QPalette::Background,
       QBrush(QPixmap(":/icon/res/images/main_background.jpeg")));
   MainWindow->setAutoFillBackground(true);
   MainWindow->setPalette(mainwindowPal);
-  //  MainWindow->setWindowFlag(Qt::FramelessWindowHint);
 
   action_AuthorityManagement = new QAction(MainWindow);
   action_AuthorityManagement->setObjectName(
