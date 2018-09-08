@@ -6,7 +6,7 @@
 #include "foodinfo_dialog.h"
 #include "main/ui_mainwindow.h"
 #include "monthincomequery_dialog.h"
-#include "selectseatdialog.h"
+#include "selectseat_dialog.h"
 #include "staffregister_dialog.h"
 #include "stockqquery_dialog.h"
 
@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
   ui->statusBar->showMessage("未登录");
   pass = false;
   admin = false;
-  setEnabledMenu(false);
+  setEnabledMenu(true);
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -64,7 +64,7 @@ void MainWindow::on_action_Quit_triggered() {
 }
 
 void MainWindow::on_action_Start_triggered() {
-  SelectSeatDialog *selectseat = new SelectSeatDialog(this);
+  SelectSeat_Dialog *selectseat = new SelectSeat_Dialog(this);
   selectseat->deskInit();
   selectseat->exec();
   delete selectseat;
