@@ -26,12 +26,13 @@ SOURCES += \
     src/mainwindow.cpp \
     src/monthincomequery_dialog.cpp \
     src/orderdishesdialog.cpp \
-    src/selectseatdialog.cpp \
     src/staffregister_dialog.cpp \
     src/stockqquery_dialog.cpp \
     src/varietymenudialog.cpp \
     src/main/ui_mainwindow.cpp \
-    src/main/ui_logindialog.cpp
+    src/main/ui_logindialog.cpp \
+    src/main/ui_selectseat_dialog.cpp \
+    src/selectseat_dialog.cpp
 
 HEADERS  += \
     src/add_reduce_dialog.h \
@@ -44,12 +45,13 @@ HEADERS  += \
     src/mainwindow.h \
     src/monthincomequery_dialog.h \
     src/orderdishesdialog.h \
-    src/selectseatdialog.h \
     src/staffregister_dialog.h \
     src/stockqquery_dialog.h \
     src/varietymenudialog.h \
     src/main/ui_mainwindow.h \
-    src/main/ui_logindialog.h
+    src/main/ui_logindialog.h \
+    src/main/ui_selectseat_dialog.h \
+    src/selectseat_dialog.h
 
 FORMS    += \
     res/ui/add_reduce_dialog.ui \
@@ -60,7 +62,6 @@ FORMS    += \
     res/ui/logindialog.ui \
     res/ui/monthincomequery_dialog.ui \
     res/ui/orderdishesdialog.ui \
-    res/ui/selectseatdialog.ui \
     res/ui/staffregister_dialog.ui \
     res/ui/stockquery_dialog.ui \
     res/ui/varietymenudialog.ui\
