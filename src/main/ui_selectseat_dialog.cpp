@@ -12,11 +12,25 @@ void Ui_SelectSeat_Dialog::setupUi(QDialog *SelectSeat_Dialog) {
   if (SelectSeat_Dialog->objectName().isEmpty())
     SelectSeat_Dialog->setObjectName(QStringLiteral("SelectSeat_Dialog"));
   SelectSeat_Dialog->resize(600, 500);
+  SelectSeat_Dialog->setWindowFlag(Qt::FramelessWindowHint);
+  QPalette selectSeatPal(SelectSeat_Dialog->palette());
+  selectSeatPal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  SelectSeat_Dialog->setAutoFillBackground(true);
+  SelectSeat_Dialog->setPalette(selectSeatPal);
 
+  //关闭按钮
+  button_Close = new QPushButton(SelectSeat_Dialog);
+  button_Close->setObjectName(QStringLiteral("button_Close"));
+  button_Close->setGeometry(575, 0, 25, 25);
+  QIcon closeIcon;
+  closeIcon.addFile(":/icon/res/images/close.jpeg");
+  button_Close->setIcon(closeIcon);
   //选菜表格
   tableWidget = new QTableWidget(SelectSeat_Dialog);
   tableWidget->setObjectName(QStringLiteral("tableWidget"));
-  tableWidget->setGeometry(QRect(0, 0, 600, 400));
+  tableWidget->setGeometry(QRect(0, 30, 600, 370));
 
   //按钮布局
   label = new QLabel(SelectSeat_Dialog);

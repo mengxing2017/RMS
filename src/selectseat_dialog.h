@@ -27,6 +27,7 @@ private slots:
   void on_button_Ok_clicked();
   void on_button_Cancel_clicked();
   void on_tableWidget_clicked(const QModelIndex &index);
+  void on_button_Close_clicked();
 
 private:
   Ui::SelectSeat_Dialog *ui;

@@ -32,6 +32,7 @@ public:
   QLineEdit *lineEdit_Id;     //桌号
   QPushButton *button_Ok;     //确定按钮
   QPushButton *button_Cancel; //取消按钮
+  QPushButton *button_Close;  //关闭按钮
 
   void setupUi(QDialog *SelectSeat_Dialog);
 

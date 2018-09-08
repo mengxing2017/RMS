@@ -39,7 +39,7 @@ public:
   QLineEdit *lineEdit_Password; //密码输入框
   QPushButton *button_Login;    //登录按钮
   QPushButton *button_Quit;     //退出按钮
-  QPushButton *button_Close;
+  QPushButton *button_Close;    //关闭按钮
 
   void setupUi(QDialog *LoginDialog); // setupUi
 

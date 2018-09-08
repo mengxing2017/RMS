@@ -133,3 +133,5 @@ void SelectSeat_Dialog::deskInit() {
     i++;
   }
 }
+
+void SelectSeat_Dialog::on_button_Close_clicked() { this->close(); }
