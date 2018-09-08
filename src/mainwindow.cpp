@@ -9,11 +9,15 @@
 #include "selectseat_dialog.h"
 #include "staffregister_dialog.h"
 #include "stockqquery_dialog.h"
+#include <QDesktopWidget>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
   this->setWindowTitle("餐饮管理系统");
+  QDesktopWidget *desktop = QApplication::desktop(); // =qApp->desktop();也可以
+  this->move((desktop->width() - this->width()) / 2,
+             (desktop->height() - this->height()) / 2);
   ui->statusBar->showMessage("未登录");
   pass = false;
   admin = false;
