@@ -64,26 +64,21 @@ void MainWindow::on_action_Quit_triggered() {
 }
 
 void MainWindow::on_action_Start_triggered() {
-  SelectSeatDialog *selectseat = new SelectSeatDialog;
+  SelectSeatDialog *selectseat = new SelectSeatDialog(this);
   selectseat->deskInit();
-  selectseat->setModal(true);
-  selectseat->show();
   selectseat->exec();
   delete selectseat;
 }
 
 void MainWindow::on_action_AddorReduce_triggered() {
-  Add_Reduce_Dialog *add_Reduce = new Add_Reduce_Dialog;
-  add_Reduce->setModal(true);
-  add_Reduce->show();
+  Add_Reduce_Dialog *add_Reduce = new Add_Reduce_Dialog(this);
   add_Reduce->exec();
   delete add_Reduce;
 }
 
 void MainWindow::on_action_CustomerSettlement_triggered() {
-  Check_OutDialog *check_Out = new Check_OutDialog;
+  Check_OutDialog *check_Out = new Check_OutDialog(this);
   check_Out->setModal(true);
-  check_Out->show();
   check_Out->exec();
   delete check_Out;
 }
@@ -99,7 +94,7 @@ void MainWindow::on_action_DaySettlement_triggered() {
 
 void MainWindow::on_action_UserRegistered_triggered() {
   //这个是员工注册
-  staffRegister_Dialog *staff = new staffRegister_Dialog;
+  staffRegister_Dialog *staff = new staffRegister_Dialog(this);
   staff->setModal(true);
   staff->show();
   staff->exec();
@@ -108,7 +103,7 @@ void MainWindow::on_action_UserRegistered_triggered() {
 
 void MainWindow::on_action_PurchaseQuery_triggered() {
   //这个是进货查询
-  StockqQuery_Dialog *stackeQuery = new StockqQuery_Dialog;
+  StockqQuery_Dialog *stackeQuery = new StockqQuery_Dialog(this);
   stackeQuery->setModal(true);
   stackeQuery->show();
   stackeQuery->exec();
@@ -117,7 +112,7 @@ void MainWindow::on_action_PurchaseQuery_triggered() {
 
 void MainWindow::on_action_DayIncomeQuery_triggered() {
   //这个是日收入统计
-  DayIncomeQuery_Dialog *dayincomeQuery = new DayIncomeQuery_Dialog;
+  DayIncomeQuery_Dialog *dayincomeQuery = new DayIncomeQuery_Dialog(this);
   dayincomeQuery->setModal(true);
   dayincomeQuery->show();
   dayincomeQuery->exec();
@@ -126,7 +121,7 @@ void MainWindow::on_action_DayIncomeQuery_triggered() {
 
 void MainWindow::on_action_MonthIncomeQuery_triggered() {
   //这个是月收入统计
-  MonthIncomeQuery_Dialog *monthIncomeQuery = new MonthIncomeQuery_Dialog;
+  MonthIncomeQuery_Dialog *monthIncomeQuery = new MonthIncomeQuery_Dialog(this);
   monthIncomeQuery->setModal(true);
   monthIncomeQuery->show();
   monthIncomeQuery->exec();
@@ -135,7 +130,7 @@ void MainWindow::on_action_MonthIncomeQuery_triggered() {
 
 void MainWindow::on_action_MenuInfo_triggered() {
   //这个是菜品信息按钮
-  FoodInfo_Dialog *foodInfo = new FoodInfo_Dialog;
+  FoodInfo_Dialog *foodInfo = new FoodInfo_Dialog(this);
   foodInfo->setModal(true);
   foodInfo->show();
   foodInfo->exec();
