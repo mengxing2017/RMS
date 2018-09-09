@@ -1,55 +1,56 @@
 /********************************************************************************
-** Form generated from reading UI file 'logindialog.ui'
+** Form generated from reading UI file 'varietymenudialog.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.10.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_LOGINDIALOG_H
-#define UI_LOGINDIALOG_H
+#ifndef Ui_VarietyMenu_Dialog_H
+#define Ui_VarietyMenu_Dialog_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_LoginDialog {
+class Ui_VarietyMenu_Dialog {
 public:
-  QWidget *layoutWidget_top;
-  QWidget *layoutWidget_bottom;
+  QWidget *layoutWidget;
   QVBoxLayout *verticalLayout;
-  QGridLayout *gridLayout;
   QHBoxLayout *horizontalLayout;
+  QLabel *label;
+  QLineEdit *foodName_lineEdit;
+  QLabel *label_2;
+  QLineEdit *price_lineEdit;
+  QLabel *label_3;
+  QHBoxLayout *horizontalLayout_2;
+  QPushButton *addFoodNameButton;
+  QPushButton *modification_Button;
+  QPushButton *delete_Button;
+  QPushButton *quit_Button;
+  QTableWidget *tableWidget;
 
-  QLabel *label_UserName;       //用户名标签
-  QLineEdit *lineEdit_UserName; //用户名输入框
-  QLabel *label_Password;       //密码标签
-  QLineEdit *lineEdit_Password; //密码输入框
-  QPushButton *button_Login;    //登录按钮
-  QPushButton *button_Quit;     //退出按钮
-  QPushButton *button_Close;    //关闭按钮
+  void setupUi(QDialog *VarietyMenuDialog);
 
-  void setupUi(QDialog *LoginDialog); // setupUi
-
-  void retranslateUi(QDialog *LoginDialog); // retranslateUi
+  void retranslateUi(QDialog *VarietyMenuDialog);
 };
 
 namespace Ui {
-class LoginDialog : public Ui_LoginDialog {};
+class VarietyMenuDialog : public Ui_VarietyMenu_Dialog {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_LOGINDIALOG_H
+#endif // Ui_VarietyMenu_Dialog_H

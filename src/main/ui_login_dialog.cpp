@@ -1,6 +1,6 @@
-#include "ui_logindialog.h"
+#include "ui_login_dialog.h"
 
-void Ui_LoginDialog::setupUi(QDialog *LoginDialog) {
+void Ui_Login_Dialog::setupUi(QDialog *LoginDialog) {
   if (LoginDialog->objectName().isEmpty())
     LoginDialog->setObjectName(QStringLiteral("LoginDialog"));
   LoginDialog->resize(420, 320);
@@ -81,7 +81,7 @@ void Ui_LoginDialog::setupUi(QDialog *LoginDialog) {
   QMetaObject::connectSlotsByName(LoginDialog);
 } // setupUi
 
-void Ui_LoginDialog::retranslateUi(QDialog *LoginDialog) {
+void Ui_Login_Dialog::retranslateUi(QDialog *LoginDialog) {
   LoginDialog->setWindowTitle(
       QApplication::translate("LoginDialog", "Dialog", nullptr));
   label_UserName->setText(QApplication::translate(

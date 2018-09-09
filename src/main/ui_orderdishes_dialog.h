@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'foodinfo_dialog.ui'
+** Form generated from reading UI file 'orderdishesdialog.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.10.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_FOODINFO_DIALOG_H
-#define UI_FOODINFO_DIALOG_H
+#ifndef Ui_OrderDishes_Dialog_H
+#define Ui_OrderDishes_Dialog_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -21,38 +21,38 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableWidget>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_FoodInfo_Dialog {
+class Ui_OrderDishes_Dialog {
 public:
-  QPushButton *deleteFood_Button;
-  QTableWidget *tableWidget;
   QWidget *layoutWidget;
-  QVBoxLayout *verticalLayout;
+  QHBoxLayout *horizontalLayout_3;
+  QPushButton *OkButton;
+  QSpacerItem *horizontalSpacer;
+  QPushButton *cancelButton;
+  QTableWidget *food_tableWidget;
+  QTableWidget *isSelcteFood_tableWidget;
+  QPushButton *addButton;
+  QPushButton *deleteButton;
+  QWidget *widget;
+  QHBoxLayout *horizontalLayout_2;
   QHBoxLayout *horizontalLayout;
   QLabel *label;
-  QLineEdit *foodName_lineEdit;
-  QHBoxLayout *horizontalLayout_2;
-  QLabel *label_2;
-  QSpacerItem *horizontalSpacer_3;
-  QLineEdit *foodPrice_lineEdit;
-  QHBoxLayout *horizontalLayout_3;
-  QSpacerItem *horizontalSpacer;
-  QPushButton *addFood_Button;
+  QLineEdit *lineEdit;
   QSpacerItem *horizontalSpacer_2;
+  QLabel *label_2;
+  QLineEdit *date_lineEdit;
 
-  void setupUi(QDialog *FoodInfo_Dialog);
-
-  void retranslateUi(QDialog *FoodInfo_Dialog);
+  void setupUi(QDialog *OrderDishesDialog);
+  void retranslateUi(QDialog *OrderDishesDialog);
 };
 
 namespace Ui {
-class FoodInfo_Dialog : public Ui_FoodInfo_Dialog {};
+class OrderDishesDialog : public Ui_OrderDishes_Dialog {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_FOODINFO_DIALOG_H
+#endif // Ui_OrderDishes_Dialog_H

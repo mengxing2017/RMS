@@ -1,58 +1,55 @@
 /********************************************************************************
-** Form generated from reading UI file 'foodinfo_dialog.ui'
+** Form generated from reading UI file 'logindialog.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.10.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_FOODINFO_DIALOG_H
-#define UI_FOODINFO_DIALOG_H
+#ifndef UI_LOGINDIALOG_H
+#define UI_LOGINDIALOG_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_FoodInfo_Dialog {
+class Ui_Login_Dialog {
 public:
-  QPushButton *deleteFood_Button;
-  QTableWidget *tableWidget;
-  QWidget *layoutWidget;
+  QWidget *layoutWidget_top;
+  QWidget *layoutWidget_bottom;
   QVBoxLayout *verticalLayout;
+  QGridLayout *gridLayout;
   QHBoxLayout *horizontalLayout;
-  QLabel *label;
-  QLineEdit *foodName_lineEdit;
-  QHBoxLayout *horizontalLayout_2;
-  QLabel *label_2;
-  QSpacerItem *horizontalSpacer_3;
-  QLineEdit *foodPrice_lineEdit;
-  QHBoxLayout *horizontalLayout_3;
-  QSpacerItem *horizontalSpacer;
-  QPushButton *addFood_Button;
-  QSpacerItem *horizontalSpacer_2;
 
-  void setupUi(QDialog *FoodInfo_Dialog);
+  QLabel *label_UserName;       //用户名标签
+  QLineEdit *lineEdit_UserName; //用户名输入框
+  QLabel *label_Password;       //密码标签
+  QLineEdit *lineEdit_Password; //密码输入框
+  QPushButton *button_Login;    //登录按钮
+  QPushButton *button_Quit;     //退出按钮
+  QPushButton *button_Close;    //关闭按钮
 
-  void retranslateUi(QDialog *FoodInfo_Dialog);
+  void setupUi(QDialog *LoginDialog); // setupUi
+
+  void retranslateUi(QDialog *LoginDialog); // retranslateUi
 };
 
 namespace Ui {
-class FoodInfo_Dialog : public Ui_FoodInfo_Dialog {};
+class LoginDialog : public Ui_Login_Dialog {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_FOODINFO_DIALOG_H
+#endif // UI_LOGINDIALOG_H
