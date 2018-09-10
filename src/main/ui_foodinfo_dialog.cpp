@@ -3,7 +3,14 @@
 void Ui_FoodInfo_Dialog::setupUi(QDialog *FoodInfo_Dialog) {
   if (FoodInfo_Dialog->objectName().isEmpty())
     FoodInfo_Dialog->setObjectName(QStringLiteral("FoodInfo_Dialog"));
-  FoodInfo_Dialog->resize(583, 400);
+  FoodInfo_Dialog->resize(600, 500);
+  QPalette foodInfo_Pal(FoodInfo_Dialog->palette());
+  foodInfo_Pal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  FoodInfo_Dialog->setAutoFillBackground(true);
+  FoodInfo_Dialog->setPalette(foodInfo_Pal);
+
   deleteFood_Button = new QPushButton(FoodInfo_Dialog);
   deleteFood_Button->setObjectName(QStringLiteral("deleteFood_Button"));
   deleteFood_Button->setGeometry(QRect(360, 360, 80, 22));

@@ -3,7 +3,14 @@
 void Ui_StockqQuery_Dialog::setupUi(QDialog *StockqQuery_Dialog) {
   if (StockqQuery_Dialog->objectName().isEmpty())
     StockqQuery_Dialog->setObjectName(QStringLiteral("StockqQuery_Dialog"));
-  StockqQuery_Dialog->resize(381, 501);
+  StockqQuery_Dialog->resize(600, 500);
+  QPalette StockqQuery_Pal(StockqQuery_Dialog->palette());
+  StockqQuery_Pal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  StockqQuery_Dialog->setAutoFillBackground(true);
+  StockqQuery_Dialog->setPalette(StockqQuery_Pal);
+
   tableWidget = new QTableWidget(StockqQuery_Dialog);
   tableWidget->setObjectName(QStringLiteral("tableWidget"));
   tableWidget->setGeometry(QRect(10, 100, 361, 391));

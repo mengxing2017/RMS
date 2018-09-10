@@ -3,7 +3,14 @@
 void Ui_Check_Out_Dialog::setupUi(QDialog *Check_OutDialog) {
   if (Check_OutDialog->objectName().isEmpty())
     Check_OutDialog->setObjectName(QStringLiteral("Check_OutDialog"));
-  Check_OutDialog->resize(572, 284);
+  Check_OutDialog->resize(600, 500);
+  QPalette check_out_Pal(Check_OutDialog->palette());
+  check_out_Pal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  Check_OutDialog->setAutoFillBackground(true);
+  Check_OutDialog->setPalette(check_out_Pal);
+
   label_5 = new QLabel(Check_OutDialog);
   label_5->setObjectName(QStringLiteral("label_5"));
   label_5->setGeometry(QRect(360, 10, 81, 21));

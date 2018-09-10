@@ -3,7 +3,14 @@
 void Ui_VarietyMenu_Dialog::setupUi(QDialog *VarietyMenuDialog) {
   if (VarietyMenuDialog->objectName().isEmpty())
     VarietyMenuDialog->setObjectName(QStringLiteral("VarietyMenuDialog"));
-  VarietyMenuDialog->resize(360, 360);
+  VarietyMenuDialog->resize(600, 500);
+  QPalette varietyMenu_pal(VarietyMenuDialog->palette());
+  varietyMenu_pal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  VarietyMenuDialog->setAutoFillBackground(true);
+  VarietyMenuDialog->setPalette(varietyMenu_pal);
+
   layoutWidget = new QWidget(VarietyMenuDialog);
   layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
   layoutWidget->setGeometry(QRect(10, 270, 342, 56));

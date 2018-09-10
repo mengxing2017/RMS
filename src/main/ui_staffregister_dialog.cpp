@@ -3,7 +3,14 @@
 void Ui_staffRegister_Dialog::setupUi(QDialog *staffRegister_Dialog) {
   if (staffRegister_Dialog->objectName().isEmpty())
     staffRegister_Dialog->setObjectName(QStringLiteral("staffRegister_Dialog"));
-  staffRegister_Dialog->resize(355, 272);
+  staffRegister_Dialog->resize(600, 500);
+  QPalette staffRegister_Pal(staffRegister_Dialog->palette());
+  staffRegister_Pal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  staffRegister_Dialog->setAutoFillBackground(true);
+  staffRegister_Dialog->setPalette(staffRegister_Pal);
+
   widget = new QWidget(staffRegister_Dialog);
   widget->setObjectName(QStringLiteral("widget"));
   widget->setGeometry(QRect(31, 34, 291, 221));

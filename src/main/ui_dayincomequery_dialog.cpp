@@ -4,7 +4,14 @@ void Ui_DayIncomeQuery_Dialog::setupUi(QDialog *DayIncomeQuery_Dialog) {
   if (DayIncomeQuery_Dialog->objectName().isEmpty())
     DayIncomeQuery_Dialog->setObjectName(
         QStringLiteral("DayIncomeQuery_Dialog"));
-  DayIncomeQuery_Dialog->resize(465, 165);
+  DayIncomeQuery_Dialog->resize(600, 500);
+  QPalette dayIncomeQuery_Pal(DayIncomeQuery_Dialog->palette());
+  dayIncomeQuery_Pal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  DayIncomeQuery_Dialog->setAutoFillBackground(true);
+  DayIncomeQuery_Dialog->setPalette(dayIncomeQuery_Pal);
+
   queryButton = new QPushButton(DayIncomeQuery_Dialog);
   queryButton->setObjectName(QStringLiteral("queryButton"));
   queryButton->setGeometry(QRect(40, 60, 80, 22));

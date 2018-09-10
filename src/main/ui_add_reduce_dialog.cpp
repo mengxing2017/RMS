@@ -3,7 +3,14 @@
 void Ui_Add_Reduce_Dialog::setupUi(QDialog *Add_Reduce_Dialog) {
   if (Add_Reduce_Dialog->objectName().isEmpty())
     Add_Reduce_Dialog->setObjectName(QStringLiteral("Add_Reduce_Dialog"));
-  Add_Reduce_Dialog->resize(672, 507);
+  Add_Reduce_Dialog->resize(600, 500);
+  QPalette add_reduce_Pal(Add_Reduce_Dialog->palette());
+  add_reduce_Pal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  Add_Reduce_Dialog->setAutoFillBackground(true);
+  Add_Reduce_Dialog->setPalette(add_reduce_Pal);
+
   label = new QLabel(Add_Reduce_Dialog);
   label->setObjectName(QStringLiteral("label"));
   label->setGeometry(QRect(60, 30, 101, 21));

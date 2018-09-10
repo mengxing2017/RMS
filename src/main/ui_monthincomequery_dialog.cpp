@@ -4,7 +4,14 @@ void Ui_MonthIncomeQuery_Dialog::setupUi(QDialog *MonthIncomeQuery_Dialog) {
   if (MonthIncomeQuery_Dialog->objectName().isEmpty())
     MonthIncomeQuery_Dialog->setObjectName(
         QStringLiteral("MonthIncomeQuery_Dialog"));
-  MonthIncomeQuery_Dialog->resize(328, 148);
+  MonthIncomeQuery_Dialog->resize(600, 500);
+  QPalette monthIncomeQuery_Pal(MonthIncomeQuery_Dialog->palette());
+  monthIncomeQuery_Pal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  MonthIncomeQuery_Dialog->setAutoFillBackground(true);
+  MonthIncomeQuery_Dialog->setPalette(monthIncomeQuery_Pal);
+
   widget = new QWidget(MonthIncomeQuery_Dialog);
   widget->setObjectName(QStringLiteral("widget"));
   widget->setGeometry(QRect(30, 60, 275, 24));

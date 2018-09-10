@@ -3,7 +3,14 @@
 void Ui_OrderDishes_Dialog::setupUi(QDialog *OrderDishesDialog) {
   if (OrderDishesDialog->objectName().isEmpty())
     OrderDishesDialog->setObjectName(QStringLiteral("OrderDishesDialog"));
-  OrderDishesDialog->resize(690, 423);
+  OrderDishesDialog->resize(600, 500);
+  QPalette orderDishes_Pal(OrderDishesDialog->palette());
+  orderDishes_Pal.setBrush(
+      QPalette::Background,
+      QBrush(QPixmap(":/icon/res/images/selectSeat_background.jpeg")));
+  OrderDishesDialog->setAutoFillBackground(true);
+  OrderDishesDialog->setPalette(orderDishes_Pal);
+
   layoutWidget = new QWidget(OrderDishesDialog);
   layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
   layoutWidget->setGeometry(QRect(230, 360, 301, 31));
