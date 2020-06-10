@@ -9,7 +9,7 @@ void Ui_Login_Dialog::setupUi(QDialog *LoginDialog) {
                     QBrush(QPixmap(":/icon/res/images/login_background.jpeg")));
   LoginDialog->setAutoFillBackground(true);
   LoginDialog->setPalette(LoginPal);
-  LoginDialog->setWindowFlag(Qt::FramelessWindowHint);
+  LoginDialog->setWindowFlags(Qt::FramelessWindowHint);
 
   layoutWidget_top = new QWidget(LoginDialog);
   layoutWidget_top->setObjectName(QStringLiteral("layoutWidget_top"));

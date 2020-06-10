@@ -12,7 +12,7 @@ void Ui_SelectSeat_Dialog::setupUi(QDialog *SelectSeat_Dialog) {
   if (SelectSeat_Dialog->objectName().isEmpty())
     SelectSeat_Dialog->setObjectName(QStringLiteral("SelectSeat_Dialog"));
   SelectSeat_Dialog->resize(600, 500);
-  SelectSeat_Dialog->setWindowFlag(Qt::FramelessWindowHint);
+  SelectSeat_Dialog->setWindowFlags(Qt::FramelessWindowHint);
   QPalette selectSeatPal(SelectSeat_Dialog->palette());
   selectSeatPal.setBrush(
       QPalette::Background,
