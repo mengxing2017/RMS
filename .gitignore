@@ -9,4 +9,8 @@ FoodBevManage.pro.*
 *~
 *.swp
 build
-
+.qmake.stash
+moc_*
+qrc_res.cpp
+Makefile
+FoodBevManage
