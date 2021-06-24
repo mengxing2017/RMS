@@ -10,7 +10,7 @@ QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = FoodBevManage
+TARGET = $${BUILD_DIST}/$${APP_TARGET}
 TEMPLATE = app
 
 RESOURCES += \
