@@ -10,11 +10,19 @@ QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = $${BUILD_DIST}/$${APP_TARGET}
+TARGET = $${APP_TARGET}
 TEMPLATE = app
+
+DESTDIR = $${BUILD_DIST}
+MOC_DIR = $${PROJECT_ROOT}/compile/moc
+OBJECTS_DIR = $${PROJECT_ROOT}/compile/obj
+RCC_DIR = $${PROJECT_ROOT}/compile/rcc
+UI_DIR = $${PROJECT_ROOT}/compile/ui
 
 RESOURCES += \
     res.qrc
+
+CONFIG += c++17
 
 HEADERS += \
     src/include/main/dayincomequery_dialog.h \
