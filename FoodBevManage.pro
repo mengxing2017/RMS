@@ -53,7 +53,8 @@ HEADERS += \
     src/include/ui/ui_dishescount_dialog.h \
     src/include/ui/ui_varietymenu_dialog.h \
     src/include/db/manage_databese.h\
-    src/include/db/order_dishes.h
+    src/include/db/order_dishes.h \
+    src/include/db/search_sales.h
 
 SOURCES += \
     src/sources/main/main.cpp \
@@ -85,5 +86,6 @@ SOURCES += \
     src/sources/ui/ui_foodinfo_dialog.cpp \
     src/sources/ui/ui_stockquery_dialog.cpp \
     src/sources/db/manage_databese.cpp \
-    src/sources/db/order_dishes.cpp
+    src/sources/db/order_dishes.cpp \
+    src/sources/db/search_sales.cpp
 

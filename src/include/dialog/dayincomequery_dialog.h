@@ -8,6 +8,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 
+#include "src/include/db/search_sales.h"
 namespace Ui {
 class DayIncomeQuery_Dialog;
 }
