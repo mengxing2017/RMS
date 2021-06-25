@@ -204,23 +204,18 @@ void OrderDishesDialog::initWindow() {
 }
 
 void OrderDishesDialog::initFoodTable() {
-  QSqlQuery query(m_db);
-  query.exec("select *from FoodInfo");
-  query.last();
-  int row = query.value(0).toInt();
-  qDebug() << row;
-  ui->food_tableWidget->setRowCount(row);
-  query.first();
-  query.previous();
-  int i = 0;
-  while (query.next()) {
-    QString foodName = query.value(1).toString();
-    qDebug() << query.value(2).toDouble();
-    QString foodPrice = query.value(2).toString();
-    ui->food_tableWidget->setItem(i, 0, new QTableWidgetItem(foodName));
-    ui->food_tableWidget->setItem(i, 1, new QTableWidgetItem(foodPrice));
-    i++;
-  }
+    QStringList *foodNameItem=new QStringList();
+    QStringList *foodPriceItem=new QStringList();
+
+    int row=0;
+    FoodInfo *foodInfo=new FoodInfo();
+    foodInfo->searchFoodInfo(foodNameItem,foodPriceItem,&row);
+    ui->food_tableWidget->setRowCount(row);
+
+    for (int i=0;i<foodNameItem->size();i++) {
+        ui->food_tableWidget->setItem(i, 0, new QTableWidgetItem(foodNameItem->at(i)));
+        ui->food_tableWidget->setItem(i, 1, new QTableWidgetItem(foodPriceItem->at(i)));
+    }
 }
 
 QString OrderDishesDialog::returnTime() { return dateStr; }

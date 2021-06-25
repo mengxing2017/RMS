@@ -10,6 +10,9 @@
 #include <QDateTime>
 #include <QBrush>
 #include <QPalette>
+
+#include "src/include/db/food_info.h"
+
 namespace Ui {
 class OrderDishesDialog;
 }
