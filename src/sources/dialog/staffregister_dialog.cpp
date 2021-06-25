@@ -5,13 +5,6 @@ staffRegister_Dialog::staffRegister_Dialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::staffRegister_Dialog) {
   ui->setupUi(this);
   this->setWindowTitle("员工注册");
-  m_db = QSqlDatabase::addDatabase("QSQLITE");
-  m_db.setDatabaseName("data.db");
-  if (!m_db.open()) {
-    qDebug() << "Error: connection with database fail";
-  } else {
-    qDebug() << "Database: connection ok";
-  }
 
   //初始化窗口combox
   QStringList item;
@@ -24,19 +17,13 @@ staffRegister_Dialog::~staffRegister_Dialog() { delete ui; }
 
 void staffRegister_Dialog::on_pushButton_clicked() {
   //这个为确定按钮
-  QString Name = ui->userName_lineEdit->text();
-  QString Password = ui->password_lineEdit->text();
+  QString name = ui->userName_lineEdit->text();
+  QString password = ui->password_lineEdit->text();
   QString rePassword = ui->rePassword_lineEdit->text();
-  if (Password == rePassword) {
+  if (password == rePassword) {
     QString jurisdiction = ui->comboBox->currentText(); //权限
-    QSqlQuery query(m_db);
-    //        query.exec("select *from billinfo")
-    query.prepare("INSERT INTO logininfo (uname,upasswd,power)"
-                  "VALUES (:name, :password, :juris)");
-    query.bindValue(":name", Name);
-    query.bindValue(":password", Password);
-    query.bindValue(":juris", jurisdiction);
-    if (query.exec()) {
+    UserManagement userManagerment=UserManagement();
+    if (userManagerment.registerUser(name,password,jurisdiction)) {
       QMessageBox::information(this, "温馨提示", "注册成功");
     } else {
       QMessageBox::information(this, "温馨提示", "注册失败,请重新注册");

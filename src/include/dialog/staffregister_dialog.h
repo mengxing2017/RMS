@@ -4,9 +4,9 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QDebug>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QStringList>
+
+#include "src/include/db/user_management.h"
 
 namespace Ui {
 class staffRegister_Dialog;
@@ -29,7 +29,6 @@ private slots:
 
 private:
     Ui::staffRegister_Dialog *ui;
-    QSqlDatabase m_db;
 
 };
 

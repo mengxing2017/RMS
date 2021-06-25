@@ -55,7 +55,8 @@ HEADERS += \
     src/include/db/manage_databese.h\
     src/include/db/order_dishes.h \
     src/include/db/search_sales.h \
-    src/include/db/food_info.h
+    src/include/db/food_info.h \
+    src/include/db/user_management.h
 
 SOURCES += \
     src/sources/main/main.cpp \
@@ -89,5 +90,6 @@ SOURCES += \
     src/sources/db/manage_databese.cpp \
     src/sources/db/order_dishes.cpp \
     src/sources/db/search_sales.cpp \
-    src/sources/db/food_info.cpp
+    src/sources/db/food_info.cpp \
+    src/sources/db/user_management.cpp
 
