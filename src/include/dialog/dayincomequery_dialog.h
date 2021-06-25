@@ -5,8 +5,6 @@
 #include <QMessageBox>
 #include <QDate>
 #include <QDebug>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 
 #include "src/include/db/search_sales.h"
 namespace Ui {
@@ -30,7 +28,6 @@ private slots:
 
 private:
     Ui::DayIncomeQuery_Dialog *ui;
-    QSqlDatabase m_db;
 };
 
 #endif // DAYINCOMEQUERY_DIALOG_H
