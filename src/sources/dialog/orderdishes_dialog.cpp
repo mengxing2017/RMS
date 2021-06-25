@@ -41,8 +41,6 @@ void OrderDishesDialog::receiverIdData(QString data) {
 
 bool OrderDishesDialog::returnIsOrder() { return isOrder; }
 
-void OrderDishesDialog::getDatabase(QSqlDatabase &db) { m_db = db; }
-
 void OrderDishesDialog::on_OkButton_clicked() {
   //此处实现将数据存入数据库
   int row = 0;

@@ -28,7 +28,6 @@ public:
     void receiverIdData(QString data);
     QString returnTime();
     bool returnIsOrder();
-    void getDatabase(QSqlDatabase &db);
     void initFoodTable();
 
 
