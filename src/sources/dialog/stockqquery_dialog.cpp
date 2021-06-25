@@ -1,4 +1,4 @@
-#include "src/include/main/stockqquery_dialog.h"
+#include "src/include/dialog/stockqquery_dialog.h"
 #include "src/include/ui/ui_stockquery_dialog.h"
 
 StockqQuery_Dialog::StockqQuery_Dialog(QWidget *parent)

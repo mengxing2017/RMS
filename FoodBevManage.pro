@@ -25,20 +25,20 @@ RESOURCES += \
 CONFIG += c++17
 
 HEADERS += \
-    src/include/main/dayincomequery_dialog.h \
-    src/include/main/add_reduce_dialog.h \
-    src/include/main/staffregister_dialog.h \
-    src/include/main/varietymenudialog.h \
-    src/include/main/dishescountdialog.h \
-    src/include/main/foodinfo_dialog.h \
+    src/include/dialog/dayincomequery_dialog.h \
+    src/include/dialog/add_reduce_dialog.h \
+    src/include/dialog/staffregister_dialog.h \
+    src/include/dialog/varietymenu_dialog.h \
+    src/include/dialog/dishescount_dialog.h \
+    src/include/dialog/foodinfo_dialog.h \
     src/include/main/daystatistics.h \
-    src/include/main/logindialog.h \
-    src/include/main/monthincomequery_dialog.h \
-    src/include/main/selectseat_dialog.h \
-    src/include/main/stockqquery_dialog.h \
-    src/include/main/check_outdialog.h \
+    src/include/dialog/login_dialog.h \
+    src/include/dialog/monthincomequery_dialog.h \
+    src/include/dialog/selectseat_dialog.h \
+    src/include/dialog/stockqquery_dialog.h \
+    src/include/dialog/check_out_dialog.h \
     src/include/main/mainwindow.h \
-    src/include/main/orderdishesdialog.h \
+    src/include/dialog/orderdishes_dialog.h \
     src/include/ui/ui_stockquery_dialog.h \
     src/include/ui/ui_mainwindow.h \
     src/include/ui/ui_foodinfo_dialog.h \
@@ -54,21 +54,21 @@ HEADERS += \
     src/include/ui/ui_varietymenu_dialog.h
 
 SOURCES += \
-    src/sources/main/selectseat_dialog.cpp \
     src/sources/main/main.cpp \
-    src/sources/main/login_dialog.cpp \
     src/sources/main/mainwindow.cpp \
-    src/sources/main/varietymenu_dialog.cpp \
-    src/sources/main/stockqquery_dialog.cpp \
     src/sources/main/daystatistics.cpp \
-    src/sources/main/foodinfo_dialog.cpp \
-    src/sources/main/add_reduce_dialog.cpp \
-    src/sources/main/dayincomequery_dialog.cpp \
-    src/sources/main/check_out_dialog.cpp \
-    src/sources/main/orderdishes_dialog.cpp \
-    src/sources/main/dishescount_dialog.cpp \
-    src/sources/main/staffregister_dialog.cpp \
-    src/sources/main/monthincomequery_dialog.cpp \
+    src/sources/dialog/selectseat_dialog.cpp \
+    src/sources/dialog/login_dialog.cpp \
+    src/sources/dialog/varietymenu_dialog.cpp \
+    src/sources/dialog/stockqquery_dialog.cpp \
+    src/sources/dialog/foodinfo_dialog.cpp \
+    src/sources/dialog/add_reduce_dialog.cpp \
+    src/sources/dialog/dayincomequery_dialog.cpp \
+    src/sources/dialog/check_out_dialog.cpp \
+    src/sources/dialog/orderdishes_dialog.cpp \
+    src/sources/dialog/dishescount_dialog.cpp \
+    src/sources/dialog/staffregister_dialog.cpp \
+    src/sources/dialog/monthincomequery_dialog.cpp \
     src/sources/ui/ui_dishescount_dialog.cpp \
     src/sources/ui/ui_staffregister_dialog.cpp \
     src/sources/ui/ui_selectseat_dialog.cpp \

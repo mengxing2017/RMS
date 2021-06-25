@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "logindialog.h"
+#include "src/include/dialog/login_dialog.h"
 #include <QDebug>
 #include <QMainWindow>
 

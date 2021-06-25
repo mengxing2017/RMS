@@ -1,4 +1,4 @@
-#include "src/include/main/monthincomequery_dialog.h"
+#include "src/include/dialog/monthincomequery_dialog.h"
 #include "src/include/ui/ui_monthincomequery_dialog.h"
 
 MonthIncomeQuery_Dialog::MonthIncomeQuery_Dialog(QWidget *parent)

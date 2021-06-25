@@ -1,4 +1,4 @@
-#include "src/include/main/logindialog.h"
+#include "src/include/dialog/login_dialog.h"
 #include "src/include/ui/ui_login_dialog.h"
 
 LoginDialog::LoginDialog(QWidget *parent)

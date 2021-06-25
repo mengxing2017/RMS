@@ -1,4 +1,4 @@
-#include "src/include/main/dayincomequery_dialog.h"
+#include "src/include/dialog/dayincomequery_dialog.h"
 #include "src/include/ui/ui_dayincomequery_dialog.h"
 
 DayIncomeQuery_Dialog::DayIncomeQuery_Dialog(QWidget *parent)

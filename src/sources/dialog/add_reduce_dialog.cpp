@@ -1,5 +1,5 @@
-#include "src/include/main/add_reduce_dialog.h"
-#include "src/include/main/dishescountdialog.h"
+#include "src/include/dialog/add_reduce_dialog.h"
+#include "src/include/dialog/dishescount_dialog.h"
 #include "src/include/ui/ui_add_reduce_dialog.h"
 
 Add_Reduce_Dialog::Add_Reduce_Dialog(QWidget *parent)

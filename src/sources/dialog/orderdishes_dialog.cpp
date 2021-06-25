@@ -1,6 +1,6 @@
-#include "src/include/main/dishescountdialog.h"
+#include "src/include/dialog/dishescount_dialog.h"
 #include "src/include/ui/ui_orderdishes_dialog.h"
-#include "src/include/main/orderdishesdialog.h"
+#include "src/include/dialog/orderdishes_dialog.h"
 #include <QStandardItemModel>
 
 OrderDishesDialog::OrderDishesDialog(QWidget *parent)

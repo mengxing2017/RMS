@@ -1,4 +1,4 @@
-#include "src/include/main/selectseat_dialog.h"
+#include "src/include/dialog/selectseat_dialog.h"
 #include "src/include/ui/ui_selectseat_dialog.h"
 
 #include <QDebug>

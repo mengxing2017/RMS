@@ -1,4 +1,4 @@
-#include "src/include/main/dishescountdialog.h"
+#include "src/include/dialog/dishescount_dialog.h"
 #include "src/include/ui/ui_dishescount_dialog.h"
 #include <QDebug>
 #include <QMessageBox>

@@ -1,5 +1,5 @@
 #include "src/include/ui/ui_varietymenu_dialog.h"
-#include "src/include/main/varietymenudialog.h"
+#include "src/include/dialog/varietymenu_dialog.h"
 
 VarietyMenuDialog::VarietyMenuDialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::VarietyMenuDialog) {

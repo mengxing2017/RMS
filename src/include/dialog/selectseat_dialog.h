@@ -1,7 +1,7 @@
 #ifndef SELECTSEATDIALOG_H
 #define SELECTSEATDIALOG_H
 
-#include "orderdishesdialog.h"
+#include "orderdishes_dialog.h"
 #include <QBrush>
 #include <QDialog>
 #include <QPalette>
