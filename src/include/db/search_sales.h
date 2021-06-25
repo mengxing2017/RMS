@@ -11,6 +11,8 @@ public:
     SearchSales();
 
     QString searchDailySales(QString year,QString month,QString day );
+    QString searchMonthSales(QString year,QString month);
+
 };
 
 #endif // SEARCH_SALES_H
