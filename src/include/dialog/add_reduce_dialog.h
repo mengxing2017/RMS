@@ -7,6 +7,7 @@
 #include <QStringList>
 
 #include "src/include/db/order_dishes.h"
+#include "src/include/db/food_info.h"
 
 namespace Ui {
 class Add_Reduce_Dialog;

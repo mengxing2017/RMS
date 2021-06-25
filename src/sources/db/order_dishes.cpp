@@ -77,29 +77,6 @@ QStringList OrderDishes::searchSomeoneTable()
     return item;
 }
 
-void OrderDishes::searchFoodTable(QStringList *foodNameItem, QStringList *foodPriceItem,int *row)
-{
-    ManageDatabese manageDb=ManageDatabese();
-    QSqlDatabase db=manageDb.OpenDb();
-    QSqlQuery query(db);
-    query.exec("select *from FoodInfo");
-    query.last();
-    *row = query.value(0).toInt();
-    qDebug() << row;
-    query.first();
-    query.previous();
-    int i = 0;
-    while (query.next()) {
-      QString foodName = query.value(1).toString();
-      qDebug() << query.value(2).toDouble();
-      QString foodPrice = query.value(2).toString();
-      foodNameItem->append(foodName);
-      foodPriceItem->append(foodPrice);
-      i++;
-    }
-    manageDb.closeDb(db);
-}
-
 void OrderDishes::chooseDishes(const QString &arg1,QStringList *foodNameItem, QStringList *foodPriceItem)
 {
     ManageDatabese *manageDb=new ManageDatabese();

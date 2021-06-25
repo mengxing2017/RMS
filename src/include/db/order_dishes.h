@@ -16,7 +16,6 @@ public:
     void UpdateDishes(QString tableId, QAbstractItemModel *model,QAbstractItemModel *leftmodel);
 
     QStringList searchSomeoneTable();
-    void searchFoodTable(QStringList *foodNameItem,QStringList *foodPriceItem,int *row);
     void chooseDishes(const QString &arg1,QStringList *foodNameItem, QStringList *foodPriceItem);
 };
 

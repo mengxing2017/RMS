@@ -81,7 +81,8 @@ void Add_Reduce_Dialog::initFoodTable() {
     QStringList *foodNameItem=new QStringList();
     QStringList *foodPriceItem=new QStringList();
     int row=0;
-    dishes->searchFoodTable(foodNameItem,foodPriceItem,&row);
+    FoodInfo *foodInfo= new FoodInfo();
+    foodInfo->searchFoodInfo(foodNameItem,foodPriceItem,&row);
     ui->food_tableWidget->setRowCount(row);
     for(int i=0;i<foodNameItem->size();i++){
         ui->food_tableWidget->setItem(i, 0, new QTableWidgetItem(foodNameItem->at(i)));
