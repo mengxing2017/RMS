@@ -2,11 +2,11 @@
 #define ADD_REDUCE_DIALOG_H
 
 #include <QDialog>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QDebug>
 #include <QMessageBox>
 #include <QStringList>
+
+#include "src/include/db/order_dishes.h"
 
 namespace Ui {
 class Add_Reduce_Dialog;
@@ -36,13 +36,13 @@ private slots:
 private:
     Ui::Add_Reduce_Dialog *ui;
     int count;
-    QSqlDatabase m_db;
-    QString time;
     void initFoodTable();
     void initCombox();
 
     void initWindowFoodTable();
     void initWindowIsAddTable();
+
+    OrderDishes *dishes;
 
 };
 
