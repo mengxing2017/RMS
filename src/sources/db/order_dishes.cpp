@@ -7,8 +7,8 @@ OrderDishes::OrderDishes()
 
 void OrderDishes::UpdateDishes(QString tableId,QAbstractItemModel *rightModel,QAbstractItemModel *leftModel)
 {
-    ManageDatabese manageDb=ManageDatabese();
-    QSqlDatabase db=manageDb.OpenDb();
+    ManageDatabese *manageDb=new ManageDatabese();
+    QSqlDatabase db=manageDb->OpenDb();
     //此处将数据存入数据库
     QSqlQuery query(db);
     query.prepare("delete from BillInfo where TableID ='" + tableId + "'");
@@ -17,6 +17,7 @@ void OrderDishes::UpdateDishes(QString tableId,QAbstractItemModel *rightModel,QA
     }
 
     int row = 0;
+    QString time = query.value(3).toString();
     while (50 > row) {
       QSqlQuery query(db);
       query.prepare(
@@ -54,13 +55,13 @@ void OrderDishes::UpdateDishes(QString tableId,QAbstractItemModel *rightModel,QA
         qDebug() << "存储失败";
       }
     }
-    manageDb.closeDb(db);
+    manageDb->closeDb(db);
 }
 
 QStringList OrderDishes::searchSomeoneTable()
 {
-    ManageDatabese manageDb=ManageDatabese();
-    QSqlDatabase db=manageDb.OpenDb();
+    ManageDatabese *manageDb=new ManageDatabese();
+    QSqlDatabase db=manageDb->OpenDb();
     QSqlQuery query(db);
     QStringList item;
 
@@ -72,7 +73,7 @@ QStringList OrderDishes::searchSomeoneTable()
         item.append(foodName);
       }
     }
-    db.close();
+    manageDb->closeDb(db);
     return item;
 }
 
@@ -96,12 +97,13 @@ void OrderDishes::searchFoodTable(QStringList *foodNameItem, QStringList *foodPr
       foodPriceItem->append(foodPrice);
       i++;
     }
+    manageDb.closeDb(db);
 }
 
 void OrderDishes::chooseDishes(const QString &arg1,QStringList *foodNameItem, QStringList *foodPriceItem)
 {
-    ManageDatabese manageDb=ManageDatabese();
-    QSqlDatabase db=manageDb.OpenDb();
+    ManageDatabese *manageDb=new ManageDatabese();
+    QSqlDatabase db=manageDb->OpenDb();
     QSqlQuery query(db);
     query.exec("select *from tableinfo where TableID ='" + arg1 + "'");
     query.first();
@@ -117,4 +119,5 @@ void OrderDishes::chooseDishes(const QString &arg1,QStringList *foodNameItem, QS
     }
     if (query.exec())
       qDebug() << "test combobox";
+    manageDb->closeDb(db);
 }

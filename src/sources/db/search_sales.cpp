@@ -18,5 +18,6 @@ QString SearchSales::searchDailySales(QString year, QString month, QString day)
       double foodPrice = query.value(4).toDouble();
       sumMoney += number * foodPrice;
     }
+    manageDb->closeDb(db);
     return QString::number(sumMoney);
 }
