@@ -11,6 +11,8 @@ public:
     UserManagement();
 
     bool registerUser(QString name,QString password,QString jurisdiction);
+
+    bool login(QString username,QString password);
 };
 
 #endif // USER_MANAGEMENT_H

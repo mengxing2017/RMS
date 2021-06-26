@@ -19,3 +19,20 @@ bool UserManagement::registerUser(QString name,QString password,QString jurisdic
 
     return query.exec();
 }
+
+bool UserManagement::login(QString username,QString password)
+{
+    bool flag=false;
+    ManageDatabese *manageDb=new ManageDatabese();
+    QSqlDatabase db=manageDb->OpenDb();
+    QSqlQuery query(db);
+    query.exec("select *from LoginInfo");
+    while (query.next()) {
+      QString user = query.value(1).toString();
+      QString pass = query.value(2).toString();
+      if (username == user && username == pass) {
+        flag = true;
+      }
+    }
+    return flag;
+}
