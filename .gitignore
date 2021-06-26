@@ -15,3 +15,7 @@ moc_*
 qrc_res.cpp
 Makefile
 FoodBevManage
+doc/.DS_Store
+doc/enrollment-doc.pdf
+doc/node_modules/
+
