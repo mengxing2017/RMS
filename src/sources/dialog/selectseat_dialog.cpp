@@ -73,7 +73,8 @@ void SelectSeat_Dialog::on_button_Ok_clicked() {
       QString idTable = ui->lineEdit_Id->text();
       qDebug() << idData;
       //数据更新操作
-      if (seat->updateSeatInfo(time,idTable)){
+      QString isSomeone="有人";
+      if (seat->updateSeatInfo(time,idTable,isSomeone)){
         qDebug() << "打开成功";
       }
       deskInit();

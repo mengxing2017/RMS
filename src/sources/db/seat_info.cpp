@@ -26,12 +26,31 @@ void SeatInfo::searchSeatInfo(QStringList *desKIdItem,QStringList *flagItem,int 
     manageDb->closeDb(db);
 }
 
-bool SeatInfo::updateSeatInfo(QString time, QString idTable)
+QStringList SeatInfo::searchSomeSeat()
+{
+    QStringList item;
+    item.append("");
+    ManageDatabese *manageDb=new ManageDatabese();
+    QSqlDatabase db=manageDb->OpenDb();
+    QSqlQuery query(db);
+
+    query.exec("select *from TableInfo where  isuse='有人'");
+
+    while (query.next()) {
+      if (query.value(2).toString() == "有人") {
+        QString foodName = query.value(1).toString();
+        item.append(foodName);
+      }
+    }
+    return item;
+}
+
+bool SeatInfo::updateSeatInfo(QString time, QString idTable,QString isSomeone)
 {
     ManageDatabese *manageDb=new ManageDatabese();
     QSqlDatabase db=manageDb->OpenDb();
     QSqlQuery query(db);
-    bool bl= query.exec("update TableInfo set isUse = '有人',time='" + time +
+    bool bl= query.exec("update TableInfo set isUse = "+isSomeone+",time='" + time +
                       "'   where TableID ='" + idTable + "'");
     manageDb->closeDb(db);
     return bl;

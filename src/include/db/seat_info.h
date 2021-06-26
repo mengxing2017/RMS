@@ -12,7 +12,8 @@ public:
     SeatInfo();
 
     void searchSeatInfo(QStringList *desKIdItem,QStringList *flagItem,int *row);
-    bool updateSeatInfo(QString time,QString idTable );
+    QStringList searchSomeSeat();
+    bool updateSeatInfo(QString time,QString idTable,QString isSomeone );
 };
 
 #endif // SEAT_INFO_H

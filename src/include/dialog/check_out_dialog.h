@@ -2,9 +2,10 @@
 #define CHECK_OUTDIALOG_H
 
 #include <QDialog>
-#include <QSqlQuery>
-#include <QSqlDatabase>
 #include <QDebug>
+
+#include "src/include/db/seat_info.h"
+#include "src/include/db/check.h"
 
 namespace Ui {
 class Check_OutDialog;
@@ -31,9 +32,8 @@ private slots:
 
 private:
     Ui::Check_OutDialog *ui;
-    QSqlDatabase m_db;
-    double sumMoney;
     void initCombox();
+    SeatInfo *seat;
 };
 
 #endif // CHECK_OUTDIALOG_H
