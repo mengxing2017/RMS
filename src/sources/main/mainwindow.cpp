@@ -2,7 +2,7 @@
 #include "src/include/dialog/add_reduce_dialog.h"
 #include "src/include/dialog/check_out_dialog.h"
 #include "src/include/dialog/dayincomequery_dialog.h"
-#include "src/include/main/daystatistics.h"
+#include "src/include/db/day_statistics.h"
 #include "src/include/dialog/foodinfo_dialog.h"
 #include "src/include/ui/ui_mainwindow.h"
 #include "src/include/dialog/monthincomequery_dialog.h"

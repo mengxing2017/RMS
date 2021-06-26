@@ -7,15 +7,6 @@ Add_Reduce_Dialog::Add_Reduce_Dialog(QWidget *parent)
   ui->setupUi(this);
   count = 0;
   this->setWindowTitle("加减菜");
-
-  //数据库初始化并连接
-  m_db = QSqlDatabase::addDatabase("QSQLITE");
-  m_db.setDatabaseName("data.db");
-  if (!m_db.open()) {
-    qDebug() << "Error: connection with database fail";
-  } else {
-    qDebug() << "Database: connection ok";
-  }
   // foodtable
   initWindowFoodTable();
 
@@ -26,63 +17,23 @@ Add_Reduce_Dialog::Add_Reduce_Dialog(QWidget *parent)
   // isfood_table
   initWindowIsAddTable();
   //    ui->isAddFood_tableWidget
+
+  dishes = new OrderDishes();
 }
 
 Add_Reduce_Dialog::~Add_Reduce_Dialog() {
   delete ui;
-  m_db.close();
 }
 
 void Add_Reduce_Dialog::on_okButton_clicked() {
-  //此处将数据存入数据库
-  QSqlQuery query(m_db);
-  QString tableid = ui->comboBox->currentText();
-  qDebug() << tableid;
-  query.prepare("delete from BillInfo where TableID ='" + tableid + "'");
-  if (query.exec()) {
-    qDebug() << "test query";
-  }
 
-  int row = 0;
-  while (50 > row) {
-    QSqlQuery query(m_db);
-    query.prepare(
-        "INSERT INTO BillInfo (TableID,FoodName,amount,expense,datetime)"
-        "VALUES (:deskid, :foodname, :foodcount,:price,:time)");
-    QAbstractItemModel *model = ui->isAddFood_tableWidget->model();
-    QModelIndex indexfoodName = model->index(row, 0);
-    QModelIndex indexfoodPrice = model->index(row, 1);
-    QString tempfoodname = model->data(indexfoodName).toString();
-    if (tempfoodname == "")
-      break;
-    QString tempfoodNumber = model->data(indexfoodPrice).toString();
-    QString tempfoodPrice = "";
-    int i = 0;
-    while (1) {
-      qDebug() << "test";
+  QString tableId = ui->comboBox->currentText();
+  QAbstractItemModel *rightModel = ui->isAddFood_tableWidget->model();
+  QAbstractItemModel *leftModel = ui->food_tableWidget->model();
+  dishes->UpdateDishes(tableId,rightModel ,leftModel);
+  qDebug() << tableId;
 
-      QAbstractItemModel *leftmodel = ui->food_tableWidget->model();
-      QModelIndex leftfoodName = leftmodel->index(i, 0);
-      if (leftmodel->data(leftfoodName).toString() == tempfoodname) {
-        QModelIndex leftfoodprice = leftmodel->index(i, 1);
-        tempfoodPrice = leftmodel->data(leftfoodprice).toString();
-        break;
-      }
-      i++;
-    }
-    query.bindValue(":deskid", ui->comboBox->currentText());
-    query.bindValue(":foodname", tempfoodname);
-    query.bindValue(":foodcount", tempfoodNumber);
-    query.bindValue(":price", tempfoodPrice);
-    query.bindValue(":time", time);
-    row++;
-    qDebug() << "test2" << row;
-    if (query.exec()) {
-      qDebug() << "存储成功";
-    } else {
-      qDebug() << "存储失败";
-    }
-  }
+
   this->close();
 }
 
@@ -127,38 +78,20 @@ void Add_Reduce_Dialog::on_deleteButton_clicked() {
 }
 
 void Add_Reduce_Dialog::initFoodTable() {
-  QSqlQuery query(m_db);
-  query.exec("select *from FoodInfo");
-  query.last();
-  int row = query.value(0).toInt();
-  qDebug() << row;
-  ui->food_tableWidget->setRowCount(row);
-  query.first();
-  query.previous();
-  int i = 0;
-  while (query.next()) {
-    QString foodName = query.value(1).toString();
-    qDebug() << query.value(2).toDouble();
-    QString foodPrice = query.value(2).toString();
-    ui->food_tableWidget->setItem(i, 0, new QTableWidgetItem(foodName));
-    ui->food_tableWidget->setItem(i, 1, new QTableWidgetItem(foodPrice));
-    i++;
-  }
+    QStringList *foodNameItem=new QStringList();
+    QStringList *foodPriceItem=new QStringList();
+    int row=0;
+    FoodInfo *foodInfo= new FoodInfo();
+    foodInfo->searchFoodInfo(foodNameItem,foodPriceItem,&row);
+    ui->food_tableWidget->setRowCount(row);
+    for(int i=0;i<foodNameItem->size();i++){
+        ui->food_tableWidget->setItem(i, 0, new QTableWidgetItem(foodNameItem->at(i)));
+        ui->food_tableWidget->setItem(i, 1, new QTableWidgetItem(foodPriceItem->at(i)));
+    }
 }
 
 void Add_Reduce_Dialog::initCombox() {
-  QSqlQuery query(m_db);
-  QStringList item;
-
-  query.exec("select *from TableInfo ");
-  item.append("");
-  while (query.next()) {
-    if (query.value(2).toString() == "有人") {
-      QString foodName = query.value(1).toString();
-      item.append(foodName);
-    }
-  }
-  ui->comboBox->addItems(item);
+  ui->comboBox->addItems(dishes->searchSomeoneTable());
 }
 
 void Add_Reduce_Dialog::initWindowFoodTable() {
@@ -238,23 +171,15 @@ void Add_Reduce_Dialog::initWindowIsAddTable() {
 //}
 
 void Add_Reduce_Dialog::on_comboBox_activated(const QString &arg1) {
-  qDebug() << "test combobox";
-  ui->isAddFood_tableWidget->clear();
-  QSqlQuery query(m_db);
-  query.exec("select *from tableinfo where TableID ='" + arg1 + "'");
-  query.first();
-  time = query.value(3).toString();
-  query.exec("select *from BillInfo where TableID ='" + arg1 +
-             "'and datetime='" + time + "'");
-  int i = 0;
-  while (query.next()) {
-    QString foodName = query.value(2).toString();
-    qDebug() << query.value(2).toDouble();
-    QString foodPrice = query.value(3).toString();
-    ui->isAddFood_tableWidget->setItem(i, 0, new QTableWidgetItem(foodName));
-    ui->isAddFood_tableWidget->setItem(i, 1, new QTableWidgetItem(foodPrice));
-    count = ++i;
-  }
-  if (query.exec())
-    qDebug() << "test combobox";
+    ui->isAddFood_tableWidget->clear();
+
+    QStringList *foodNameItem=new QStringList();
+    QStringList *foodPriceItem=new QStringList();
+
+    dishes->chooseDishes(arg1,foodNameItem,foodPriceItem);
+    for(int i=0;i<foodNameItem->size();i++){
+        ui->isAddFood_tableWidget->setItem(i, 0, new QTableWidgetItem(foodNameItem->at(i)));
+        ui->isAddFood_tableWidget->setItem(i, 1, new QTableWidgetItem(foodPriceItem->at(i)));
+        count = ++i;
+    }
 }

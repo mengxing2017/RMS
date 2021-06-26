@@ -6,14 +6,6 @@ DayIncomeQuery_Dialog::DayIncomeQuery_Dialog(QWidget *parent)
   ui->setupUi(this);
   this->setWindowTitle("日收入查询");
   initCombox();
-
-  m_db = QSqlDatabase::addDatabase("QSQLITE");
-  m_db.setDatabaseName("data.db");
-  if (!m_db.open()) {
-    qDebug() << "Error: connection with database fail";
-  } else {
-    qDebug() << "Database: connection ok";
-  }
 }
 
 DayIncomeQuery_Dialog::~DayIncomeQuery_Dialog() { delete ui; }
@@ -51,19 +43,12 @@ void DayIncomeQuery_Dialog::on_queryButton_clicked() {
   QString year = ui->year_comboBox->currentText();
   QString month = ui->month_comboBox->currentText();
   QString day = ui->day_comboBox->currentText();
-  QSqlQuery query(m_db);
-  query.exec("select *from billinfo where datetime like'" + year + "-" + month +
-             "-" + day + "%'");
-  double sumMoney = 0;
-  while (query.next()) {
-    int number = query.value(3).toInt();
-    double foodPrice = query.value(4).toDouble();
-    sumMoney += number * foodPrice;
-  }
 
+  SearchSales *sales=new SearchSales();
+  QString sumMoney=sales->searchDailySales(year,month,day);
   QMessageBox::information(this, "日收入查询",
                            "" + year + "年" + month + "月" + day +
-                               "日的收入为: " + QString::number(sumMoney) +
+                               "日的收入为: " + sumMoney +
                                " 元");
 }
 

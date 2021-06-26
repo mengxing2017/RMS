@@ -31,7 +31,6 @@ OrderDishesDialog::OrderDishesDialog(QWidget *parent)
 
 OrderDishesDialog::~OrderDishesDialog() {
   delete ui;
-  m_db.close();
 }
 
 void OrderDishesDialog::receiverIdData(QString data) {
@@ -41,57 +40,14 @@ void OrderDishesDialog::receiverIdData(QString data) {
 
 bool OrderDishesDialog::returnIsOrder() { return isOrder; }
 
-void OrderDishesDialog::getDatabase(QSqlDatabase &db) { m_db = db; }
-
 void OrderDishesDialog::on_OkButton_clicked() {
-  //此处实现将数据存入数据库
-  int row = 0;
-  while (50 > row) {
-    QSqlQuery query(m_db);
-    query.prepare(
-        "INSERT INTO BillInfo (TableID,FoodName,amount,expense,DateTime)"
-        "VALUES (:deskid, :foodname, :foodcount,:price,:datetime)");
-    QAbstractItemModel *model = ui->isSelcteFood_tableWidget->model();
-    QModelIndex indexfoodName = model->index(row, 0);
-    QModelIndex indexfoodPrice = model->index(row, 1);
-    QString tempfoodname = model->data(indexfoodName).toString();
-    if (tempfoodname == "")
-      break;
-    QString tempfoodNumber = model->data(indexfoodPrice).toString();
-    QString tempfoodPrice = "";
-    int i = 0;
-    while (1) {
-      qDebug() << "test";
+    QAbstractItemModel *rightModel = ui->isSelcteFood_tableWidget->model();
+    QAbstractItemModel *leftModel = ui->food_tableWidget->model();
 
-      QAbstractItemModel *leftmodel = ui->food_tableWidget->model();
-      QModelIndex leftfoodName = leftmodel->index(i, 0);
-      if (leftmodel->data(leftfoodName).toString() == tempfoodname) {
-        QModelIndex leftfoodprice = leftmodel->index(i, 1);
-        tempfoodPrice = leftmodel->data(leftfoodprice).toString();
-        break;
-      }
-      i++;
-    }
-    query.bindValue(":deskid", idData);
-    query.bindValue(":foodname", tempfoodname);
-    query.bindValue(":foodcount", tempfoodNumber);
-    query.bindValue(":price", tempfoodPrice);
-    query.bindValue(":datetime", dateStr);
-    row++;
-    qDebug() << "test2" << row;
-    if (query.exec()) {
-      qDebug() << "存储成功";
-    } else {
-      qDebug() << "存储失败";
-    }
-    isOrder = true;
-  }
-  if (isOrder) {
-    QMessageBox::information(this, "温馨提示", "点菜成功");
-  } else {
-    QMessageBox::information(this, "温馨提示", "点菜失败,请重新点菜");
-  }
+    OrderDishes *dishes=new OrderDishes();
+    dishes->UpdateDishes(idData,rightModel,leftModel);
 
+  QMessageBox::information(this, "温馨提示", "点菜成功");
   this->close();
 }
 
@@ -204,23 +160,18 @@ void OrderDishesDialog::initWindow() {
 }
 
 void OrderDishesDialog::initFoodTable() {
-  QSqlQuery query(m_db);
-  query.exec("select *from FoodInfo");
-  query.last();
-  int row = query.value(0).toInt();
-  qDebug() << row;
-  ui->food_tableWidget->setRowCount(row);
-  query.first();
-  query.previous();
-  int i = 0;
-  while (query.next()) {
-    QString foodName = query.value(1).toString();
-    qDebug() << query.value(2).toDouble();
-    QString foodPrice = query.value(2).toString();
-    ui->food_tableWidget->setItem(i, 0, new QTableWidgetItem(foodName));
-    ui->food_tableWidget->setItem(i, 1, new QTableWidgetItem(foodPrice));
-    i++;
-  }
+    QStringList *foodNameItem=new QStringList();
+    QStringList *foodPriceItem=new QStringList();
+
+    int row=0;
+    FoodInfo *foodInfo=new FoodInfo();
+    foodInfo->searchFoodInfo(foodNameItem,foodPriceItem,&row);
+    ui->food_tableWidget->setRowCount(row);
+
+    for (int i=0;i<foodNameItem->size();i++) {
+        ui->food_tableWidget->setItem(i, 0, new QTableWidgetItem(foodNameItem->at(i)));
+        ui->food_tableWidget->setItem(i, 1, new QTableWidgetItem(foodPriceItem->at(i)));
+    }
 }
 
 QString OrderDishesDialog::returnTime() { return dateStr; }

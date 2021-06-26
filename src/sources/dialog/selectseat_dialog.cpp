@@ -1,11 +1,6 @@
 #include "src/include/dialog/selectseat_dialog.h"
 #include "src/include/ui/ui_selectseat_dialog.h"
 
-#include <QDebug>
-#include <QMessageBox>
-#include <QStandardItemModel>
-#include <QTreeWidget>
-#include <QTreeWidgetItem>
 SelectSeat_Dialog::SelectSeat_Dialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::SelectSeat_Dialog) {
   ui->setupUi(this);
@@ -13,13 +8,7 @@ SelectSeat_Dialog::SelectSeat_Dialog(QWidget *parent)
   orderDishes = new OrderDishesDialog;
 
   idData = ""; //初始化数据
-  m_db = QSqlDatabase::addDatabase("QSQLITE");
-  m_db.setDatabaseName("data.db");
-  if (!m_db.open()) {
-    qDebug() << "Error: connection with database fail";
-  } else {
-    qDebug() << "Database: connection ok";
-  }
+  seat=new SeatInfo();
   initWindow();
   deskInit();
 }
@@ -70,7 +59,6 @@ void SelectSeat_Dialog::on_button_Ok_clicked() {
     return;
   }
   if (NULL != idData) {
-    orderDishes->getDatabase(m_db);
     orderDishes->setModal(true);
     orderDishes->initFoodTable();
     orderDishes->receiverIdData(idData);
@@ -81,16 +69,14 @@ void SelectSeat_Dialog::on_button_Ok_clicked() {
     //将数据插入数据库
     if (isLeisure) {
       qDebug() << idData;
-
       QString time = orderDishes->returnTime();
-
       QString idTable = ui->lineEdit_Id->text();
-      QSqlQuery query(m_db);
       qDebug() << idData;
       //数据更新操作
-      if (query.exec("update TableInfo set isUse = '有人',time='" + time +
-                     "'   where TableID ='" + idTable + "'"))
+      QString isSomeone="有人";
+      if (seat->updateSeatInfo(time,idTable,isSomeone)){
         qDebug() << "打开成功";
+      }
       deskInit();
     }
     ui->lineEdit_Id->clear();
@@ -114,24 +100,15 @@ void SelectSeat_Dialog::on_tableWidget_clicked(const QModelIndex &index) {
 }
 
 void SelectSeat_Dialog::deskInit() {
-
-  QSqlQuery query(m_db);
-  query.exec("select *from TableInfo");
-  query.last();
-  int row = query.value(0).toInt();
-  qDebug() << row;
-  ui->tableWidget->setRowCount(row);
-  query.first();
-  query.previous();
-  int i = 0;
-  while (query.next()) {
-    QString deskId = query.value(1).toString();
-    qDebug() << query.value(2).toString();
-    QString flag = query.value(2).toString();
-    ui->tableWidget->setItem(i, 0, new QTableWidgetItem(deskId));
-    ui->tableWidget->setItem(i, 1, new QTableWidgetItem(flag));
-    i++;
-  }
+    QStringList *deskIdItem=new QStringList();
+    QStringList *flagItem =new QStringList();
+    int row=0;
+    seat->searchSeatInfo(deskIdItem,flagItem,&row);
+    ui->tableWidget->setRowCount(row);
+    for(int i=0; i<deskIdItem->size();i++){
+        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(deskIdItem->at(i)));
+        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(flagItem->at(i)));
+    }
 }
 
 void SelectSeat_Dialog::on_button_Close_clicked() { this->close(); }

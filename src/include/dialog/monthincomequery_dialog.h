@@ -3,10 +3,10 @@
 
 #include <QDialog>
 #include <QMessageBox>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QDate>
 #include <QDebug>
+
+#include "src/include/db/search_sales.h"
 
 namespace Ui {
 class MonthIncomeQuery_Dialog;

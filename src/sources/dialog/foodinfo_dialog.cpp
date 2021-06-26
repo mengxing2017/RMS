@@ -5,14 +5,7 @@ FoodInfo_Dialog::FoodInfo_Dialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::FoodInfo_Dialog) {
   ui->setupUi(this);
   this->setWindowTitle("菜品性能系管理");
-  //数据库初始化并连接
-  m_db = QSqlDatabase::addDatabase("QSQLITE");
-  m_db.setDatabaseName("data.db");
-  if (!m_db.open()) {
-    qDebug() << "Error: connection with database fail";
-  } else {
-    qDebug() << "Database: connection ok";
-  }
+
   ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
   ui->tableWidget->setAlternatingRowColors(true);
   ui->tableWidget->setColumnCount(2);
@@ -34,6 +27,8 @@ FoodInfo_Dialog::FoodInfo_Dialog(QWidget *parent)
   ui->tableWidget->setStyleSheet("selection-background-color:lightblue;");
   ui->tableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
+  foodInfo= new FoodInfo();
+
   initFood();
 }
 
@@ -43,15 +38,8 @@ void FoodInfo_Dialog::on_deleteFood_Button_clicked() {
   int row = ui->tableWidget->currentIndex().row();
   QAbstractItemModel *model = ui->tableWidget->model();
   QModelIndex indexfood = model->index(row, 0);
-  model->data(indexfood).toString();
-  QSqlQuery query(m_db);
-  //    char *foodname;
-  //    QByteArray tempfoodname=model->data(indexfood).toString().toLatin1();
-  //    foodname=tempfoodname.data();
-  query.prepare("delete from FoodInfo where FoodName ='" +
-                model->data(indexfood).toString() + "'");
-  if (query.exec())
-    qDebug() << "test delete";
+  foodInfo->deleteFoodInfo(model->data(indexfood).toString());
+
   initFood();
 }
 
@@ -60,13 +48,7 @@ void FoodInfo_Dialog::on_addFood_Button_clicked() {
   QString foodName = ui->foodName_lineEdit->text();
   QString foodPrice = ui->foodPrice_lineEdit->text();
   if ("" != foodName && "" != foodPrice) {
-    QSqlQuery query(m_db);
-    query.prepare("INSERT INTO FoodInfo (FoodName,FoodPrice)"
-                  "VALUES (:foodname, :price)");
-    query.bindValue(":foodname", foodName);
-    query.bindValue(":price", foodPrice);
-    if (query.exec())
-      qDebug() << "数据库打开";
+    foodInfo->insertFoodInfo(foodName,foodPrice);
     initFood();
   }
   ui->foodName_lineEdit->clear();
@@ -74,20 +56,14 @@ void FoodInfo_Dialog::on_addFood_Button_clicked() {
 }
 
 void FoodInfo_Dialog::initFood() {
-  QSqlQuery query(m_db);
-  query.exec("select *from FoodInfo");
-  query.last();
-  int row = query.value(0).toInt();
-  qDebug() << row;
-  ui->tableWidget->setRowCount(row);
-  query.first();
-  query.previous();
-  int i = 0;
-  while (query.next()) {
-    QString foodName = query.value(1).toString();
-    QString foodPrice = query.value(2).toString();
-    ui->tableWidget->setItem(i, 0, new QTableWidgetItem(foodName));
-    ui->tableWidget->setItem(i, 1, new QTableWidgetItem(foodPrice));
-    i++;
-  }
+    QStringList *foodNameItem=new QStringList();
+    QStringList *foodPriceItem=new QStringList();
+    int row=0;
+    foodInfo->searchFoodInfo(foodNameItem,foodPriceItem,&row);
+    ui->tableWidget->setRowCount(row);
+
+    for(int i=0;i<foodNameItem->size();i++){
+        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(foodNameItem->at(i)));
+        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(foodPriceItem->at(i)));
+    }
 }
