@@ -25,19 +25,18 @@ RESOURCES += \
 CONFIG += c++17
 
 HEADERS += \
+    src/include/main/mainwindow.h \
     src/include/dialog/dayincomequery_dialog.h \
     src/include/dialog/add_reduce_dialog.h \
     src/include/dialog/staffregister_dialog.h \
     src/include/dialog/varietymenu_dialog.h \
     src/include/dialog/dishescount_dialog.h \
     src/include/dialog/foodinfo_dialog.h \
-    src/include/main/daystatistics.h \
     src/include/dialog/login_dialog.h \
     src/include/dialog/monthincomequery_dialog.h \
     src/include/dialog/selectseat_dialog.h \
     src/include/dialog/stockqquery_dialog.h \
     src/include/dialog/check_out_dialog.h \
-    src/include/main/mainwindow.h \
     src/include/dialog/orderdishes_dialog.h \
     src/include/ui/ui_stockquery_dialog.h \
     src/include/ui/ui_mainwindow.h \
@@ -52,6 +51,7 @@ HEADERS += \
     src/include/ui/ui_dayincomequery_dialog.h \
     src/include/ui/ui_dishescount_dialog.h \
     src/include/ui/ui_varietymenu_dialog.h \
+    src/include/db/day_statistics.h \
     src/include/db/manage_databese.h\
     src/include/db/order_dishes.h \
     src/include/db/search_sales.h \
@@ -62,7 +62,6 @@ HEADERS += \
 SOURCES += \
     src/sources/main/main.cpp \
     src/sources/main/mainwindow.cpp \
-    src/sources/main/daystatistics.cpp \
     src/sources/dialog/selectseat_dialog.cpp \
     src/sources/dialog/login_dialog.cpp \
     src/sources/dialog/varietymenu_dialog.cpp \
@@ -88,6 +87,7 @@ SOURCES += \
     src/sources/ui/ui_orderdishes_dialog.cpp \
     src/sources/ui/ui_foodinfo_dialog.cpp \
     src/sources/ui/ui_stockquery_dialog.cpp \
+    src/sources/db/day_statistics.cpp \
     src/sources/db/manage_databese.cpp \
     src/sources/db/order_dishes.cpp \
     src/sources/db/search_sales.cpp \
