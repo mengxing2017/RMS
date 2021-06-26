@@ -5,7 +5,6 @@
 #include <QBrush>
 #include <QDialog>
 #include <QPalette>
-#include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QTreeWidgetItem>
 #include <QDebug>
