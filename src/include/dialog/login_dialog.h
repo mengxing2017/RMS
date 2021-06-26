@@ -4,9 +4,9 @@
 #include <QDebug>
 #include <QDialog>
 #include <QMessageBox>
-#include <QSqlDatabase>
-//#include <QSql>
-#include <QSqlQuery>
+
+#include "src/include/db/user_management.h"
+
 namespace Ui {
 class LoginDialog;
 }

@@ -5,9 +5,14 @@
 #include <QBrush>
 #include <QDialog>
 #include <QPalette>
-#include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QTreeWidgetItem>
+#include <QDebug>
+#include <QMessageBox>
+#include <QStandardItemModel>
+#include <QTreeWidget>
+
+#include "src/include/db/seat_info.h"
 
 namespace Ui {
 class SelectSeat_Dialog;
@@ -33,8 +38,9 @@ private:
   Ui::SelectSeat_Dialog *ui;
   QString idData;
   QString flagId;
-  QSqlDatabase m_db;
   OrderDishesDialog *orderDishes;
+
+  SeatInfo *seat;
 };
 
 #endif // SELECTSEATDIALOG_H

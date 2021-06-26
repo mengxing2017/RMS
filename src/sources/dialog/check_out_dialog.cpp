@@ -6,21 +6,16 @@ Check_OutDialog::Check_OutDialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::Check_OutDialog) {
   ui->setupUi(this);
   this->setWindowTitle("结帐");
+  seat=new  SeatInfo();
 
-  m_db = QSqlDatabase::addDatabase("QSQLITE");
-  m_db.setDatabaseName("data.db");
-  if (!m_db.open()) {
-    qDebug() << "Error: connection with database fail";
-  } else {
-    qDebug() << "Database: connection ok";
-  }
-  //消费明细表
-  sumMoney = 0;
   initWindow();
   initCombox();
 }
 
-Check_OutDialog::~Check_OutDialog() { delete ui; }
+Check_OutDialog::~Check_OutDialog() {
+    delete ui;
+    seat->~SeatInfo();
+}
 
 void Check_OutDialog::initWindow() {
 
@@ -67,9 +62,9 @@ void Check_OutDialog::initWindow() {
 
 void Check_OutDialog::on_pushButton_clicked() {
   QString tableid = ui->comboBox->currentText();
-  QSqlQuery query(m_db);
-  query.exec("update TableInfo set isuse='空闲'    where  tableid='" + tableid +
-             "'");
+  QString time="";
+  QString isSomeone="没人";
+    seat->updateSeatInfo(time,tableid,isSomeone);
   QMessageBox::information(this, "温馨提示", "已成功收款!再见!");
   this->close();
 }
@@ -81,54 +76,35 @@ void Check_OutDialog::on_comboBox_activated(const QString &arg1) {
   ui->receipts_lineEdit->clear();
   ui->receivable_lineEdit->clear();
   ui->change_lineEdit->clear();
-  QSqlQuery query(m_db);
-  QStringList item;
-  query.exec("select *from TableInfo where  tableid='" + arg1 + "'");
-  qDebug() << query.exec();
-  query.first();
-  QString time = query.value(3).toString();
-  query.exec("select *from  billinfo where  tableid='" + arg1 +
-             "' and datetime='" + time + "'");
-  qDebug() << query.exec();
-  item.append("");
-  int i = 0;
-  sumMoney = 0;
-  while (query.next()) {
-    QString foodName = query.value(2).toString();
-    bool ok;
-    int number = query.value(3).toInt(&ok);
-    qDebug() << number;
-    double price = query.value(4).toDouble(&ok);
-    qDebug() << price;
-    ui->tableWidget->setItem(i, 0, new QTableWidgetItem(foodName));
-    ui->tableWidget->setItem(i, 1,
-                             new QTableWidgetItem(QString::number(number)));
-    ui->tableWidget->setItem(i, 2,
-                             new QTableWidgetItem(QString::number(price)));
-    i++;
-    sumMoney += number * price;
-  }
-  ui->receivable_lineEdit->setText(QString::number(sumMoney));
+
+  QStringList *foodNameList=new QStringList();
+  QStringList *foodPriceList=new QStringList();
+  QStringList *numberList=new QStringList();
+    Check *check=new Check();
+    QString sumMoney=check->checkOut(arg1,foodNameList,foodPriceList,numberList);
+
+    for(int i=0; i<foodNameList->size();i++){
+        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(foodNameList->at(i)));
+        ui->tableWidget->setItem(i, 1,
+                                 new QTableWidgetItem(numberList->at(i)));
+        ui->tableWidget->setItem(i, 2,
+                                 new QTableWidgetItem(foodPriceList->at(i)));
+    }
+  ui->receivable_lineEdit->setText(sumMoney);
+
+  //销毁对象
+  foodNameList->~QStringList();
+  foodPriceList->~QStringList();
+  numberList->~QStringList();
 }
 
 void Check_OutDialog::initCombox() {
-
-  QSqlQuery query(m_db);
-  QStringList item;
-
-  query.exec("select *from TableInfo where  isuse='有人'");
-  item.append("");
-  while (query.next()) {
-    if (query.value(2).toString() == "有人") {
-      QString foodName = query.value(1).toString();
-      item.append(foodName);
-    }
-  }
-  ui->comboBox->addItems(item);
+    ui->comboBox->addItems(seat->searchSomeSeat());
 }
 
 void Check_OutDialog::on_receipts_lineEdit_textEdited(const QString &arg1) {
   double receipts = arg1.toDouble();
-  double chang = receipts - sumMoney;
+  QString sumMoney=ui->receivable_lineEdit->text();
+  double chang = receipts - sumMoney.toDouble();
   ui->change_lineEdit->setText(QString::number(chang));
 }

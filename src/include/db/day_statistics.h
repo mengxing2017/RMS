@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QDate>
 
+#include "manage_databese.h"
 
 class DayStatistics
 {
@@ -18,7 +19,6 @@ public:
 
 private:
     QString Money;
-    QSqlDatabase m_db;
 };
 
 #endif // DAYSTATISTICS_H

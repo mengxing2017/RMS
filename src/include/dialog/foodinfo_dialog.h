@@ -2,11 +2,11 @@
 #define FOODINFO_DIALOG_H
 
 #include <QDialog>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QDebug>
 
 #include <string>
+
+#include "src/include/db/food_info.h"
 
 namespace Ui {
 class FoodInfo_Dialog;
@@ -27,9 +27,10 @@ private slots:
 
 private:
     Ui::FoodInfo_Dialog *ui;
-    QSqlDatabase m_db;
 
     void initFood();
+
+    FoodInfo *foodInfo;
 };
 
 #endif // FOODINFO_DIALOG_H

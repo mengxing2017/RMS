@@ -1,4 +1,5 @@
 FoodBevManage.pro.*
+bin
 *.d
 *.obj
 *.o
