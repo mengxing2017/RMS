@@ -19,6 +19,8 @@ OBJECTS_DIR = $${PROJECT_ROOT}/compile/obj
 RCC_DIR = $${PROJECT_ROOT}/compile/rcc
 UI_DIR = $${PROJECT_ROOT}/compile/ui
 
+LIBS += -L./lib/sqlite3 -lqsqlite
+
 RESOURCES += \
     res.qrc
 
