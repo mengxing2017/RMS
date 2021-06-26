@@ -2,16 +2,14 @@
 #define ORDERDISHESDIALOG_H
 
 #include <QDialog>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QDebug>
-#include <QSqlTableModel>
 #include <QMessageBox>
 #include <QDateTime>
 #include <QBrush>
 #include <QPalette>
 
 #include "src/include/db/food_info.h"
+#include "src/include/db/order_dishes.h"
 
 namespace Ui {
 class OrderDishesDialog;
@@ -41,7 +39,6 @@ private:
     Ui::OrderDishesDialog *ui;
     QString idData;
     int count;
-    QSqlDatabase m_db;
     QString dateStr;
    //初始化菜单表
     bool isOrder;
