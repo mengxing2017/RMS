@@ -1,14 +1,11 @@
 #include "src/include/db/order_dishes.h"
 
-OrderDishes::OrderDishes()
-{
+OrderDishes::OrderDishes() {}
 
-}
-
-void OrderDishes::UpdateDishes(QString tableId,QAbstractItemModel *rightModel,QAbstractItemModel *leftModel)
-{
-    ManageDatabese *manageDb=new ManageDatabese();
-    QSqlDatabase db=manageDb->OpenDb();
+void OrderDishes::UpdateDishes(QString tableId, QAbstractItemModel *rightModel,
+                               QAbstractItemModel *leftModel) {
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     //此处将数据存入数据库
     QSqlQuery query(db);
     query.prepare("delete from BillInfo where TableID ='" + tableId + "'");
@@ -26,8 +23,7 @@ void OrderDishes::UpdateDishes(QString tableId,QAbstractItemModel *rightModel,QA
       QModelIndex indexfoodName = rightModel->index(row, 0);
       QModelIndex indexfoodPrice = rightModel->index(row, 1);
       QString tempfoodname = rightModel->data(indexfoodName).toString();
-      if (tempfoodname == "")
-        break;
+      if (tempfoodname == "") break;
       QString tempfoodNumber = rightModel->data(indexfoodPrice).toString();
       QString tempfoodPrice = "";
       int i = 0;
@@ -55,15 +51,15 @@ void OrderDishes::UpdateDishes(QString tableId,QAbstractItemModel *rightModel,QA
         qDebug() << "存储失败";
       }
     }
-    manageDb->closeDb(db);
+    ManageDatabese::closeDb(db);
+  }
 }
 
-QStringList OrderDishes::searchSomeoneTable()
-{
-    ManageDatabese *manageDb=new ManageDatabese();
-    QSqlDatabase db=manageDb->OpenDb();
+QStringList OrderDishes::searchSomeoneTable() {
+  QStringList item;
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     QSqlQuery query(db);
-    QStringList item;
 
     query.exec("select *from TableInfo ");
     item.append("");
@@ -73,14 +69,15 @@ QStringList OrderDishes::searchSomeoneTable()
         item.append(foodName);
       }
     }
-    manageDb->closeDb(db);
-    return item;
+    ManageDatabese::closeDb(db);
+  }
+  return item;
 }
 
-void OrderDishes::chooseDishes(const QString &arg1,QStringList *foodNameItem, QStringList *foodPriceItem)
-{
-    ManageDatabese *manageDb=new ManageDatabese();
-    QSqlDatabase db=manageDb->OpenDb();
+void OrderDishes::chooseDishes(const QString &arg1, QStringList *foodNameItem,
+                               QStringList *foodPriceItem) {
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     QSqlQuery query(db);
     query.exec("select *from tableinfo where TableID ='" + arg1 + "'");
     query.first();
@@ -94,7 +91,7 @@ void OrderDishes::chooseDishes(const QString &arg1,QStringList *foodNameItem, QS
       foodNameItem->append(foodName);
       foodPriceItem->append(foodPrice);
     }
-    if (query.exec())
-      qDebug() << "test combobox";
-    manageDb->closeDb(db);
+    if (query.exec()) qDebug() << "test combobox";
+    ManageDatabese::closeDb(db);
+  }
 }

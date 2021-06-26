@@ -1,17 +1,17 @@
 #ifndef MANAGE_DATABESE_H
 #define MANAGE_DATABESE_H
 
-#define qString DB_NAME="data.db";
-
-#include <QSqlDatabase>
+#include <QCoreApplication>
 #include <QDebug>
+#include <QSqlDatabase>
 
-class ManageDatabese
-{
-public:
-    ManageDatabese();
-    QSqlDatabase OpenDb();
-    void closeDb(QSqlDatabase db);
+class ManageDatabese {
+ public:
+  ManageDatabese();
+  static QSqlDatabase connect();
+  static bool openDb(QSqlDatabase db);
+  static void closeDb(QSqlDatabase db);
+  static bool createDb();
 };
 
-#endif // MANAGE_DATABESE_H
+#endif  // MANAGE_DATABESE_H

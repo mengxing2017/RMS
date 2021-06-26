@@ -1,27 +1,25 @@
 #include "src/include/db/food_info.h"
 
-FoodInfo::FoodInfo()
-{
+FoodInfo::FoodInfo() {}
 
-}
-
-void FoodInfo::insertFoodInfo(QString foodName, QString foodPrice)
-{
-    ManageDatabese manageDb=ManageDatabese();
-    QSqlDatabase db=manageDb.OpenDb();
+void FoodInfo::insertFoodInfo(QString foodName, QString foodPrice) {
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     QSqlQuery query(db);
-    query.prepare("INSERT INTO FoodInfo (FoodName,FoodPrice)"
-                  "VALUES (:foodname, :price)");
+    query.prepare(
+        "INSERT INTO FoodInfo (FoodName,FoodPrice)"
+        "VALUES (:foodname, :price)");
     query.bindValue(":foodname", foodName);
     query.bindValue(":price", foodPrice);
-    if (query.exec())
-      qDebug() << "数据库打开";
+    if (query.exec()) qDebug() << "数据库打开";
+    ManageDatabese::closeDb(db);
+  }
 }
 
-void FoodInfo::searchFoodInfo(QStringList *foodNameItem, QStringList *foodPriceItem, int *row)
-{
-    ManageDatabese manageDb=ManageDatabese();
-    QSqlDatabase db=manageDb.OpenDb();
+void FoodInfo::searchFoodInfo(QStringList *foodNameItem,
+                              QStringList *foodPriceItem, int *row) {
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     QSqlQuery query(db);
     query.exec("select *from FoodInfo");
     query.last();
@@ -38,19 +36,19 @@ void FoodInfo::searchFoodInfo(QStringList *foodNameItem, QStringList *foodPriceI
       foodPriceItem->append(foodPrice);
       i++;
     }
-    manageDb.closeDb(db);
+    ManageDatabese::closeDb(db);
+  }
 }
 
-void FoodInfo::deleteFoodInfo(QString data)
-{
-    ManageDatabese manageDb=ManageDatabese();
-    QSqlDatabase db=manageDb.OpenDb();
+void FoodInfo::deleteFoodInfo(QString data) {
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     QSqlQuery query(db);
     //    char *foodname;
     //    QByteArray tempfoodname=model->data(indexfood).toString().toLatin1();
     //    foodname=tempfoodname.data();
-    query.prepare("delete from FoodInfo where FoodName ='" +
-                  data + "'");
-    if (query.exec())
-      qDebug() << "test delete";
+    query.prepare("delete from FoodInfo where FoodName ='" + data + "'");
+    if (query.exec()) qDebug() << "test delete";
+    ManageDatabese::closeDb(db);
+  }
 }

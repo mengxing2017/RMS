@@ -1,14 +1,11 @@
 #include "src/include/db/seat_info.h"
 
-SeatInfo::SeatInfo()
-{
+SeatInfo::SeatInfo() {}
 
-}
-
-void SeatInfo::searchSeatInfo(QStringList *desKIdItem,QStringList *flagItem,int *row)
-{
-    ManageDatabese *manageDb=new ManageDatabese();
-    QSqlDatabase db=manageDb->OpenDb();
+void SeatInfo::searchSeatInfo(QStringList *desKIdItem, QStringList *flagItem,
+                              int *row) {
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     QSqlQuery query(db);
 
     query.exec("select *from TableInfo");
@@ -23,15 +20,15 @@ void SeatInfo::searchSeatInfo(QStringList *desKIdItem,QStringList *flagItem,int 
       desKIdItem->append(deskId);
       flagItem->append(flag);
     }
-    manageDb->closeDb(db);
+    ManageDatabese::closeDb(db);
+  }
 }
 
-QStringList SeatInfo::searchSomeSeat()
-{
-    QStringList item;
-    item.append("");
-    ManageDatabese *manageDb=new ManageDatabese();
-    QSqlDatabase db=manageDb->OpenDb();
+QStringList SeatInfo::searchSomeSeat() {
+  QStringList item;
+  item.append("");
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     QSqlQuery query(db);
 
     query.exec("select *from TableInfo where  isuse='有人'");
@@ -42,16 +39,21 @@ QStringList SeatInfo::searchSomeSeat()
         item.append(foodName);
       }
     }
-    return item;
+  }
+
+  return item;
 }
 
-bool SeatInfo::updateSeatInfo(QString time, QString idTable,QString isSomeone)
-{
-    ManageDatabese *manageDb=new ManageDatabese();
-    QSqlDatabase db=manageDb->OpenDb();
+bool SeatInfo::updateSeatInfo(QString time, QString idTable,
+                              QString isSomeone) {
+  bool bl = false;
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     QSqlQuery query(db);
-    bool bl= query.exec("update TableInfo set isUse = "+isSomeone+",time='" + time +
-                      "'   where TableID ='" + idTable + "'");
-    manageDb->closeDb(db);
-    return bl;
+    bl = query.exec("update TableInfo set isUse = " + isSomeone + ",time='" +
+                    time + "'   where TableID ='" + idTable + "'");
+    ManageDatabese::closeDb(db);
+  }
+
+  return bl;
 }
