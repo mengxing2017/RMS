@@ -1,4 +1,5 @@
 #include "src/include/db/manage_databese.h"
+#include "src/include/db/create_table.h"
 
 ManageDatabese::ManageDatabese() {}
 
@@ -17,7 +18,13 @@ void ManageDatabese::closeDb(QSqlDatabase db) { db.close(); }
 
 bool ManageDatabese::createDb() {
   QSqlDatabase db = connect();
-  if (db.open()) {
+  if (!db.open()) {
+    qDebug() << "database open failed";
+    return false;
   }
-  return true;
+  qDebug() << "create database";
+  CreateTable *creatTable = new CreateTable();
+  bool bl = creatTable->CreateAccount(db);
+  creatTable->~CreateTable();
+  return bl;
 }

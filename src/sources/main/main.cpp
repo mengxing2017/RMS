@@ -25,14 +25,16 @@ void initDb() {
 
   //创建数据库并初始化
   if (!ManageDatabese::createDb()) {
+    qDebug() << "create database failed";
     return;
   };
 }
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
-  MainWindow w;
-  w.show();
+  //  MainWindow w;
+  //  w.show();
   initDb();
-  return a.exec();
+  //  return a.exec();
+  return 0;
 }

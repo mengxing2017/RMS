@@ -12,4 +12,7 @@
         <file>res/images/main_background.jpeg</file>
         <file>res/images/selectSeat_background.jpeg</file>
     </qresource>
+    <qresource prefix="/">
+        <file>res/db/create_table/create_account_table.sql</file>
+    </qresource>
 </RCC>

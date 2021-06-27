@@ -19,7 +19,7 @@ OBJECTS_DIR = $${PROJECT_ROOT}/compile/obj
 RCC_DIR = $${PROJECT_ROOT}/compile/rcc
 UI_DIR = $${PROJECT_ROOT}/compile/ui
 
-LIBS += -L./lib/sqlite3 -lqsqlite
+LIBS += -L$${PROJECT_ROOT}/lib/sqlite3 -lqsqlite
 
 RESOURCES += \
     res.qrc
@@ -60,7 +60,9 @@ HEADERS += \
     src/include/db/food_info.h \
     src/include/db/user_management.h \
     src/include/db/seat_info.h \
-    src/include/db/check.h
+    src/include/db/check.h \
+    src/include/db/create_table.h \
+    src/include/db/excute_sql_file.h
 
 SOURCES += \
     src/sources/main/main.cpp \
@@ -97,5 +99,7 @@ SOURCES += \
     src/sources/db/food_info.cpp \
     src/sources/db/user_management.cpp \
     src/sources/db/seat_info.cpp \
-    src/sources/db/check.cpp
+    src/sources/db/check.cpp \
+    src/sources/db/excute_sql_file.cpp \
+    src/sources/db/create_table.cpp
 

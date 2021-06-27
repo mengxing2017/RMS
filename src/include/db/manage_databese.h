@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QSqlDatabase>
 
+#include "create_table.h"
+
 class ManageDatabese {
  public:
   ManageDatabese();

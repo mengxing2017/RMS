@@ -18,4 +18,4 @@ FoodBevManage
 doc/.DS_Store
 doc/enrollment-doc.pdf
 doc/node_modules
-db
+db/*
