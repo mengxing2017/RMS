@@ -1,14 +1,12 @@
 #include "src/include/db/check.h"
 
-Check::Check()
-{
+Check::Check() {}
 
-}
-
-QString Check::checkOut(const QString &arg1,QStringList *foodNameList,QStringList *foodPriceList,QStringList *numberList)
-{
-    ManageDatabese *manageDb=new ManageDatabese();
-    QSqlDatabase db=manageDb->OpenDb();
+QString Check::checkOut(const QString &arg1, QStringList *foodNameList,
+                        QStringList *foodPriceList, QStringList *numberList) {
+  double sumMoney = 0;
+  QSqlDatabase db = ManageDatabese::connect();
+  if (ManageDatabese::openDb(db)) {
     QSqlQuery query(db);
     query.exec("select *from TableInfo where  tableid='" + arg1 + "'");
     qDebug() << query.exec();
@@ -16,7 +14,7 @@ QString Check::checkOut(const QString &arg1,QStringList *foodNameList,QStringLis
     QString time = query.value(3).toString();
     query.exec("select *from  billinfo where  tableid='" + arg1 +
                "' and datetime='" + time + "'");
-    double sumMoney = 0;
+
     while (query.next()) {
       QString foodName = query.value(2).toString();
       bool ok;
@@ -29,6 +27,10 @@ QString Check::checkOut(const QString &arg1,QStringList *foodNameList,QStringLis
       foodPriceList->append(QString::number(price));
       numberList->append(QString::number(number));
       sumMoney += number * price;
+
+      ManageDatabese::closeDb(db);
     }
-    return QString::number(sumMoney);
+  }
+
+  return QString::number(sumMoney);
 }

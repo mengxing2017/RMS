@@ -1,5 +1,5 @@
 FoodBevManage.pro.*
-bin
+bin/FoodBevManage
 *.d
 *.obj
 *.o
@@ -17,5 +17,5 @@ Makefile
 FoodBevManage
 doc/.DS_Store
 doc/enrollment-doc.pdf
-doc/node_modules/
-
+doc/node_modules
+db
