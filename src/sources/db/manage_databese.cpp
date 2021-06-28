@@ -5,6 +5,7 @@ ManageDatabese::ManageDatabese() {}
 
 QSqlDatabase ManageDatabese::connect() {
   QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+  db.setDatabaseName(":data:");
   db.setDatabaseName(QCoreApplication::applicationDirPath() + "/../db/data.db");
   return db;
 }
@@ -15,16 +16,3 @@ bool ManageDatabese::openDb(QSqlDatabase db) {
 }
 
 void ManageDatabese::closeDb(QSqlDatabase db) { db.close(); }
-
-bool ManageDatabese::createDb() {
-  QSqlDatabase db = connect();
-  if (!db.open()) {
-    qDebug() << "database open failed";
-    return false;
-  }
-  qDebug() << "create database";
-  CreateTable *creatTable = new CreateTable();
-  bool bl = creatTable->CreateAccount(db);
-  creatTable->~CreateTable();
-  return bl;
-}

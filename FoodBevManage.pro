@@ -62,7 +62,8 @@ HEADERS += \
     src/include/db/seat_info.h \
     src/include/db/check.h \
     src/include/db/create_table.h \
-    src/include/db/excute_sql_file.h
+    src/include/db/excute_sql_file.h \
+    src/include/db/init_database.h
 
 SOURCES += \
     src/sources/main/main.cpp \
@@ -101,5 +102,6 @@ SOURCES += \
     src/sources/db/seat_info.cpp \
     src/sources/db/check.cpp \
     src/sources/db/excute_sql_file.cpp \
-    src/sources/db/create_table.cpp
+    src/sources/db/create_table.cpp \
+    src/sources/db/init_database.cpp
 

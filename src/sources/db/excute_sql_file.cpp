@@ -1,5 +1,4 @@
 #include "src/include/db/excute_sql_file.h"
-
 #include "src/include/db/manage_databese.h"
 
 ExcuteSqlFile::ExcuteSqlFile() {}
@@ -12,6 +11,10 @@ int ExcuteSqlFile::excute(QFile *file, QSqlDatabase db) {
   if (!file->open(QIODevice::ReadOnly | QIODevice::Text)) {
     return -1;
   }
+  if (db.isOpen()) {
+    qDebug() << "excuteSqlFile: open database....";
+    db.open();
+  }
   QTextStream in(file);
   in.setCodec("UTF-8");
   QString sqlData = in.readAll();
@@ -21,9 +24,16 @@ int ExcuteSqlFile::excute(QFile *file, QSqlDatabase db) {
   for (int i = 0; i < qstrlist_sql.size() - 1; i++) {
     QString qstr_sql_part = qstrlist_sql.at(i).toUtf8();
     qDebug() << qstr_sql_part;
-    bool sql_result = query.exec(qstr_sql_part);
-    if (!sql_result) {
-      QSqlError sql_error = query.lastError();
+    bool success = query.exec(
+        "CREATE TABLE students ("
+        "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+        "name VARCHAR(40) NOT NULL, "
+        "score INTEGER NOT NULL, "
+        "grade VARCHAR(40) NOT NULL)");
+    if (!success) {
+      QSqlError lastError = query.lastError();
+      QString err = lastError.driverText();
+      qDebug() << err;
       iRet = -1;
       break;
     }
