@@ -9,13 +9,13 @@ bin/FoodBevManage
 *.pdb
 *~
 *.swp
-build
+build/*
+compile/*
 .qmake.stash
 moc_*
-qrc_res.cpp
 Makefile
-FoodBevManage
 doc/.DS_Store
 doc/enrollment-doc.pdf
 doc/node_modules
 db/*
+doc/package-lock.json
