@@ -13,7 +13,6 @@ class ManageDatabese {
   static QSqlDatabase connect();
   static bool openDb(QSqlDatabase db);
   static void closeDb(QSqlDatabase db);
-  static bool createDb();
 };
 
 #endif  // MANAGE_DATABESE_H
