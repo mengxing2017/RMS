@@ -10,7 +10,6 @@ bin/rms
 *~
 *.swp
 build/*
-compile/*
 .qmake.stash
 moc_*
 Makefile
