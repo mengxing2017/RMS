@@ -1,5 +1,5 @@
-FoodBevManage.pro.*
-bin/FoodBevManage
+rms.pro.*
+bin/rms
 *.d
 *.obj
 *.o

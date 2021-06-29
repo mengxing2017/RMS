@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP_NAME=FoodBevManage
+APP_NAME=rms
 
 # 获取脚本当前目录
 SOURCE="${BASH_SOURCE[0]}"
