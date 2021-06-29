@@ -7,6 +7,10 @@
 
 #include "create_table.h"
 
+/**
+ * @brief The ManageDatabese class
+ * 管理数据库类
+ */
 class ManageDatabese {
  public:
   ManageDatabese();

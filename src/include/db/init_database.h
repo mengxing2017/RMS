@@ -8,6 +8,10 @@
 #include <QSqlQuery>
 #include <QString>
 
+/**
+ * @brief The InitDatabase class
+ * 初始化数据库类
+ */
 class InitDatabase {
  public:
   InitDatabase();

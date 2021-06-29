@@ -1,20 +1,24 @@
 #ifndef SEARCH_FOOD_INFO_H
 #define SEARCH_FOOD_INFO_H
 
-#include <QSqlQuery>
 #include <QAbstractItemModel>
+#include <QSqlQuery>
 #include "manage_databese.h"
 
-class FoodInfo
-{
-public:
-    FoodInfo();
+/**
+ * @brief The FoodInfo class
+ * 菜品信息类
+ */
+class FoodInfo {
+ public:
+  FoodInfo();
 
-    void insertFoodInfo(QString foodName,QString foodPrice);
+  void insertFoodInfo(QString foodName, QString foodPrice);
 
-    void searchFoodInfo(QStringList *foodNameItem, QStringList *foodPriceItem,int *row);
+  void searchFoodInfo(QStringList *foodNameItem, QStringList *foodPriceItem,
+                      int *row);
 
-    void deleteFoodInfo(QString data );
+  void deleteFoodInfo(QString data);
 };
 
-#endif // SEARCH_FOOD_INFO_H
+#endif  // SEARCH_FOOD_INFO_H

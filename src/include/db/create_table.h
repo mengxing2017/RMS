@@ -5,6 +5,10 @@
 #include <QFile>
 #include <QSqlDatabase>
 
+/**
+ * @brief The CreateTable class
+ * 创建表格类
+ */
 class CreateTable {
  public:
   CreateTable();

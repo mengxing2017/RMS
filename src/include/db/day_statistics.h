@@ -1,24 +1,27 @@
 #ifndef DAYSTATISTICS_H
 #define DAYSTATISTICS_H
 
-#include <QString>
+#include <QDate>
+#include <QDebug>
 #include <QSqlDatabase>
 #include <QSqlQuery>
-#include <QDebug>
-#include <QDate>
+#include <QString>
 
 #include "manage_databese.h"
 
-class DayStatistics
-{
-public:
-    DayStatistics();
-    ~DayStatistics();
-    void statistics();
-    QString returnMoney();
+/**
+ * @brief The DayStatistics class
+ * 日统计类
+ */
+class DayStatistics {
+ public:
+  DayStatistics();
+  ~DayStatistics();
+  void statistics();
+  QString returnMoney();
 
-private:
-    QString Money;
+ private:
+  QString Money;
 };
 
-#endif // DAYSTATISTICS_H
+#endif  // DAYSTATISTICS_H

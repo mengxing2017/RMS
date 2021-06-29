@@ -6,6 +6,10 @@
 #include <QSqlQuery>
 #include <QTextStream>
 
+/**
+ * @brief The ExcuteSqlFile class
+ * 执行sql文件类
+ */
 class ExcuteSqlFile {
  public:
   ExcuteSqlFile();
