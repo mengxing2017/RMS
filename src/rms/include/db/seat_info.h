@@ -4,7 +4,7 @@
 #include <QSqlQuery>
 #include <QString>
 
-#include "manage_databese.h"
+#include "manage_database.h"
 
 /**
  * @brief The SeatInfo class

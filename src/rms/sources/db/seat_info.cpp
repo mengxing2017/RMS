@@ -4,8 +4,8 @@ SeatInfo::SeatInfo() {}
 
 void SeatInfo::searchSeatInfo(QStringList *desKIdItem, QStringList *flagItem,
                               int *row) {
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
 
     query.exec("select *from TableInfo");
@@ -20,15 +20,15 @@ void SeatInfo::searchSeatInfo(QStringList *desKIdItem, QStringList *flagItem,
       desKIdItem->append(deskId);
       flagItem->append(flag);
     }
-    ManageDatabese::closeDb(db);
+    ManageDatabase::closeDb(db);
   }
 }
 
 QStringList SeatInfo::searchSomeSeat() {
   QStringList item;
   item.append("");
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
 
     query.exec("select *from TableInfo where  isuse='有人'");
@@ -47,12 +47,12 @@ QStringList SeatInfo::searchSomeSeat() {
 bool SeatInfo::updateSeatInfo(QString time, QString idTable,
                               QString isSomeone) {
   bool bl = false;
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
     bl = query.exec("update TableInfo set isUse = " + isSomeone + ",time='" +
                     time + "'   where TableID ='" + idTable + "'");
-    ManageDatabese::closeDb(db);
+    ManageDatabase::closeDb(db);
   }
 
   return bl;

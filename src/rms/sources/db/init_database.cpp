@@ -1,6 +1,6 @@
 #include "db/init_database.h"
 #include "db/create_table.h"
-#include "db/manage_databese.h"
+#include "db/manage_database.h"
 
 InitDatabase::InitDatabase() {}
 
@@ -15,7 +15,7 @@ bool InitDatabase::initDb() {
   }
 
   // 判断数据库是否能打开，如果不能打开，则直接退出程序
-  QSqlDatabase db = ManageDatabese::connect();
+  QSqlDatabase db = ManageDatabase::connect();
   if (!db.open()) {
     qDebug() << "initDatabase: database open faild ";
     return false;

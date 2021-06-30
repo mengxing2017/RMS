@@ -5,8 +5,8 @@ SearchSales::SearchSales() {}
 QString SearchSales::searchDailySales(QString year, QString month,
                                       QString day) {
   double sumMoney = 0;
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
     query.exec("select *from billinfo where datetime like'" + year + "-" +
                month + "-" + day + "%'");
@@ -15,7 +15,7 @@ QString SearchSales::searchDailySales(QString year, QString month,
       double foodPrice = query.value(4).toDouble();
       sumMoney += number * foodPrice;
     }
-    ManageDatabese::closeDb(db);
+    ManageDatabase::closeDb(db);
   }
 
   return QString::number(sumMoney);
@@ -23,8 +23,8 @@ QString SearchSales::searchDailySales(QString year, QString month,
 
 QString SearchSales::searchMonthSales(QString year, QString month) {
   double sumMoney = 0;
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
     query.exec("select *from billinfo where datetime like'" + year + "-" +
                month + "-%'");
@@ -37,7 +37,7 @@ QString SearchSales::searchMonthSales(QString year, QString month) {
       sumMoney += number * foodPrice;
       qDebug() << sumMoney;
     }
-    ManageDatabese::closeDb(db);
+    ManageDatabase::closeDb(db);
   }
 
   return QString::number(sumMoney);

@@ -5,8 +5,8 @@ Check::Check() {}
 QString Check::checkOut(const QString &arg1, QStringList *foodNameList,
                         QStringList *foodPriceList, QStringList *numberList) {
   double sumMoney = 0;
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
     query.exec("select *from TableInfo where  tableid='" + arg1 + "'");
     qDebug() << query.exec();
@@ -28,7 +28,7 @@ QString Check::checkOut(const QString &arg1, QStringList *foodNameList,
       numberList->append(QString::number(number));
       sumMoney += number * price;
 
-      ManageDatabese::closeDb(db);
+      ManageDatabase::closeDb(db);
     }
   }
 

@@ -3,7 +3,7 @@
 
 #include <QAbstractItemModel>
 #include <QSqlQuery>
-#include "manage_databese.h"
+#include "manage_database.h"
 
 /**
  * @brief The FoodInfo class

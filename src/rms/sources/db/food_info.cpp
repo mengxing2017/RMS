@@ -3,8 +3,8 @@
 FoodInfo::FoodInfo() {}
 
 void FoodInfo::insertFoodInfo(QString foodName, QString foodPrice) {
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
     query.prepare(
         "INSERT INTO FoodInfo (FoodName,FoodPrice)"
@@ -12,14 +12,14 @@ void FoodInfo::insertFoodInfo(QString foodName, QString foodPrice) {
     query.bindValue(":foodname", foodName);
     query.bindValue(":price", foodPrice);
     if (query.exec()) qDebug() << "数据库打开";
-    ManageDatabese::closeDb(db);
+    ManageDatabase::closeDb(db);
   }
 }
 
 void FoodInfo::searchFoodInfo(QStringList *foodNameItem,
                               QStringList *foodPriceItem, int *row) {
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
     query.exec("select *from FoodInfo");
     query.last();
@@ -36,19 +36,19 @@ void FoodInfo::searchFoodInfo(QStringList *foodNameItem,
       foodPriceItem->append(foodPrice);
       i++;
     }
-    ManageDatabese::closeDb(db);
+    ManageDatabase::closeDb(db);
   }
 }
 
 void FoodInfo::deleteFoodInfo(QString data) {
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
     //    char *foodname;
     //    QByteArray tempfoodname=model->data(indexfood).toString().toLatin1();
     //    foodname=tempfoodname.data();
     query.prepare("delete from FoodInfo where FoodName ='" + data + "'");
     if (query.exec()) qDebug() << "test delete";
-    ManageDatabese::closeDb(db);
+    ManageDatabase::closeDb(db);
   }
 }
