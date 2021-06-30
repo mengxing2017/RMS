@@ -3,7 +3,7 @@
 # Project created by QtCreator 2016-07-14T07:09:29
 #
 #-------------------------------------------------
-include(rms/src/config.pri)
+include(src/rms/config.pri)
 
 QT       += core gui
 QT += sql
