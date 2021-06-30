@@ -1,5 +1,5 @@
-#include "src/rms/include/dialog/selectseat_dialog.h"
-#include "src/rms/include/ui/ui_selectseat_dialog.h"
+#include "dialog/selectseat_dialog.h"
+#include "ui/ui_selectseat_dialog.h"
 
 SelectSeat_Dialog::SelectSeat_Dialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::SelectSeat_Dialog) {

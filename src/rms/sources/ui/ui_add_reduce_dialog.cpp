@@ -1,4 +1,4 @@
-#include "src/rms/include/ui/ui_add_reduce_dialog.h"
+#include "ui/ui_add_reduce_dialog.h"
 
 void Ui_Add_Reduce_Dialog::setupUi(QDialog *Add_Reduce_Dialog) {
   if (Add_Reduce_Dialog->objectName().isEmpty())

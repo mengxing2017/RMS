@@ -1,15 +1,15 @@
-﻿#include "src/rms/include/main/mainwindow.h"
+﻿#include "main/mainwindow.h"
 #include <QDesktopWidget>
-#include "src/rms/include/db/day_statistics.h"
-#include "src/rms/include/dialog/add_reduce_dialog.h"
-#include "src/rms/include/dialog/check_out_dialog.h"
-#include "src/rms/include/dialog/dayincomequery_dialog.h"
-#include "src/rms/include/dialog/foodinfo_dialog.h"
-#include "src/rms/include/dialog/monthincomequery_dialog.h"
-#include "src/rms/include/dialog/selectseat_dialog.h"
-#include "src/rms/include/dialog/staffregister_dialog.h"
-#include "src/rms/include/dialog/stockqquery_dialog.h"
-#include "src/rms/include/ui/ui_mainwindow.h"
+#include "db/day_statistics.h"
+#include "dialog/add_reduce_dialog.h"
+#include "dialog/check_out_dialog.h"
+#include "dialog/dayincomequery_dialog.h"
+#include "dialog/foodinfo_dialog.h"
+#include "dialog/monthincomequery_dialog.h"
+#include "dialog/selectseat_dialog.h"
+#include "dialog/staffregister_dialog.h"
+#include "dialog/stockqquery_dialog.h"
+#include "ui/ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {

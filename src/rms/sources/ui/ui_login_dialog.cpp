@@ -1,4 +1,4 @@
-#include "src/rms/include/ui/ui_login_dialog.h"
+#include "ui/ui_login_dialog.h"
 
 void Ui_Login_Dialog::setupUi(QDialog *LoginDialog) {
   if (LoginDialog->objectName().isEmpty())

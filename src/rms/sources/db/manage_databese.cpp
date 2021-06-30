@@ -1,5 +1,5 @@
-#include "src/rms/include/db/manage_databese.h"
-#include "src/rms/include/db/create_table.h"
+#include "db/manage_databese.h"
+#include "db/create_table.h"
 
 ManageDatabese::ManageDatabese() {}
 

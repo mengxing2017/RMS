@@ -1,4 +1,4 @@
-#include "src/rms/include/ui/ui_dishescount_dialog.h"
+#include "ui/ui_dishescount_dialog.h"
 
 void Ui_DishesCount_Dialog::setupUi(QDialog *DishesCountDialog) {
   if (DishesCountDialog->objectName().isEmpty())

@@ -1,4 +1,4 @@
-#include "src/rms/include/ui/ui_orderdishes_dialog.h"
+#include "ui/ui_orderdishes_dialog.h"
 
 void Ui_OrderDishes_Dialog::setupUi(QDialog *OrderDishesDialog) {
   if (OrderDishesDialog->objectName().isEmpty())

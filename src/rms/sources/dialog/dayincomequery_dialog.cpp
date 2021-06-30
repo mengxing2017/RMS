@@ -1,6 +1,6 @@
-#include "src/rms/include/dialog/dayincomequery_dialog.h"
-#include "src/rms/include/db/search_sales.h"
-#include "src/rms/include/ui/ui_dayincomequery_dialog.h"
+#include "dialog/dayincomequery_dialog.h"
+#include "db/search_sales.h"
+#include "ui/ui_dayincomequery_dialog.h"
 
 DayIncomeQuery_Dialog::DayIncomeQuery_Dialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::DayIncomeQuery_Dialog) {

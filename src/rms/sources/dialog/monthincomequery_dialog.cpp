@@ -1,5 +1,5 @@
-#include "src/rms/include/dialog/monthincomequery_dialog.h"
-#include "src/rms/include/ui/ui_monthincomequery_dialog.h"
+#include "dialog/monthincomequery_dialog.h"
+#include "ui/ui_monthincomequery_dialog.h"
 
 MonthIncomeQuery_Dialog::MonthIncomeQuery_Dialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::MonthIncomeQuery_Dialog) {

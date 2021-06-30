@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <QDialog>
 #include <QMessageBox>
-#include "src/rms/include/db/seat_info.h"
+#include "db/seat_info.h"
 
 namespace Ui {
 class Check_OutDialog;

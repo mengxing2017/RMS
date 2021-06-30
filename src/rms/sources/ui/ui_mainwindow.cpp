@@ -1,4 +1,4 @@
-#include "src/rms/include/ui/ui_mainwindow.h"
+#include "ui/ui_mainwindow.h"
 #include <QGraphicsOpacityEffect>
 
 void Ui_MainWindow::setupUi(QMainWindow *MainWindow) {

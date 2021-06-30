@@ -1,4 +1,4 @@
-#include "src/rms/include/db/check.h"
+#include "db/check.h"
 
 Check::Check() {}
 

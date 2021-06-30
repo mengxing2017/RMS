@@ -1,5 +1,5 @@
-#include "src/rms/include/db/create_table.h"
-#include "src/rms/include/db/excute_sql_file.h"
+#include "db/create_table.h"
+#include "db/excute_sql_file.h"
 
 CreateTable::CreateTable() {}
 

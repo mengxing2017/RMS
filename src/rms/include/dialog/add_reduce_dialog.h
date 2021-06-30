@@ -6,7 +6,7 @@
 #include <QMessageBox>
 #include <QStringList>
 
-#include "src/rms/include/db/order_dishes.h"
+#include "db/order_dishes.h"
 
 namespace Ui {
 class Add_Reduce_Dialog;

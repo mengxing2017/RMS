@@ -1,5 +1,5 @@
-#include "src/rms/include/dialog/stockqquery_dialog.h"
-#include "src/rms/include/ui/ui_stockquery_dialog.h"
+#include "dialog/stockqquery_dialog.h"
+#include "ui/ui_stockquery_dialog.h"
 
 StockqQuery_Dialog::StockqQuery_Dialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::StockqQuery_Dialog) {

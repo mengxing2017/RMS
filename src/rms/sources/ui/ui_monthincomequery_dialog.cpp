@@ -1,4 +1,4 @@
-#include "src/rms/include/ui/ui_monthincomequery_dialog.h"
+#include "ui/ui_monthincomequery_dialog.h"
 
 void Ui_MonthIncomeQuery_Dialog::setupUi(QDialog *MonthIncomeQuery_Dialog) {
   if (MonthIncomeQuery_Dialog->objectName().isEmpty())

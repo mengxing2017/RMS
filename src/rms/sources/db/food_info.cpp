@@ -1,4 +1,4 @@
-#include "src/rms/include/db/food_info.h"
+#include "db/food_info.h"
 
 FoodInfo::FoodInfo() {}
 

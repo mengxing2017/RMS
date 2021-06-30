@@ -1,4 +1,4 @@
-#include "src/rms/include/db/seat_info.h"
+#include "db/seat_info.h"
 
 SeatInfo::SeatInfo() {}
 

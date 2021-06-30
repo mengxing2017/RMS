@@ -1,4 +1,4 @@
-#include "src/rms/include/db/search_sales.h"
+#include "db/search_sales.h"
 
 SearchSales::SearchSales() {}
 

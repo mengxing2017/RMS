@@ -1,6 +1,6 @@
-#include "src/rms/include/dialog/staffregister_dialog.h"
-#include "src/rms/include/db/user_management.h"
-#include "src/rms/include/ui/ui_staffregister_dialog.h"
+#include "dialog/staffregister_dialog.h"
+#include "db/user_management.h"
+#include "ui/ui_staffregister_dialog.h"
 
 staffRegister_Dialog::staffRegister_Dialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::staffRegister_Dialog) {

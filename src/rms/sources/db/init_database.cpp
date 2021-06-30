@@ -1,6 +1,6 @@
-#include "src/rms/include/db/init_database.h"
-#include "src/rms/include/db/create_table.h"
-#include "src/rms/include/db/manage_databese.h"
+#include "db/init_database.h"
+#include "db/create_table.h"
+#include "db/manage_databese.h"
 
 InitDatabase::InitDatabase() {}
 

@@ -1,4 +1,4 @@
-#include "src/rms/include/ui/ui_stockquery_dialog.h"
+#include "ui/ui_stockquery_dialog.h"
 
 void Ui_StockqQuery_Dialog::setupUi(QDialog *StockqQuery_Dialog) {
   if (StockqQuery_Dialog->objectName().isEmpty())

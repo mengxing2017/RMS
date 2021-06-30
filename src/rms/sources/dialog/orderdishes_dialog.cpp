@@ -1,9 +1,9 @@
-#include "src/rms/include/dialog/orderdishes_dialog.h"
+#include "dialog/orderdishes_dialog.h"
 #include <QStandardItemModel>
-#include "src/rms/include/db/food_info.h"
-#include "src/rms/include/db/order_dishes.h"
-#include "src/rms/include/dialog/dishescount_dialog.h"
-#include "src/rms/include/ui/ui_orderdishes_dialog.h"
+#include "db/food_info.h"
+#include "db/order_dishes.h"
+#include "dialog/dishescount_dialog.h"
+#include "ui/ui_orderdishes_dialog.h"
 
 OrderDishesDialog::OrderDishesDialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::OrderDishesDialog) {

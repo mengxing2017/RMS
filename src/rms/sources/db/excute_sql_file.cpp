@@ -1,5 +1,5 @@
-#include "src/rms/include/db/excute_sql_file.h"
-#include "src/rms/include/db/manage_databese.h"
+#include "db/excute_sql_file.h"
+#include "db/manage_databese.h"
 
 ExcuteSqlFile::ExcuteSqlFile() {}
 

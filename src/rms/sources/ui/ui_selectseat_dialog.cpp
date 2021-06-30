@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#include "src/rms/include/ui/ui_selectseat_dialog.h"
+#include "ui/ui_selectseat_dialog.h"
 
 void Ui_SelectSeat_Dialog::setupUi(QDialog *SelectSeat_Dialog) {
   if (SelectSeat_Dialog->objectName().isEmpty())

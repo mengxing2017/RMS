@@ -3,7 +3,7 @@
 
 #include <QDebug>
 #include <QMainWindow>
-#include "src/rms/include/dialog/login_dialog.h"
+#include "dialog/login_dialog.h"
 
 namespace Ui {
 class MainWindow;

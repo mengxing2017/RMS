@@ -5,7 +5,7 @@
 #include <QDialog>
 #include <QMessageBox>
 
-#include "src/rms/include/db/user_management.h"
+#include "db/user_management.h"
 
 namespace Ui {
 class LoginDialog;
