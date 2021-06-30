@@ -9,8 +9,8 @@ void DayStatistics::statistics() {
   QDate date = QDate::currentDate();
   QString dateStr = date.toString("yyyy-MM-dd");
 
-  QSqlDatabase db = ManageDatabese::connect();
-  if (ManageDatabese::openDb(db)) {
+  QSqlDatabase db = ManageDatabase::connect();
+  if (ManageDatabase::openDb(db)) {
     QSqlQuery query(db);
     query.exec("select *from billinfo where datetime like '" + dateStr + "%'");
     double sumMoney = 0;
@@ -20,7 +20,7 @@ void DayStatistics::statistics() {
       sumMoney += number * price;
     }
     Money = QString::number(sumMoney);
-    ManageDatabese::closeDb(db);
+    ManageDatabase::closeDb(db);
   }
 }
 

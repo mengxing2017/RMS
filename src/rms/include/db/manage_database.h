@@ -1,5 +1,5 @@
-#ifndef MANAGE_DATABESE_H
-#define MANAGE_DATABESE_H
+#ifndef MANAGE_DATABASE_H
+#define MANAGE_DATABASE_H
 
 #include <QCoreApplication>
 #include <QDebug>
@@ -8,15 +8,15 @@
 #include "create_table.h"
 
 /**
- * @brief The ManageDatabese class
+ * @brief The ManageDatabase class
  * 管理数据库类
  */
-class ManageDatabese {
+class ManageDatabase {
  public:
-  ManageDatabese();
+  ManageDatabase();
   static QSqlDatabase connect();
   static bool openDb(QSqlDatabase db);
   static void closeDb(QSqlDatabase db);
 };
 
-#endif  // MANAGE_DATABESE_H
+#endif  // MANAGE_DATABASE_H

@@ -5,7 +5,7 @@
 #include <QString>
 #include <QStringList>
 
-#include "manage_databese.h"
+#include "manage_database.h"
 
 /**
  * @brief The Check class

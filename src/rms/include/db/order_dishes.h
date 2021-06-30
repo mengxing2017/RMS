@@ -6,7 +6,7 @@
 #include <QSqlQuery>
 #include <QtDebug>
 
-#include "manage_databese.h"
+#include "manage_database.h"
 
 /**
  * @brief The OrderDishes class
