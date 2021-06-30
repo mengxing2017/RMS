@@ -23,7 +23,13 @@ OBJECTS_DIR = $${BUILD_DIST}/obj
 RCC_DIR = $${BUILD_DIST}/rcc
 UI_DIR = $${BUILD_DIST}/ui
 
-LIBS += -L$${PROJECT_ROOT}/lib/sqlite3 -lqsqlite
+# 引入动态库
+LIBS += -L$${PROJECT_ROOT}/lib/sqlite3 -lqsqlite \
+        -L$${PROJECT_ROOT}/lib/log4qt -llog4qt
+
+# 引入头文件目录
+INCLUDEPATH += $${PROJECT_ROOT}/include \
+      $${PROJECT_ROOT}/src/rms/include
 
 RESOURCES += \
     res.qrc

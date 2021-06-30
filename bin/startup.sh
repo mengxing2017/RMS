@@ -20,7 +20,7 @@ BIN_DIR=${BASE_DIR}/bin
 LIB_DIR=${BASE_DIR}/lib
 
 # 配置sqlite3驱动环境变量
-export LD_LIBRARY_PATH=${LIB_DIR}/sqlite3:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=${LIB_DIR}/sqlite3:${LIB_DIR}/log4qt:$LD_LIBRARY_PATH
 
 # 启动程序
 ${BIN_DIR}/${APP_NAME}
