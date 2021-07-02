@@ -1,8 +1,8 @@
-#include "db/search_sales.h"
+#include "db/sales.h"
 
-SearchSales::SearchSales() {}
+Sales::Sales() {}
 
-QString SearchSales::searchDailySales(QString year, QString month,
+QString Sales::searchDailySales(QString year, QString month,
                                       QString day) {
   double sumMoney = 0;
   QSqlDatabase db = ManageDatabase::connect();
@@ -21,7 +21,7 @@ QString SearchSales::searchDailySales(QString year, QString month,
   return QString::number(sumMoney);
 }
 
-QString SearchSales::searchMonthSales(QString year, QString month) {
+QString Sales::searchMonthSales(QString year, QString month) {
   double sumMoney = 0;
   QSqlDatabase db = ManageDatabase::connect();
   if (ManageDatabase::openDb(db)) {

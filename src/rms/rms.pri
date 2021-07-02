@@ -27,7 +27,6 @@ HEADERS += \
     $$PWD/include/ui/ui_varietymenu_dialog.h \
     $$PWD/include/db/day_statistics.h \
     $$PWD/include/db/order_dishes.h \
-    $$PWD/include/db/search_sales.h \
     $$PWD/include/db/food_info.h \
     $$PWD/include/db/user_management.h \
     $$PWD/include/db/seat_info.h \
@@ -36,7 +35,8 @@ HEADERS += \
     $$PWD/include/db/excute_sql_file.h \
     $$PWD/include/db/init_database.h \
     $$PWD/include/db/manage_database.h \
-    $$PWD/include/log.h
+    $$PWD/include/log.h \
+    $$PWD/include/db/sales.h
 
 SOURCES += \
     $$PWD/sources/main/main.cpp \
@@ -68,7 +68,6 @@ SOURCES += \
     $$PWD/sources/ui/ui_stockquery_dialog.cpp \
     $$PWD/sources/db/day_statistics.cpp \
     $$PWD/sources/db/order_dishes.cpp \
-    $$PWD/sources/db/search_sales.cpp \
     $$PWD/sources/db/food_info.cpp \
     $$PWD/sources/db/user_management.cpp \
     $$PWD/sources/db/seat_info.cpp \
@@ -77,4 +76,5 @@ SOURCES += \
     $$PWD/sources/db/create_table.cpp \
     $$PWD/sources/db/init_database.cpp \
     $$PWD/sources/db/manage_database.cpp \
-    $$PWD/sources/log.cpp
+    $$PWD/sources/log.cpp \
+    $$PWD/sources/db/sales.cpp
