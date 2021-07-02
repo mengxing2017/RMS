@@ -9,9 +9,9 @@
  * @brief The SearchSales class
  * 消费类
  */
-class SearchSales {
+class Sales {
  public:
-  SearchSales();
+  Sales();
 
   QString searchDailySales(QString year, QString month, QString day);
   QString searchMonthSales(QString year, QString month);

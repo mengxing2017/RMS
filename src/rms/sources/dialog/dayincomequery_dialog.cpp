@@ -1,5 +1,5 @@
 #include "dialog/dayincomequery_dialog.h"
-#include "db/search_sales.h"
+#include "db/sales.h"
 #include "ui/ui_dayincomequery_dialog.h"
 
 DayIncomeQuery_Dialog::DayIncomeQuery_Dialog(QWidget *parent)
@@ -45,7 +45,7 @@ void DayIncomeQuery_Dialog::on_queryButton_clicked() {
   QString month = ui->month_comboBox->currentText();
   QString day = ui->day_comboBox->currentText();
 
-  SearchSales *sales = new SearchSales();
+  Sales *sales = new Sales();
   QString sumMoney = sales->searchDailySales(year, month, day);
   QMessageBox::information(this, "日收入查询",
                            "" + year + "年" + month + "月" + day +

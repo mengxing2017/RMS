@@ -34,7 +34,7 @@ void MonthIncomeQuery_Dialog::on_queryButton_clicked() {
   QString year = ui->year_comboBox->currentText();
   QString month = ui->month_comboBox->currentText();
 
-  SearchSales *sales = new SearchSales();
+  Sales *sales = new Sales();
   QString sumMoney = sales->searchMonthSales(year, month);
   QMessageBox::information(
       this, "月收入查询",
