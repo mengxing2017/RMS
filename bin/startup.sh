@@ -2,8 +2,6 @@
 
 APP_NAME=rms
 
-export rms_dir=$HOME
-
 # 获取脚本当前目录
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
