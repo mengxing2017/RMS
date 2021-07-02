@@ -1,9 +1,12 @@
 #include "db/excute_sql_file.h"
 #include "db/manage_database.h"
+#include "log.h"
+#include "log4qt/logger.h"
 
 ExcuteSqlFile::ExcuteSqlFile() {}
 
 int ExcuteSqlFile::excute(QFile *file, QSqlDatabase db) {
+  Log4Qt::Logger *log = Log::createLog()->getLogger();
   int iRet = 0;
   if (!file->exists()) {
     return -1;
@@ -18,25 +21,21 @@ int ExcuteSqlFile::excute(QFile *file, QSqlDatabase db) {
   QTextStream in(file);
   in.setCodec("UTF-8");
   QString sqlData = in.readAll();
-  qDebug() << sqlData;
   QSqlQuery query(db);
   QStringList qstrlist_sql = sqlData.split(";");
+  log->debug(QString::number(qstrlist_sql.size()));
   for (int i = 0; i < qstrlist_sql.size() - 1; i++) {
     QString qstr_sql_part = qstrlist_sql.at(i).toUtf8();
-    qDebug() << qstr_sql_part;
-    bool success = query.exec(
-        "CREATE TABLE students ("
-        "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-        "name VARCHAR(40) NOT NULL, "
-        "score INTEGER NOT NULL, "
-        "grade VARCHAR(40) NOT NULL)");
+    log->debug(qstr_sql_part);
+    bool success = query.exec(qstr_sql_part);
     if (!success) {
       QSqlError lastError = query.lastError();
       QString err = lastError.driverText();
-      qDebug() << err;
+      log->error(err);
       iRet = -1;
       break;
     }
+    log->debug("创建数据库表成功！");
   }
 
   return iRet;
