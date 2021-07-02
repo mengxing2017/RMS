@@ -35,7 +35,8 @@ HEADERS += \
     $$PWD/include/db/create_table.h \
     $$PWD/include/db/excute_sql_file.h \
     $$PWD/include/db/init_database.h \
-    $$PWD/include/db/manage_database.h
+    $$PWD/include/db/manage_database.h \
+    $$PWD/include/log.h
 
 SOURCES += \
     $$PWD/sources/main/main.cpp \
@@ -75,4 +76,5 @@ SOURCES += \
     $$PWD/sources/db/excute_sql_file.cpp \
     $$PWD/sources/db/create_table.cpp \
     $$PWD/sources/db/init_database.cpp \
-    $$PWD/sources/db/manage_database.cpp
+    $$PWD/sources/db/manage_database.cpp \
+    $$PWD/sources/log.cpp
