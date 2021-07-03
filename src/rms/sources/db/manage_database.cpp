@@ -6,7 +6,7 @@ ManageDatabase::ManageDatabase() {}
 QSqlDatabase ManageDatabase::connect() {
   QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
   db.setDatabaseName(":rms:");
-  db.setDatabaseName(QCoreApplication::applicationDirPath() + "/../db/data.db");
+  db.setDatabaseName(QCoreApplication::applicationDirPath() + "/../db/rms.db");
   return db;
 }
 
