@@ -13,7 +13,7 @@
 class ExcuteSqlFile {
  public:
   ExcuteSqlFile();
-  int excute(QFile *file, QSqlDatabase db);
+  bool excute(QFile *file, QSqlDatabase db);
 };
 
 #endif  // EXCUTE_SQL_FILE_H

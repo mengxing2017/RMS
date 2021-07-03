@@ -1,22 +1,29 @@
 #include "db/create_table.h"
 #include "db/excute_sql_file.h"
+#include "log.h"
+#include "log4qt/logger.h"
 
 CreateTable::CreateTable() {}
 
 bool CreateTable::CreateAccount(QSqlDatabase db) {
-  //  QFile file(":/res/db/create_table/create_account_table.sql");
+  Log4Qt::Logger *log = Log::createLog()->getLogger();
+
   QFile *file = new QFile(":/res/db/create_table/create_account_table.sql");
   if (!file->exists()) {
-    qDebug() << "sql file not exists";
+    log->error("sql file not exists");
     file->~QFile();
     return false;
   }
+
   ExcuteSqlFile *excute = new ExcuteSqlFile();
-  if (0 == excute->excute(file, db)) {
-    qDebug() << "excute sql faild";
+  if (excute->excute(file, db)) {
+    file->~QFile();
+    log->error("create account table success!");
+    excute->~ExcuteSqlFile();
     return true;
   };
+  excute->~ExcuteSqlFile();
   file->~QFile();
-  qDebug() << "create account table faild";
+  log->error("create account table failed!");
   return false;
 }
