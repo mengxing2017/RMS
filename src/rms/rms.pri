@@ -36,7 +36,8 @@ HEADERS += \
     $$PWD/include/db/excute_sql_file.h \
     $$PWD/include/db/init_database.h \
     $$PWD/include/db/manage_database.h \
-    $$PWD/include/db/sales.h
+    $$PWD/include/db/sales.h \
+    $$PWD/include/model/account.h
 
 SOURCES += \
     $$PWD/sources/main.cpp \
@@ -77,4 +78,5 @@ SOURCES += \
     $$PWD/sources/db/create_table.cpp \
     $$PWD/sources/db/init_database.cpp \
     $$PWD/sources/db/manage_database.cpp \
-    $$PWD/sources/db/sales.cpp
+    $$PWD/sources/db/sales.cpp \
+    $$PWD/sources/model/account.cpp
