@@ -1,4 +1,4 @@
-﻿#include "main/mainwindow.h"
+﻿#include "mainwindow.h"
 #include <QDesktopWidget>
 #include "db/day_statistics.h"
 #include "dialog/add_reduce_dialog.h"
