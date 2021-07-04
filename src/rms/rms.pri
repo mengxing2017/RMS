@@ -1,5 +1,6 @@
 HEADERS += \
-    $$PWD/include/main/mainwindow.h \
+    $$PWD/include/mainwindow.h \
+    $$PWD/include/log.h \
     $$PWD/include/dialog/dayincomequery_dialog.h \
     $$PWD/include/dialog/add_reduce_dialog.h \
     $$PWD/include/dialog/staffregister_dialog.h \
@@ -35,12 +36,13 @@ HEADERS += \
     $$PWD/include/db/excute_sql_file.h \
     $$PWD/include/db/init_database.h \
     $$PWD/include/db/manage_database.h \
-    $$PWD/include/log.h \
-    $$PWD/include/db/sales.h
+    $$PWD/include/db/sales.h \
+    $$PWD/include/model/account.h
 
 SOURCES += \
-    $$PWD/sources/main/main.cpp \
-    $$PWD/sources/main/mainwindow.cpp \
+    $$PWD/sources/main.cpp \
+    $$PWD/sources/mainwindow.cpp \
+    $$PWD/sources/log.cpp \
     $$PWD/sources/dialog/selectseat_dialog.cpp \
     $$PWD/sources/dialog/login_dialog.cpp \
     $$PWD/sources/dialog/varietymenu_dialog.cpp \
@@ -76,5 +78,5 @@ SOURCES += \
     $$PWD/sources/db/create_table.cpp \
     $$PWD/sources/db/init_database.cpp \
     $$PWD/sources/db/manage_database.cpp \
-    $$PWD/sources/log.cpp \
-    $$PWD/sources/db/sales.cpp
+    $$PWD/sources/db/sales.cpp \
+    $$PWD/sources/model/account.cpp

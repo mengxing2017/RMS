@@ -2,13 +2,19 @@
 
 ## 启动文档网站
 
-1. 安装依赖包：
+1. `docsify` 工具安装
+
+```shell
+npm -g install docsify-cli --registry=https://registry.npm.taobao.org
+```
+
+2. 安装依赖包：
 
 ```bash
 npm install
 ```
 
-2. 启动
+3. 启动
 
 ```bash
 docsify serve .
