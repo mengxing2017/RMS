@@ -1,4 +1,4 @@
-#include "dialog/check_out_dialog.h"
+#include "slot/check_out_dialog.h"
 #include "db/check.h"
 #include "ui/ui_check_out_dialog.h"
 

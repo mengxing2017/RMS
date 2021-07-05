@@ -1,18 +1,18 @@
 HEADERS += \
     $$PWD/include/mainwindow.h \
     $$PWD/include/log.h \
-    $$PWD/include/dialog/dayincomequery_dialog.h \
-    $$PWD/include/dialog/add_reduce_dialog.h \
-    $$PWD/include/dialog/staffregister_dialog.h \
-    $$PWD/include/dialog/varietymenu_dialog.h \
-    $$PWD/include/dialog/dishescount_dialog.h \
-    $$PWD/include/dialog/foodinfo_dialog.h \
-    $$PWD/include/dialog/login_dialog.h \
-    $$PWD/include/dialog/monthincomequery_dialog.h \
-    $$PWD/include/dialog/selectseat_dialog.h \
-    $$PWD/include/dialog/stockqquery_dialog.h \
-    $$PWD/include/dialog/check_out_dialog.h \
-    $$PWD/include/dialog/orderdishes_dialog.h \
+    $$PWD/include/slot/dayincomequery_dialog.h \
+    $$PWD/include/slot/add_reduce_dialog.h \
+    $$PWD/include/slot/staffregister_dialog.h \
+    $$PWD/include/slot/varietymenu_dialog.h \
+    $$PWD/include/slot/dishescount_dialog.h \
+    $$PWD/include/slot/foodinfo_dialog.h \
+    $$PWD/include/slot/login_dialog.h \
+    $$PWD/include/slot/monthincomequery_dialog.h \
+    $$PWD/include/slot/selectseat_dialog.h \
+    $$PWD/include/slot/stockqquery_dialog.h \
+    $$PWD/include/slot/check_out_dialog.h \
+    $$PWD/include/slot/orderdishes_dialog.h \
     $$PWD/include/ui/ui_stockquery_dialog.h \
     $$PWD/include/ui/ui_mainwindow.h \
     $$PWD/include/ui/ui_foodinfo_dialog.h \
@@ -37,24 +37,25 @@ HEADERS += \
     $$PWD/include/db/init_database.h \
     $$PWD/include/db/manage_database.h \
     $$PWD/include/db/sales.h \
-    $$PWD/include/model/account.h
+    $$PWD/include/model/account.h \
+    $$PWD/include/service/accountservice.h
 
 SOURCES += \
     $$PWD/sources/main.cpp \
     $$PWD/sources/mainwindow.cpp \
     $$PWD/sources/log.cpp \
-    $$PWD/sources/dialog/selectseat_dialog.cpp \
-    $$PWD/sources/dialog/login_dialog.cpp \
-    $$PWD/sources/dialog/varietymenu_dialog.cpp \
-    $$PWD/sources/dialog/stockqquery_dialog.cpp \
-    $$PWD/sources/dialog/foodinfo_dialog.cpp \
-    $$PWD/sources/dialog/add_reduce_dialog.cpp \
-    $$PWD/sources/dialog/dayincomequery_dialog.cpp \
-    $$PWD/sources/dialog/check_out_dialog.cpp \
-    $$PWD/sources/dialog/orderdishes_dialog.cpp \
-    $$PWD/sources/dialog/dishescount_dialog.cpp \
-    $$PWD/sources/dialog/staffregister_dialog.cpp \
-    $$PWD/sources/dialog/monthincomequery_dialog.cpp \
+    $$PWD/sources/slot/selectseat_dialog.cpp \
+    $$PWD/sources/slot/login_dialog.cpp \
+    $$PWD/sources/slot/varietymenu_dialog.cpp \
+    $$PWD/sources/slot/stockqquery_dialog.cpp \
+    $$PWD/sources/slot/foodinfo_dialog.cpp \
+    $$PWD/sources/slot/add_reduce_dialog.cpp \
+    $$PWD/sources/slot/dayincomequery_dialog.cpp \
+    $$PWD/sources/slot/check_out_dialog.cpp \
+    $$PWD/sources/slot/orderdishes_dialog.cpp \
+    $$PWD/sources/slot/dishescount_dialog.cpp \
+    $$PWD/sources/slot/staffregister_dialog.cpp \
+    $$PWD/sources/slot/monthincomequery_dialog.cpp \
     $$PWD/sources/ui/ui_dishescount_dialog.cpp \
     $$PWD/sources/ui/ui_staffregister_dialog.cpp \
     $$PWD/sources/ui/ui_selectseat_dialog.cpp \
@@ -79,4 +80,5 @@ SOURCES += \
     $$PWD/sources/db/init_database.cpp \
     $$PWD/sources/db/manage_database.cpp \
     $$PWD/sources/db/sales.cpp \
-    $$PWD/sources/model/account.cpp
+    $$PWD/sources/model/account.cpp \
+    $$PWD/sources/service/accountservice.cpp

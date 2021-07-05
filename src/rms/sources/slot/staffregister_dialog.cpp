@@ -1,4 +1,4 @@
-#include "dialog/staffregister_dialog.h"
+#include "slot/staffregister_dialog.h"
 #include "db/user_management.h"
 #include "ui/ui_staffregister_dialog.h"
 

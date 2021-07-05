@@ -1,4 +1,4 @@
-#include "dialog/dayincomequery_dialog.h"
+#include "slot/dayincomequery_dialog.h"
 #include "db/sales.h"
 #include "ui/ui_dayincomequery_dialog.h"
 

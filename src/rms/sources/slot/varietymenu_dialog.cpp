@@ -1,4 +1,4 @@
-#include "dialog/varietymenu_dialog.h"
+#include "slot/varietymenu_dialog.h"
 #include "ui/ui_varietymenu_dialog.h"
 
 VarietyMenuDialog::VarietyMenuDialog(QWidget *parent)

@@ -1,6 +1,6 @@
-#include "dialog/add_reduce_dialog.h"
+#include "slot/add_reduce_dialog.h"
 #include "db/food_info.h"
-#include "dialog/dishescount_dialog.h"
+#include "slot/dishescount_dialog.h"
 #include "ui/ui_add_reduce_dialog.h"
 
 Add_Reduce_Dialog::Add_Reduce_Dialog(QWidget *parent)

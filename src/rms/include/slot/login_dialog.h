@@ -32,8 +32,6 @@ class LoginDialog : public QDialog {
   Ui::LoginDialog *ui;
   bool pass;
   bool admin;
-  QSqlDatabase m_db;
-  //    QSqlQuery query;
 };
 
 #endif  // LOGINDIALOG_H

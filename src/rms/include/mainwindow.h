@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QDebug>
+#include <QDesktopWidget>
 #include <QMainWindow>
-#include "dialog/login_dialog.h"
 
 namespace Ui {
 class MainWindow;

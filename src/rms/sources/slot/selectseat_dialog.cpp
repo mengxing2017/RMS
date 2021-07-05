@@ -1,4 +1,4 @@
-#include "dialog/selectseat_dialog.h"
+#include "slot/selectseat_dialog.h"
 #include "ui/ui_selectseat_dialog.h"
 
 SelectSeat_Dialog::SelectSeat_Dialog(QWidget *parent)
