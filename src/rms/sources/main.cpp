@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
   initDb->~InitDatabase();
 
   LoginSlot *loginSlot = new LoginSlot();
-  loginSlot->exec();
+  loginSlot->show();
   //  loginSlot->show();
 
   //  MainWindow w;

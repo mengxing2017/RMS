@@ -1,35 +1,31 @@
 #include "slot/login_slot.h"
-#include "ui/ui_login_dialog.h"
 
-LoginSlot::LoginSlot(QWidget *parent)
-    : QDialog(parent), ui(new Ui::LoginDialog) {
-  ui->setupUi(this);
-  this->setWindowTitle("登录窗口");
+LoginSlot::LoginSlot() {
+  ui = new Ui_Login_Dialog();
 
-  ui->passwordLe->setEchoMode(QLineEdit::Password);
-  qDebug() << "test";
+  connect(ui->loginBt, SIGNAL(clicked()), this, SLOT(loginClicked()));
+  connect(ui->quitBt, SIGNAL(clicked()), this, SLOT(closeClicked()));
+  connect(ui->closeBt, SIGNAL(clicked()), this, SLOT(closeClicked()));
 }
 
-LoginSlot::~LoginSlot() { delete ui; }
+void LoginSlot::show() { ui->exec(); }
 
-void LoginSlot::on_button_Login_clicked() {
-  //  bool flag = false;
+void LoginSlot::deleteUi() { ui->~Ui_Login_Dialog(); }
+
+// 登录
+void LoginSlot::loginClicked() {
   QString username = ui->usernameLe->text();
-  QString userpassword = ui->passwordLe->text();
+  QString password = ui->passwordLe->text();
 
-  //  if (NULL == username) {
-  //    QMessageBox::information(this, "登录提示", "请输入登录名");
-  //  } else if (NULL == userpassword) {
-  //    QMessageBox::information(this, "登录提示", "请输入登录密码");
-  //  } else {
-  //    UserManagement *user = new UserManagement();
-  //    flag = user->login(username, userpassword);
-  //  }
-
-  //  if (flag) {
-  //    QMessageBox::information(this, "登录提示", "密码或者用户名错误");
-  //  }
+  if (nullptr == username || "" == username || nullptr == password ||
+      "" == password) {
+    QMessageBox::information(ui, "登录提示", "请输入登录名或密码！");
+  }
+  //登录判断
 }
 
-void LoginSlot::on_button_Quit_clicked() { this->close(); }
-void LoginSlot::on_button_Close_clicked() { this->close(); }
+// 退出或关闭
+void LoginSlot::closeClicked() {
+  ui->close();
+  deleteUi();
+}

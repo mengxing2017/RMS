@@ -39,9 +39,9 @@ void MainWindow::setEnabledMenu(bool e) {
 }
 
 void MainWindow::on_action_Login_triggered() {
-  LoginSlot *login = new LoginSlot(this);
-  login->show();
-  login->exec();
+  //  LoginSlot *login = new LoginSlot(this);
+  //  login->show();
+  //  login->exec();
 
   //  delete login;
   //  if (pass) {

@@ -5,28 +5,22 @@
 #include <QDialog>
 #include <QMessageBox>
 
-#include "db/user_management.h"
+#include "ui/ui_login_dialog.h"
 
-namespace Ui {
-class LoginDialog;
-}
-
-class LoginSlot : public QDialog {
+class LoginSlot : public QObject {
   Q_OBJECT
 
  public:
-  explicit LoginSlot(QWidget *parent = 0);
-  ~LoginSlot();
+  LoginSlot();
+  void show();
+  void deleteUi();
 
- private slots:
-  void on_button_Login_clicked();
-
-  void on_button_Quit_clicked();
-
-  void on_button_Close_clicked();
+ private Q_SLOTS:
+  void loginClicked();
+  void closeClicked();
 
  private:
-  Ui::LoginDialog *ui;
+  Ui_Login_Dialog *ui;
 };
 
 #endif  // LOGINDIALOG_H

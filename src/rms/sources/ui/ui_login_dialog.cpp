@@ -1,28 +1,30 @@
 #include "ui/ui_login_dialog.h"
 
-void Ui_Login_Dialog::setupUi(QDialog *loginDlg) {
+Ui_Login_Dialog::Ui_Login_Dialog(QWidget *parent) : QDialog(parent) {
   //设置登录框对象名
-  if (loginDlg->objectName().isEmpty())
-    loginDlg->setObjectName(QStringLiteral("LoginDialog"));
+  if (this->objectName().isEmpty())
+    this->setObjectName(QStringLiteral("LoginDialog"));
+
+  this->setWindowTitle("登录窗口");
 
   //登录框大小
-  loginDlg->resize(420, 320);
+  this->resize(420, 320);
   //调色板
-  QPalette LoginPal(loginDlg->palette());
+  QPalette LoginPal(this->palette());
   //设置背景图片
   LoginPal.setBrush(QPalette::Window,
                     QBrush(QPixmap(":/icon/res/images/login_background.jpeg")));
-  loginDlg->setAutoFillBackground(true);
-  loginDlg->setPalette(LoginPal);
-  loginDlg->setWindowFlags(Qt::FramelessWindowHint);
+  this->setAutoFillBackground(true);
+  this->setPalette(LoginPal);
+  this->setWindowFlags(Qt::FramelessWindowHint);
 
   // 顶部
-  top = new QWidget(loginDlg);
+  top = new QWidget(this);
   top->setObjectName(QStringLiteral("layoutWidget_top"));
   top->setGeometry(QRect(0, 0, 420, 180));
 
   // 底部
-  bottom = new QWidget(loginDlg);
+  bottom = new QWidget(this);
   bottom->setObjectName(QStringLiteral("layoutWidget_bottom"));
   bottom->setGeometry(QRect(120, 210, 180, 90));
 
@@ -59,6 +61,7 @@ void Ui_Login_Dialog::setupUi(QDialog *loginDlg) {
   // 密码输入框
   passwordLe = new QLineEdit(bottom);
   passwordLe->setObjectName(QStringLiteral("lineEdit_Password"));
+  passwordLe->setEchoMode(QLineEdit::Password);
   passwordLe->setGeometry(47, 33, 128, 26);
 
   gridLayout->addWidget(passwordLe, 1, 1, 1, 1);
@@ -86,16 +89,16 @@ void Ui_Login_Dialog::setupUi(QDialog *loginDlg) {
   vLayout->addLayout(hLayout);
 
   // 关闭按钮
-  closeBt = new QPushButton(loginDlg);
+  closeBt = new QPushButton(this);
   closeBt->setObjectName(QStringLiteral("button_Close"));
   closeBt->setGeometry(395, 0, 25, 25);
   QIcon closeIcon;
   closeIcon.addFile(":/icon/res/images/close.jpeg");
   closeBt->setIcon(closeIcon);
 
-  QMetaObject::connectSlotsByName(loginDlg);
+  QMetaObject::connectSlotsByName(this);
 
-  retranslateUi(loginDlg);
+  retranslateUi(this);
 }  // setupUi
 
 // 设置文字国际化

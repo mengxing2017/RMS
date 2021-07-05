@@ -9,6 +9,7 @@
 #ifndef UI_LOGINDIALOG_H
 #define UI_LOGINDIALOG_H
 
+#include <QMessageBox>
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
@@ -25,8 +26,10 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Login_Dialog {
+class Ui_Login_Dialog : public QDialog {
  public:
+  explicit Ui_Login_Dialog(QWidget *parent = nullptr);
+
   QWidget *top;
   QWidget *bottom;
   QVBoxLayout *vLayout;
@@ -45,10 +48,6 @@ class Ui_Login_Dialog {
 
   void retranslateUi(QDialog *LoginDialog);  // retranslateUi
 };
-
-namespace Ui {
-class LoginDialog : public Ui_Login_Dialog {};
-}  // namespace Ui
 
 QT_END_NAMESPACE
 
