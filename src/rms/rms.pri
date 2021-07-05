@@ -7,7 +7,6 @@ HEADERS += \
     $$PWD/include/slot/varietymenu_dialog.h \
     $$PWD/include/slot/dishescount_dialog.h \
     $$PWD/include/slot/foodinfo_dialog.h \
-    $$PWD/include/slot/login_dialog.h \
     $$PWD/include/slot/monthincomequery_dialog.h \
     $$PWD/include/slot/selectseat_dialog.h \
     $$PWD/include/slot/stockqquery_dialog.h \
@@ -38,14 +37,14 @@ HEADERS += \
     $$PWD/include/db/manage_database.h \
     $$PWD/include/db/sales.h \
     $$PWD/include/model/account.h \
-    $$PWD/include/service/accountservice.h
+    $$PWD/include/service/accountservice.h \
+    $$PWD/include/slot/login_slot.h
 
 SOURCES += \
     $$PWD/sources/main.cpp \
     $$PWD/sources/mainwindow.cpp \
     $$PWD/sources/log.cpp \
     $$PWD/sources/slot/selectseat_dialog.cpp \
-    $$PWD/sources/slot/login_dialog.cpp \
     $$PWD/sources/slot/varietymenu_dialog.cpp \
     $$PWD/sources/slot/stockqquery_dialog.cpp \
     $$PWD/sources/slot/foodinfo_dialog.cpp \
@@ -81,4 +80,5 @@ SOURCES += \
     $$PWD/sources/db/manage_database.cpp \
     $$PWD/sources/db/sales.cpp \
     $$PWD/sources/model/account.cpp \
-    $$PWD/sources/service/accountservice.cpp
+    $$PWD/sources/service/accountservice.cpp \
+    $$PWD/sources/slot/login_slot.cpp

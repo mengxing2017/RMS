@@ -26,30 +26,30 @@
 QT_BEGIN_NAMESPACE
 
 class Ui_Login_Dialog {
-public:
-  QWidget *layoutWidget_top;
-  QWidget *layoutWidget_bottom;
-  QVBoxLayout *verticalLayout;
+ public:
+  QWidget *top;
+  QWidget *bottom;
+  QVBoxLayout *vLayout;
   QGridLayout *gridLayout;
-  QHBoxLayout *horizontalLayout;
+  QHBoxLayout *hLayout;
 
-  QLabel *label_UserName;       //用户名标签
-  QLineEdit *lineEdit_UserName; //用户名输入框
-  QLabel *label_Password;       //密码标签
-  QLineEdit *lineEdit_Password; //密码输入框
-  QPushButton *button_Login;    //登录按钮
-  QPushButton *button_Quit;     //退出按钮
-  QPushButton *button_Close;    //关闭按钮
+  QLabel *usernameLb;     //用户名标签
+  QLineEdit *usernameLe;  //用户名输入框
+  QLabel *passwordLb;     //密码标签
+  QLineEdit *passwordLe;  //密码输入框
+  QPushButton *loginBt;   //登录按钮
+  QPushButton *quitBt;    //退出按钮
+  QPushButton *closeBt;   //关闭按钮
 
-  void setupUi(QDialog *LoginDialog); // setupUi
+  void setupUi(QDialog *LoginDialog);  // setupUi
 
-  void retranslateUi(QDialog *LoginDialog); // retranslateUi
+  void retranslateUi(QDialog *LoginDialog);  // retranslateUi
 };
 
 namespace Ui {
 class LoginDialog : public Ui_Login_Dialog {};
-} // namespace Ui
+}  // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_LOGINDIALOG_H
+#endif  // UI_LOGINDIALOG_H

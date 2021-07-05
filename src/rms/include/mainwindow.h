@@ -43,9 +43,6 @@ class MainWindow : public QMainWindow {
 
  private:
   Ui::MainWindow *ui;
-
-  bool admin;  //用户名
-  bool pass;   //密码
 };
 
 #endif  // MAINWINDOW_H

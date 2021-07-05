@@ -6,6 +6,7 @@
 
 #include "db/init_database.h"
 #include "mainwindow.h"
+#include "slot/login_slot.h"
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
@@ -16,6 +17,11 @@ int main(int argc, char *argv[]) {
     return -1;
   }
   initDb->~InitDatabase();
+
+  LoginSlot *loginSlot = new LoginSlot();
+  loginSlot->exec();
+  //  loginSlot->show();
+
   //  MainWindow w;
   //  w.show();
   //  return a.exec();

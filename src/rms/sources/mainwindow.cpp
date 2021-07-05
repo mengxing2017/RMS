@@ -4,7 +4,7 @@
 #include "slot/check_out_dialog.h"
 #include "slot/dayincomequery_dialog.h"
 #include "slot/foodinfo_dialog.h"
-#include "slot/login_dialog.h"
+#include "slot/login_slot.h"
 #include "slot/monthincomequery_dialog.h"
 #include "slot/selectseat_dialog.h"
 #include "slot/staffregister_dialog.h"
@@ -14,13 +14,11 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
-  this->setWindowTitle("餐饮管理系统");
+  this->setWindowTitle("RestaurantManagementSystem");
   QDesktopWidget *desktop = QApplication::desktop();  // =qApp->desktop();也可以
   this->move((desktop->width() - this->width()) / 2,
              (desktop->height() - this->height()) / 2);
   ui->statusBar->showMessage("未登录");
-  pass = false;
-  admin = false;
   setEnabledMenu(true);
 }
 
@@ -41,25 +39,24 @@ void MainWindow::setEnabledMenu(bool e) {
 }
 
 void MainWindow::on_action_Login_triggered() {
-  LoginDialog *login = new LoginDialog(this);
+  LoginSlot *login = new LoginSlot(this);
+  login->show();
   login->exec();
-  pass = login->VerifyPass();
-  admin = login->returnAdmin();
-  qDebug() << "主窗口登录测试" << pass;
-  delete login;
-  if (pass) {
-    setEnabledMenu(true);
-    ui->statusBar->showMessage("已登录");
-    ui->action_Login->setEnabled(false);
-  }
+
+  //  delete login;
+  //  if (pass) {
+  //    setEnabledMenu(true);
+  //    ui->statusBar->showMessage("已登录");
+  //    ui->action_Login->setEnabled(false);
+  //  }
 
   return;
 }
 
 void MainWindow::on_action_Quit_triggered() {
-  if (true == pass) QMessageBox::information(this, "提示", "已退出登录");
-  pass = false;
-  admin = false;
+  //  if (true == pass) QMessageBox::information(this, "提示", "已退出登录");
+  //  pass = false;
+  //  admin = false;
   setEnabledMenu(false);
   ui->action_Login->setEnabled(true);
   ui->statusBar->showMessage("未登录");

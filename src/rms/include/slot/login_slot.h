@@ -11,15 +11,12 @@ namespace Ui {
 class LoginDialog;
 }
 
-class LoginDialog : public QDialog {
+class LoginSlot : public QDialog {
   Q_OBJECT
 
  public:
-  explicit LoginDialog(QWidget *parent = 0);
-  ~LoginDialog();
-
-  bool VerifyPass();
-  bool returnAdmin();
+  explicit LoginSlot(QWidget *parent = 0);
+  ~LoginSlot();
 
  private slots:
   void on_button_Login_clicked();
@@ -30,8 +27,6 @@ class LoginDialog : public QDialog {
 
  private:
   Ui::LoginDialog *ui;
-  bool pass;
-  bool admin;
 };
 
 #endif  // LOGINDIALOG_H
