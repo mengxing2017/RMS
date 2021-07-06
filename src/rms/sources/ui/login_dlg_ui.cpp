@@ -1,6 +1,6 @@
-#include "ui/ui_login_dialog.h"
+#include "ui/login_dlg_ui.h"
 
-Ui_Login_Dialog::Ui_Login_Dialog(QWidget *parent) : QDialog(parent) {
+LoginDlgUi::LoginDlgUi(QWidget *parent) : QDialog(parent) {
   //设置登录框对象名
   if (this->objectName().isEmpty())
     this->setObjectName(QStringLiteral("LoginDialog"));
@@ -102,7 +102,7 @@ Ui_Login_Dialog::Ui_Login_Dialog(QWidget *parent) : QDialog(parent) {
 }  // setupUi
 
 // 设置文字国际化
-void Ui_Login_Dialog::retranslateUi(QDialog *LoginDialog) {
+void LoginDlgUi::retranslateUi(QDialog *LoginDialog) {
   LoginDialog->setWindowTitle(
       QApplication::translate("LoginDialog", "Dialog", nullptr));
   usernameLb->setText(QApplication::translate(

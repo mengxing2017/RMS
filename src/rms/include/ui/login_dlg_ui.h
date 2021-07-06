@@ -26,9 +26,9 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Login_Dialog : public QDialog {
+class LoginDlgUi : public QDialog {
  public:
-  explicit Ui_Login_Dialog(QWidget *parent = nullptr);
+  explicit LoginDlgUi(QWidget *parent = nullptr);
 
   QWidget *top;
   QWidget *bottom;

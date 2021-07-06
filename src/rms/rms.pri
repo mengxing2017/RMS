@@ -20,7 +20,6 @@ HEADERS += \
     $$PWD/include/ui/ui_monthincomequery_dialog.h \
     $$PWD/include/ui/ui_selectseat_dialog.h \
     $$PWD/include/ui/ui_staffregister_dialog.h \
-    $$PWD/include/ui/ui_login_dialog.h \
     $$PWD/include/ui/ui_check_out_dialog.h \
     $$PWD/include/ui/ui_dayincomequery_dialog.h \
     $$PWD/include/ui/ui_dishescount_dialog.h \
@@ -38,7 +37,8 @@ HEADERS += \
     $$PWD/include/db/sales.h \
     $$PWD/include/model/account.h \
     $$PWD/include/service/accountservice.h \
-    $$PWD/include/slot/login_slot.h
+    $$PWD/include/slot/login_slot.h \
+    $$PWD/include/ui/login_dlg_ui.h
 
 SOURCES += \
     $$PWD/sources/main.cpp \
@@ -60,7 +60,6 @@ SOURCES += \
     $$PWD/sources/ui/ui_selectseat_dialog.cpp \
     $$PWD/sources/ui/ui_add_reduce_dialog.cpp \
     $$PWD/sources/ui/ui_dayincomequery_dialog.cpp \
-    $$PWD/sources/ui/ui_login_dialog.cpp \
     $$PWD/sources/ui/ui_mainwindow.cpp \
     $$PWD/sources/ui/ui_varietymenu_dialog.cpp \
     $$PWD/sources/ui/ui_check_out_dialog.cpp \
@@ -81,4 +80,5 @@ SOURCES += \
     $$PWD/sources/db/sales.cpp \
     $$PWD/sources/model/account.cpp \
     $$PWD/sources/service/accountservice.cpp \
-    $$PWD/sources/slot/login_slot.cpp
+    $$PWD/sources/slot/login_slot.cpp \
+    $$PWD/sources/ui/login_dlg_ui.cpp
