@@ -30,15 +30,15 @@ HEADERS += \
     $$PWD/include/db/user_management.h \
     $$PWD/include/db/seat_info.h \
     $$PWD/include/db/check.h \
-    $$PWD/include/db/create_table.h \
-    $$PWD/include/db/excute_sql_file.h \
-    $$PWD/include/db/init_database.h \
     $$PWD/include/db/manage_database.h \
     $$PWD/include/db/sales.h \
     $$PWD/include/model/account.h \
-    $$PWD/include/service/accountservice.h \
     $$PWD/include/slot/login_slot.h \
-    $$PWD/include/ui/login_dlg_ui.h
+    $$PWD/include/ui/login_dlg_ui.h \
+    $$PWD/include/service/init_db_service.h \
+    $$PWD/include/service/account_service.h \
+    $$PWD/include/service/sql_file_service.h \
+    $$PWD/include/db/search_table_db.h
 
 SOURCES += \
     $$PWD/sources/main.cpp \
@@ -73,12 +73,12 @@ SOURCES += \
     $$PWD/sources/db/user_management.cpp \
     $$PWD/sources/db/seat_info.cpp \
     $$PWD/sources/db/check.cpp \
-    $$PWD/sources/db/excute_sql_file.cpp \
-    $$PWD/sources/db/create_table.cpp \
-    $$PWD/sources/db/init_database.cpp \
     $$PWD/sources/db/manage_database.cpp \
     $$PWD/sources/db/sales.cpp \
     $$PWD/sources/model/account.cpp \
-    $$PWD/sources/service/accountservice.cpp \
     $$PWD/sources/slot/login_slot.cpp \
-    $$PWD/sources/ui/login_dlg_ui.cpp
+    $$PWD/sources/ui/login_dlg_ui.cpp \
+    $$PWD/sources/service/account_service.cpp \
+    $$PWD/sources/service/init_db_service.cpp \
+    $$PWD/sources/service/sql_file_service.cpp \
+    $$PWD/sources/db/search_table_db.cpp

@@ -7,16 +7,22 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QString>
+#include "log.h"
+#include "log4qt/logger.h"
 
 /**
  * @brief The InitDatabase class
  * 初始化数据库类
  */
-class InitDatabase {
+class InitDbService {
  public:
-  InitDatabase();
+  InitDbService();
   bool initDb();
-  bool isExistTable(QString table, QSqlDatabase db);
+  bool isExistTable(QSqlDatabase db, const QString tableName);
+  bool createTable(QSqlDatabase db);
+
+ private:
+  Log4Qt::Logger *log;
 };
 
 #endif  // INIT_DATABASE_H

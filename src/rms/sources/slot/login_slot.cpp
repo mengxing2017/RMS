@@ -1,4 +1,5 @@
 #include "slot/login_slot.h"
+#include "service/account_service.h"
 
 LoginSlot::LoginSlot() {
   ui = new LoginDlgUi();
@@ -14,15 +15,20 @@ void LoginSlot::deleteUi() { ui->~LoginDlgUi(); }
 
 // 登录
 void LoginSlot::loginClicked() {
-  QString username = ui->usernameLe->text();
+  QString loginName = ui->usernameLe->text();
   QString password = ui->passwordLe->text();
 
   // 空字符串判断安全写法
-  if (nullptr == username || username.length() == 0 || nullptr == password ||
+  if (nullptr == loginName || loginName.length() == 0 || nullptr == password ||
       password.length() == 0) {
     QMessageBox::information(ui, "登录提示", "请输入登录名或密码！");
   }
   //登录判断
+  AccountService *account = new AccountService();
+  if (!account->LogonAuthentication(loginName, password)) {
+    QMessageBox::information(ui, "登录提示", "登录名或密码错误");
+  }
+  //显示主界面
 }
 
 // 退出或关闭

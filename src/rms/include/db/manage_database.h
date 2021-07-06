@@ -5,8 +5,6 @@
 #include <QDebug>
 #include <QSqlDatabase>
 
-#include "create_table.h"
-
 /**
  * @brief The ManageDatabase class
  * 管理数据库类

@@ -10,10 +10,10 @@
  * @brief The ExcuteSqlFile class
  * 执行sql文件类
  */
-class ExcuteSqlFile {
+class SqlFileService {
  public:
-  ExcuteSqlFile();
-  bool excute(QFile *file, QSqlDatabase db);
+  SqlFileService();
+  bool excute(QSqlDatabase db, QFile *file);
 };
 
 #endif  // EXCUTE_SQL_FILE_H

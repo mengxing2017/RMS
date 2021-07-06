@@ -1,11 +1,11 @@
-#include "db/excute_sql_file.h"
+#include "service/sql_file_service.h"
 #include "db/manage_database.h"
 #include "log.h"
 #include "log4qt/logger.h"
 
-ExcuteSqlFile::ExcuteSqlFile() {}
+SqlFileService::SqlFileService() {}
 
-bool ExcuteSqlFile::excute(QFile *file, QSqlDatabase db) {
+bool SqlFileService::excute(QSqlDatabase db, QFile *file) {
   Log4Qt::Logger *log = Log::createLog()->getLogger();
 
   if (!file->exists()) {
