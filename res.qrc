@@ -14,5 +14,6 @@
     </qresource>
     <qresource prefix="/">
         <file>res/db/create/account.sql</file>
+        <file>res/db/insert/account.sql</file>
     </qresource>
 </RCC>

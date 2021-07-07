@@ -20,6 +20,7 @@ class InitDbService {
   bool initDb();
   bool isExistTable(QSqlDatabase db, const QString tableName);
   bool createTable(QSqlDatabase db);
+  bool insertData(QSqlDatabase db, QString tableName);
 
  private:
   Log4Qt::Logger *log;

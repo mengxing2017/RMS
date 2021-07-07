@@ -52,22 +52,42 @@ bool InitDbService::createTable(QSqlDatabase db) {
       i++;
       continue;
     }
-    tableNameList.append(fileInfo.filePath());
+    tableNameList.append(fileInfo.fileName());
   }
 
+  SqlFileService *excute = new SqlFileService();
   for (int i = 0; i < tableNameList.size(); i++) {
-    QFile file(tableNameList.at(i));
-    if (!isExistTable(db, file.fileName())) {
+    QString fileName = tableNameList.at(i);
+    QString tableName = fileName.section(".", 0, 0);
+    if (isExistTable(db, tableName)) {
       continue;
     }
-    SqlFileService *excute = new SqlFileService();
+
+    QFile file(":/res/db/create/" + fileName);
     if (excute->excute(db, &file)) {
-      log->info(QString("create '%1' table sussces!").arg(file.fileName()));
+      if (!insertData(db, tableNameList.at(i))) {
+        return false;
+      }
+      log->info(QString("create '%1' table sussces!").arg(fileName));
     } else {
-      log->warn(QString("'%1' create failed").arg(file.fileName()));
+      log->warn(QString("'%1' create failed").arg(fileName));
     }
   }
+  excute->~SqlFileService();
   return true;
+}
+
+bool InitDbService::insertData(QSqlDatabase db, QString fileName) {
+  SqlFileService *excute = new SqlFileService;
+  QFile file(":/res/db/insert/" + fileName);
+  if (!file.exists()) {
+    return true;
+  }
+  if (excute->excute(db, &file)) {
+    return true;
+  }
+  log->info(QString("'%1' insert data failed! ").arg(fileName));
+  return false;
 }
 
 // 插入数据
