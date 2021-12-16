@@ -1,5 +1,5 @@
-#include "slot/foodinfo_dialog.h"
-#include "ui/ui_foodinfo_dialog.h"
+#include "foodinfo_dialog.h"
+#include "../ui/ui_foodinfo_dialog.h"
 
 FoodInfo_Dialog::FoodInfo_Dialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::FoodInfo_Dialog) {

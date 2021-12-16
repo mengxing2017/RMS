@@ -6,7 +6,7 @@
 
 #include <string>
 
-#include "db/food_info.h"
+#include "../db/food_info.h"
 
 namespace Ui {
 class FoodInfo_Dialog;

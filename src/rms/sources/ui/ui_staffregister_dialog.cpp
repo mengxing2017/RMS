@@ -1,4 +1,4 @@
-#include "ui/ui_staffregister_dialog.h"
+#include "ui_staffregister_dialog.h"
 
 void Ui_staffRegister_Dialog::setupUi(QDialog *staffRegister_Dialog) {
   if (staffRegister_Dialog->objectName().isEmpty())

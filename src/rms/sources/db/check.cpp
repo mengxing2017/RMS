@@ -1,4 +1,4 @@
-#include "db/check.h"
+#include "check.h"
 
 Check::Check() {}
 

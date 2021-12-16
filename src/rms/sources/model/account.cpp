@@ -1,4 +1,4 @@
-#include "model/account.h"
+#include "account.h"
 
 QString Account::getDlm() const { return dlm; }
 

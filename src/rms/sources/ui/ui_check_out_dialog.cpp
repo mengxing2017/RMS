@@ -1,4 +1,4 @@
-#include "ui/ui_check_out_dialog.h"
+#include "ui_check_out_dialog.h"
 
 void Ui_Check_Out_Dialog::setupUi(QDialog *Check_OutDialog) {
   if (Check_OutDialog->objectName().isEmpty())

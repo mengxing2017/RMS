@@ -1,4 +1,4 @@
-#include "ui/ui_foodinfo_dialog.h"
+#include "ui_foodinfo_dialog.h"
 
 void Ui_FoodInfo_Dialog::setupUi(QDialog *FoodInfo_Dialog) {
   if (FoodInfo_Dialog->objectName().isEmpty())

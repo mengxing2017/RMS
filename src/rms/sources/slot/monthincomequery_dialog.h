@@ -6,7 +6,7 @@
 #include <QDialog>
 #include <QMessageBox>
 
-#include "db/sales.h"
+#include "../db/sales.h"
 
 namespace Ui {
 class MonthIncomeQuery_Dialog;

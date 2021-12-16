@@ -1,4 +1,4 @@
-#include "ui/login_dlg_ui.h"
+#include "login_dlg_ui.h"
 
 LoginDlgUi::LoginDlgUi(QWidget *parent) : QDialog(parent) {
   //设置登录框对象名

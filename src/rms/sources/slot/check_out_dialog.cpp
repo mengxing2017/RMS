@@ -1,6 +1,6 @@
-#include "slot/check_out_dialog.h"
-#include "db/check.h"
-#include "ui/ui_check_out_dialog.h"
+#include "check_out_dialog.h"
+#include "../db/check.h"
+#include "../ui/ui_check_out_dialog.h"
 
 Check_OutDialog::Check_OutDialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::Check_OutDialog) {

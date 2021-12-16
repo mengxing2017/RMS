@@ -1,4 +1,4 @@
-#include "db/food_info.h"
+#include "food_info.h"
 
 FoodInfo::FoodInfo() {}
 
