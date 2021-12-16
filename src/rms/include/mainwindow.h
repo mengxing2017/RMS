@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QDebug>
+#include <QDesktopWidget>
 #include <QMainWindow>
-#include "dialog/login_dialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -43,9 +43,6 @@ class MainWindow : public QMainWindow {
 
  private:
   Ui::MainWindow *ui;
-
-  bool admin;  //用户名
-  bool pass;   //密码
 };
 
 #endif  // MAINWINDOW_H

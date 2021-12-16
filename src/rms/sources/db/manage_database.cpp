@@ -1,5 +1,4 @@
 #include "db/manage_database.h"
-#include "db/create_table.h"
 
 ManageDatabase::ManageDatabase() {}
 

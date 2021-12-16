@@ -13,6 +13,7 @@
         <file>res/images/selectSeat_background.jpeg</file>
     </qresource>
     <qresource prefix="/">
-        <file>res/db/create_table/create_account_table.sql</file>
+        <file>res/db/create/account.sql</file>
+        <file>res/db/insert/account.sql</file>
     </qresource>
 </RCC>
