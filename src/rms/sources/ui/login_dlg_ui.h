@@ -30,7 +30,12 @@ class LoginDlgUi : public QDialog {
  public:
   explicit LoginDlgUi(QWidget *parent = nullptr);
 
-  QWidget *top;
+  QWidget *left;
+  QWidget *softName;
+  QLabel *softCnNameLb;
+  QLabel *welcomeLb;
+
+  QWidget *right;
   QWidget *bottom;
   QVBoxLayout *vLayout;
   QGridLayout *gridLayout;
@@ -42,7 +47,6 @@ class LoginDlgUi : public QDialog {
   QLineEdit *passwordLe;  //密码输入框
   QPushButton *loginBt;   //登录按钮
   QPushButton *quitBt;    //退出按钮
-  QPushButton *closeBt;   //关闭按钮
 
   void setupUi(QDialog *LoginDialog);  // setupUi
 

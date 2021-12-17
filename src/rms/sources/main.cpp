@@ -2,6 +2,7 @@
 #include <QDir>
 #include <QFile>
 #include <QStandardPaths>
+#include <QTextCodec>
 #include <QtDebug>
 
 #include "mainwindow.h"
@@ -9,6 +10,10 @@
 #include "slot/login_slot.h"
 
 int main(int argc, char *argv[]) {
+  QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf8"));
+
+  QTextCodec::setCodecForLocale(QTextCodec::codecForName("utf8"));
+
   QApplication a(argc, argv);
 
   InitDbService *initDb = new InitDbService();

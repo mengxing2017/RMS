@@ -8,25 +8,46 @@ LoginDlgUi::LoginDlgUi(QWidget *parent) : QDialog(parent) {
   this->setWindowTitle("登录窗口");
 
   //登录框大小
-  this->resize(420, 320);
+  this->resize(1000, 480);
+
   //调色板
   QPalette LoginPal(this->palette());
   //设置背景图片
-  LoginPal.setBrush(QPalette::Window,
-                    QBrush(QPixmap(":/icon/res/images/login_background.jpeg")));
+  //  LoginPal.setBrush(QPalette::Window,
+  //                    QBrush(QPixmap(":/icon/res/images/login_background.jpeg")));
   this->setAutoFillBackground(true);
   this->setPalette(LoginPal);
   this->setWindowFlags(Qt::FramelessWindowHint);
 
-  // 顶部
-  top = new QWidget(this);
-  top->setObjectName(QStringLiteral("layoutWidget_top"));
-  top->setGeometry(QRect(0, 0, 420, 180));
+  left = new QWidget(this);
+  left->setGeometry(QRect(0, 0, 480, 480));
+  left->setStyleSheet("background-color: rgb(166,211,255);");
+
+  softName = new QWidget(left);
+  softName->setGeometry(85, 180, 310, 120);
+
+  softCnNameLb = new QLabel(softName);
+  softCnNameLb->setGeometry(0, 0, 310, 54);
+  softCnNameLb->setAlignment(Qt::AlignHCenter);
+  softCnNameLb->setStyleSheet("color:white;");
+  QFont softCnNameFont;
+  softCnNameFont.setPixelSize(40);
+  softCnNameFont.setFamily("宋体");
+  softCnNameLb->setFont(softCnNameFont);
+
+  welcomeLb = new QLabel(softName);
+  welcomeLb->setGeometry(0, 75, 310, 44);
+  welcomeLb->setAlignment(Qt::AlignHCenter);
+  welcomeLb->setStyleSheet("color:white;");
+  QFont welcomeFont;
+  welcomeFont.setPixelSize(20);
+  welcomeFont.setFamily("宋体");
+  welcomeLb->setFont(welcomeFont);
 
   // 底部
   bottom = new QWidget(this);
   bottom->setObjectName(QStringLiteral("layoutWidget_bottom"));
-  bottom->setGeometry(QRect(120, 210, 180, 90));
+  bottom->setGeometry(QRect(600, 210, 180, 90));
 
   // 垂直布局盒子
   vLayout = new QVBoxLayout(bottom);
@@ -88,14 +109,6 @@ LoginDlgUi::LoginDlgUi(QWidget *parent) : QDialog(parent) {
 
   vLayout->addLayout(hLayout);
 
-  // 关闭按钮
-  closeBt = new QPushButton(this);
-  closeBt->setObjectName(QStringLiteral("button_Close"));
-  closeBt->setGeometry(395, 0, 25, 25);
-  QIcon closeIcon;
-  closeIcon.addFile(":/icon/res/images/close.jpeg");
-  closeBt->setIcon(closeIcon);
-
   QMetaObject::connectSlotsByName(this);
 
   retranslateUi(this);
@@ -105,6 +118,8 @@ LoginDlgUi::LoginDlgUi(QWidget *parent) : QDialog(parent) {
 void LoginDlgUi::retranslateUi(QDialog *LoginDialog) {
   LoginDialog->setWindowTitle(
       QApplication::translate("LoginDialog", "Dialog", nullptr));
+  softCnNameLb->setText(QObject::tr("RMS餐饮管理系统"));
+  welcomeLb->setText(QObject::tr("Welcome to RMS System"));
   usernameLb->setText(QApplication::translate(
       "LoginDialog", "\347\224\250\346\210\267\345\220\215:", nullptr));
   passwordLb->setText(QApplication::translate(
