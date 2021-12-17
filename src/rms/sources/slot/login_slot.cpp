@@ -6,7 +6,6 @@ LoginSlot::LoginSlot() {
 
   connect(ui->loginBt, SIGNAL(clicked()), this, SLOT(loginClicked()));
   connect(ui->quitBt, SIGNAL(clicked()), this, SLOT(closeClicked()));
-  connect(ui->closeBt, SIGNAL(clicked()), this, SLOT(closeClicked()));
 }
 
 void LoginSlot::show() { ui->exec(); }

@@ -30,19 +30,18 @@ class LoginDlgUi : public QDialog {
  public:
   explicit LoginDlgUi(QWidget *parent = nullptr);
 
-  QWidget *top;
-  QWidget *bottom;
-  QVBoxLayout *vLayout;
-  QGridLayout *gridLayout;
-  QHBoxLayout *hLayout;
+  QWidget *left;
+  QWidget *softName;
+  QLabel *softCnNameLb;
+  QLabel *welcomeLb;
 
+  QLabel *welcomeLoginLb;
   QLabel *usernameLb;     //用户名标签
   QLineEdit *usernameLe;  //用户名输入框
   QLabel *passwordLb;     //密码标签
   QLineEdit *passwordLe;  //密码输入框
   QPushButton *loginBt;   //登录按钮
   QPushButton *quitBt;    //退出按钮
-  QPushButton *closeBt;   //关闭按钮
 
   void setupUi(QDialog *LoginDialog);  // setupUi
 
