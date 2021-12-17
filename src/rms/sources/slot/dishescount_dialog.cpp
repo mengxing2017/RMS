@@ -1,7 +1,7 @@
-#include "slot/dishescount_dialog.h"
+#include "dishescount_dialog.h"
 #include <QDebug>
 #include <QMessageBox>
-#include "ui/ui_dishescount_dialog.h"
+#include "../ui/ui_dishescount_dialog.h"
 
 DishesCountDialog::DishesCountDialog(QWidget *parent)
     : QDialog(parent), ui(new Ui::DishesCountDialog) {

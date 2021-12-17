@@ -5,7 +5,7 @@
 #include <QDialog>
 #include <QMessageBox>
 
-#include "ui/login_dlg_ui.h"
+#include "../ui/login_dlg_ui.h"
 
 class LoginSlot : public QObject {
   Q_OBJECT

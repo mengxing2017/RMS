@@ -28,8 +28,7 @@ LIBS += -L$${PROJECT_ROOT}/lib/sqlite3 -lqsqlite \
         -L$${PROJECT_ROOT}/lib/log4qt -llog4qt
 
 # 引入头文件目录
-INCLUDEPATH += $${PROJECT_ROOT}/include \
-      $${PROJECT_ROOT}/src/rms/include
+INCLUDEPATH += $${PROJECT_ROOT}/include
 
 RESOURCES += \
     res.qrc

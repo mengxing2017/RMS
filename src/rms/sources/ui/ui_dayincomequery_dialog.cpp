@@ -1,4 +1,4 @@
-#include "ui/ui_dayincomequery_dialog.h"
+#include "ui_dayincomequery_dialog.h"
 
 void Ui_DayIncomeQuery_Dialog::setupUi(QDialog *DayIncomeQuery_Dialog) {
   if (DayIncomeQuery_Dialog->objectName().isEmpty())

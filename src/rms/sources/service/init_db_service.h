@@ -7,7 +7,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QString>
-#include "log.h"
+#include "../log.h"
 #include "log4qt/logger.h"
 
 /**

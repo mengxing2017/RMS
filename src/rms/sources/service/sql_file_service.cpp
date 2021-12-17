@@ -1,6 +1,6 @@
-#include "service/sql_file_service.h"
-#include "db/manage_database.h"
-#include "log.h"
+#include "sql_file_service.h"
+#include "../db/manage_database.h"
+#include "../log.h"
 #include "log4qt/logger.h"
 
 SqlFileService::SqlFileService() {}

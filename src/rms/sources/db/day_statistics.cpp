@@ -1,4 +1,4 @@
-#include "db/day_statistics.h"
+#include "day_statistics.h"
 
 DayStatistics::DayStatistics() {}
 

@@ -1,4 +1,4 @@
-#include "db/search_table_db.h"
+#include "search_table_db.h"
 
 SearchTableDb::SearchTableDb() {}
 

@@ -1,7 +1,7 @@
-#include "service/init_db_service.h"
-#include "db/manage_database.h"
-#include "db/search_table_db.h"
-#include "service/sql_file_service.h"
+#include "init_db_service.h"
+#include "../db/manage_database.h"
+#include "../db/search_table_db.h"
+#include "sql_file_service.h"
 
 InitDbService::InitDbService() { log = Log::createLog()->getLogger(); }
 

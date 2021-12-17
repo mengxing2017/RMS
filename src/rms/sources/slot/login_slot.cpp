@@ -1,5 +1,5 @@
-#include "slot/login_slot.h"
-#include "service/account_service.h"
+#include "login_slot.h"
+#include "../service/account_service.h"
 
 LoginSlot::LoginSlot() {
   ui = new LoginDlgUi();

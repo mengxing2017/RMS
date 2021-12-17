@@ -1,9 +1,8 @@
-#include "db/sales.h"
+#include "sales.h"
 
 Sales::Sales() {}
 
-QString Sales::searchDailySales(QString year, QString month,
-                                      QString day) {
+QString Sales::searchDailySales(QString year, QString month, QString day) {
   double sumMoney = 0;
   QSqlDatabase db = ManageDatabase::connect();
   if (ManageDatabase::openDb(db)) {

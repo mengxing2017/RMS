@@ -1,4 +1,4 @@
-#include "ui/ui_varietymenu_dialog.h"
+#include "ui_varietymenu_dialog.h"
 
 void Ui_VarietyMenu_Dialog::setupUi(QDialog *VarietyMenuDialog) {
   if (VarietyMenuDialog->objectName().isEmpty())

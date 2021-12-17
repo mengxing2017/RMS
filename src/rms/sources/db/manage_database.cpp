@@ -1,4 +1,4 @@
-#include "db/manage_database.h"
+#include "manage_database.h"
 
 ManageDatabase::ManageDatabase() {}
 

@@ -10,7 +10,7 @@
 #include <QStandardItemModel>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
-#include "db/seat_info.h"
+#include "../db/seat_info.h"
 #include "orderdishes_dialog.h"
 
 namespace Ui {
