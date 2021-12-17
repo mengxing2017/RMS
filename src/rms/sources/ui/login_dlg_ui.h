@@ -35,12 +35,7 @@ class LoginDlgUi : public QDialog {
   QLabel *softCnNameLb;
   QLabel *welcomeLb;
 
-  QWidget *right;
-  QWidget *bottom;
-  QVBoxLayout *vLayout;
-  QGridLayout *gridLayout;
-  QHBoxLayout *hLayout;
-
+  QLabel *welcomeLoginLb;
   QLabel *usernameLb;     //用户名标签
   QLineEdit *usernameLe;  //用户名输入框
   QLabel *passwordLb;     //密码标签
